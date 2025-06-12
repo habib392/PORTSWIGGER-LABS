@@ -4,8 +4,8 @@
 Enumerate valid usernames using slight differences in server responses.
 
 🧰 Tools: 
-Burp Suite
-Intruder
+- Burp Suite
+- Intruder
 
 STEP 1: Open the Lab Open the lab in browser. Make sure Burp Suite is running and intercept is on. Go to /login page of the lab.
 
