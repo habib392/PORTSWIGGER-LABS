@@ -55,3 +55,13 @@ Position 2 → Password wordlist
 Jab koi response 302 (Redirect) dega, wo correct password hoga.
 Ab username + password se login karo → 🎉 Lab solved!
 
+## What we Learn
+Hum ny seekha kaisy username length sy pata chal skta hai ky username correct hai ya wrong agr username correct hai or hum password 200 characters pr daalty hain too woh time delay ly ga response karny main lekin agr ius ny iusi time invalid username or password keh diya too iska matlab username ghalt hai
+
+Basically iss lab main X-Forwarded-For:1 ka use btahea gya hai ky iss sy hum apna ip change kr skty hain 
+
+Username or Password ko iss lab main Pitchfork Attack ky zariye nikala jaye ga
+
+
+
+
