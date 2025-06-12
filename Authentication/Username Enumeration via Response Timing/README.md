@@ -1,6 +1,6 @@
 ## Lab: Username Enumeration via Response Timing
 
-🎯 ~~Goal:~~
+🎯 ***Goal***:
 Find a valid username based on response time difference, then use it to brute-force the password.
 
 🛠 **Tools Used**:
