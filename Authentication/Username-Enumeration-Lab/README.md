@@ -3,7 +3,7 @@
 🎯 Goal:
 Enumerate valid usernames using slight differences in server responses.
 
-🧰 Tools: 
+### 🧰 Tools: 
 - Burp Suite
 - Intruder
 
