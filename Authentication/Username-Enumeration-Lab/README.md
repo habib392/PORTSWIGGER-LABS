@@ -3,9 +3,9 @@
 🎯 Goal:
 Enumerate valid usernames using slight differences in server responses.
 
-## 🧰 Tools:
-Burp Suite
-Intruder
+## 🧰 Tools: Burp Suite Intruder
+
+
 STEP 1: Open the Lab Open the lab in browser. Make sure Burp Suite is running and intercept is on. Go to /login page of the lab.
 
 🔹 STEP 2: Capture and Send Login Request to Intruder Enter invalid username and password like: username=invaliduser password=invalidpass Submit the form.
