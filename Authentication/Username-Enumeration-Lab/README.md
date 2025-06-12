@@ -81,4 +81,13 @@ Submit → You’ll be redirected to the user account page.
 
 🎉 Lab is solved!
 
+## 🧠 What We Learn
+
+- Enumeration is the process of identifying valid usernames, emails, or passwords by observing system behavior.
+- If a login system says "Invalid username" or "Invalid password" separately, it leaks information.
+- An attacker uses this difference to confirm a valid username.
+- Then, brute-force can be used to guess the correct password.
+- Secure systems give generic errors like “Invalid credentials” to prevent this attack.
+
+
 
