@@ -4,9 +4,9 @@
 Find a valid username based on response time difference, then use it to brute-force the password.
 
 🛠 **Tools Used**:
-Burp Suite (Intruder + Repeater)
-Response time analysis
-X-Forwarded-For header spoofing
+- Burp Suite (Intruder + Repeater)
+- Response time analysis
+- X-Forwarded-For header spoofing
 
 🔄 Understanding the Lab Step-by-Step:
 ✅ STEP 1: Try Invalid Login
