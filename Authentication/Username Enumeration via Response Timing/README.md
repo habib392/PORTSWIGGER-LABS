@@ -16,7 +16,7 @@ Burp Suite chalu karo aur lab open karo.
 Koi invalid username & password (e.g. user=invalid, pass=1234) daal kar form submit karo.
 /login request ko Repeater mein bhejo.
 
-✅ STEP 2: Identify --- Rate Limiting
+✅ STEP 2: Identify Rate Limiting
 Bohat zyada galat login karne par server aapka IP block kar deta hai.
 Bypass karne ke liye request mein X-Forwarded-For header add karo (ye server ko naya IP dikhata hai).
 
