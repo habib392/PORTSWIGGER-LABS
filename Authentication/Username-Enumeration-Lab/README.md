@@ -1,8 +1,9 @@
-✅ Lab: Username enumeration via subtly different responses
+## Lab: Username enumeration via subtly different responses
+
 🎯 Goal:
 Enumerate valid usernames using slight differences in server responses.
 
-🧰 Tools:
+## 🧰 Tools:
 Burp Suite
 Intruder
 STEP 1: Open the Lab Open the lab in browser. Make sure Burp Suite is running and intercept is on. Go to /login page of the lab.
@@ -12,8 +13,6 @@ STEP 1: Open the Lab Open the lab in browser. Make sure Burp Suite is running an
 In Burp, go to HTTP history, right-click the /login POST request → Send to Intruder.
 
 🔹 STEP 3: Configure Intruder for Username Enumeration Go to Intruder tab → Select the request. You’ll see that Burp already highlights username as payload. Clear the password if needed or keep it static for now (like password=invalid).
-
-![Step 3 Screenshot](https://github.com/habib392/PORTSWIGGER-LABS/blob/main/Authentication/Username-Enumeration-Lab/1299861.jpg?raw=true)
 
 🔹 STEP 4: Load the Candidate Usernames List Go to Payloads tab. Select Payload type: Simple list. Paste or load the candidate usernames wordlist.
 
@@ -47,7 +46,7 @@ Submit → You’ll be redirected to the user account page.
 
 🎉 Lab is solved!
 
-🧠 What We Learn
+# 🧠 What We Learn
 Enumeration is the process of identifying valid usernames, emails, or passwords by observing system behavior.
 If a login system says "Invalid username" or "Invalid password" separately, it leaks information.
 An attacker uses this difference to confirm a valid username.
