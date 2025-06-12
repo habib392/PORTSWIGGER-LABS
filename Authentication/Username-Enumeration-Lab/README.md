@@ -13,7 +13,7 @@ In Burp, go to HTTP history, right-click the /login POST request → Send to Int
 
 🔹 STEP 3: Configure Intruder for Username Enumeration Go to Intruder tab → Select the request. You’ll see that Burp already highlights username as payload. Clear the password if needed or keep it static for now (like password=invalid).
 
-(https://github.com/habib392/PORTSWIGGER-LABS/blob/main/Authentication/Username-Enumeration-Lab/1299861.jpg?raw=true)
+![Step 3 Screenshot](https://github.com/habib392/PORTSWIGGER-LABS/blob/main/Authentication/Username-Enumeration-Lab/1299861.jpg?raw=true)
 
 🔹 STEP 4: Load the Candidate Usernames List Go to Payloads tab. Select Payload type: Simple list. Paste or load the candidate usernames wordlist.
 
