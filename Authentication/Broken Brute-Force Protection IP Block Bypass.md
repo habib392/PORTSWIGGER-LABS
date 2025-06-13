@@ -1,5 +1,5 @@
 # 🔐 Lab: Broken Brute-force Protection (IP Block Bypass) — Solved ✅
-
+.
 This lab from **PortSwigger Web Security Academy** demonstrates a logic flaw in brute-force protection. Here's how I solved it step-by-step in easy words.
 
 ## 🎯 Objective
