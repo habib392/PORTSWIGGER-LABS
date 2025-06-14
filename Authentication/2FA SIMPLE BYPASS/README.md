@@ -1,6 +1,7 @@
 # 2FA simple bypass
 
 Your credentials: wiener:peter
+
 Victim's credentials carlos:montoya
 
 ## Solution
@@ -9,6 +10,8 @@ Go to your account page and make a note of the URL.
 Log out of your account.
 Log in using the victim's credentials.
 When prompted for the verification code, manually change the URL to navigate to /my-account. The lab is solved when the page loads.
+
+## Solution in Urdu
 
 Mane aik bandy ka account access krna hai kisi website ka main ius website pr apna account bnata hoon too dekhta hoon ky ius main 2FA enable hai iss liye jab main apna account access krta hoon too otp meray account main aati hai jab main wo enter krta hoon taab hi mera account khulta hai waisy nhi.
 
