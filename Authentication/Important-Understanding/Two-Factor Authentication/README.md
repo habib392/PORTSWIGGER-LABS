@@ -49,5 +49,30 @@ SIM swapping ya email hack se bhi attacker OTP le sakta hai
 ✔ SMS OTP pe rely mat karo jab tak aur option na ho
 ✔ Email pe 2FA laga ke rakhna zaroori hai
 
+# Two-Factor Authentication Bypass kya hota hai?
+Kabhi kabhi 2FA ka system itna ghalat tareeqe se banaya hota hai ke attacker bina verification code ke hi login kar leta hai.
+
+### Example:
+Website pehle password mangti hai (Step 1)
+
+Phir alag page pe OTP/code mangti hai (Step 2)
+
+Lekin — jaise hi tum password daalte ho, tum partially logged in ho jaate ho
+
+Ab agar tum sidha koi "logged-in only" page (jaise /account, /dashboard) open karo —
+
+To kabhi kabhi website verify hi nahi karti ke tum ne OTP diya ya nahi
+
+## Iska matlab:
+Tumne sirf password diya, lekin code nahi
+Phir bhi tumne logged-in area access kar liya
+Yani 2FA bypass ho gaya
+
+### Pentesting tip:
+Jab bhi 2FA dekho — check karo ke password ke baad session mil gaya hai ya nahi
+Agar mil gaya, to OTP ke bina direct pages open karne ki koshish karo
+
+Yeh ek logic flaw hota hai — aur attacker isay exploit kar sakta hai 💻🔓
+
 
 
