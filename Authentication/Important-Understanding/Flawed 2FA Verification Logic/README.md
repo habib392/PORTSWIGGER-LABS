@@ -4,8 +4,8 @@ Maan le:
 
 Website ka 2-step login hai:
 
-- 1. Pehle username & password
-- 2. Phir OTP (2FA code)
+- 1.Pehle username & password
+- 2.Phir OTP (2FA code)
 
 Lekin website ka system itna bewakoof hai ke:
 
