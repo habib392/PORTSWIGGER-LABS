@@ -73,3 +73,33 @@ Jab reset URL mile:
 - Reset form submit hone par bhi token validate ho raha hai ya nahi?
 - Agar nahi ho raha — to tumne ek logic flaw pakar liya, jo bug bounty mein critical level ka hota hai.
 
+  # PART 3
+ 🔥 Password Reset Poisoning ka Simple Matlab:
+Agar website reset email mein jo URL send karti hai wo dynamically generate hota hai (matlab backend user ke request pe URL banata hai),
+to attacker us URL ko manipulate kar sakta hai — aur dusre user ka password reset token chura sakta hai.
+
+## 🧠 Real World Example:
+Suppose reset link kuch aisa ho:
+
+**https://example.com/reset?token=abc123**
+Lekin attacker ne "Host" header manipulate kar ke yeh bana diya:
+
+**https://attacker.com/reset?token=abc123**
+Agar server ne bina check kiye yeh URL user ko email mein bhej diya,
+to victim jab reset link pe click karega, wo attacker.com pe chala jayega — aur token attacker ke haath lag jaayega.
+Attacker phir use token se victim ka password reset kar sakta hai.
+
+🛡️ Penetration Testing Tip:
+Is attack ko kehte hain:
+
+Password Reset Poisoning (via Host Header Injection)
+
+### ✅ Check karo:
+
+- Kya reset URL mein attacker Host ya X-Forwarded-Host header se apna domain inject kar sakta hai?
+- Kya victim ko wahi manipulated link email mein milta hai?
+
+Agar haan — to yeh critical bug hai, bug bounty pe heavy reward milta hai. 💰
+
+
+
