@@ -1,4 +1,4 @@
-# Lab: Password Reset Poisoning via Middleware
+# Password Reset Poisoning via Middleware
 
 This lab demonstrates a vulnerability in the password reset flow, where the `X-Forwarded-Host` header is blindly trusted by middleware, allowing us to hijack the reset token.
 
