@@ -1,37 +1,53 @@
-# Password reset broken logic
-## How To Solve This Lab
-Iss lab ki password reset functionality vulnerable hai matlab forgot password
-wala option weak hai iss sy ham kisi dosray ka account access kr sakty hain
-Hum ny iss lab main apnay account (wiener) ka use kr ky carlos ka account access krna hai 
+# 🛡️ PortSwigger Lab: Password Reset Broken Logic
 
-### Now Solve
-My account main jaana hai wahan forgot password option py click krna hai phir apna username wiener add karna hai
+## 🔍 Vulnerability Summary
 
-isky baad Email Client waly option main jaana hai wahan aik url aaya hoga ius py click karna hai
+Is lab ki password reset functionality insecure hai. Jab user password reset karta hai, to system reset token ka sahi tarah se validation nahi karta. Hum is logic flaw ka faida utha kar kisi bhi dusre user — **like `carlos`** — ka password reset kar sakte hain.
 
-phir koi bhi new password add kr dena hai
+## 🛠️ How to Solve This Lab
 
-Burpsuite on krna hai phir HTTP history main jaana hai POST /forgot-password ky inder wahan yeh dekhna chahie temp-forgot-password-token
+### 1. Apne Account ka Reset Token Dekhna
+- "Forgot Password" page par jao.
+- Username: `wiener` likho.
+- Email client me jao, reset link open karo.
+- Koi bhi new password daal do.
+- BurpSuite open karo, `HTTP History` me `POST /forgot-password` request dhoondo.
+- Us request ko **Send to Repeater** karo.
 
-Phir isko Send to Repeater main bhej dena hai 
+### 2. Token Validation Test
+- Repeater me URL aur body dono me se `temp-forgot-password-token` **remove** karo.
+- Request send karo.
+- Agar **302 Found (redirect)** response milta hai, to iska matlab:
+ **Token properly validate nahi ho raha = logic broken**
 
-Repeater main yeh check krna hai ky agr temp-forgot-password-token ka jo code hai iusko agr dono jagah url or body sy remove
-kr dein taab bhi wo waisy hi work kare gi jaisy wo iss ky hony sy kr rahi thi matlab request ko send krna hai or response main
-dekhna hai ky still 302 code show hoo rha hai ya nhi agr show hoo rha hai too iska matlab token ko sahi tariqay sy check nhi
-kiya jaa rha jab new password submit kiya jata hai
+## 🔁 Exploitation Steps
 
-Browser main jaana hai password ko forgot kr ky username wiener add karna hai isky baad Email Client
-waly option main jaana hai wahan aik url aaya hoga ius py click karna hai
-phir koi bhi new password add kr dena hai (Repeated Process)
+### 3. Carlos Ka Password Reset Karna
+- Browser me wapas jao → "Forgot Password" → Username: `wiener`
+- Email client me reset link open karo.
+- Koi bhi password set karo.
 
-Isky baad phir POST /forgot-password ky inder jaana hai or ius ko repeater main bhejna hai or wahan iss baar 2 kaam krny hai
-aik too temp-forgot-password-token ka jo code hai iusko dono jagah url or body sy remove
-kr dena hai or dosra username ko change kr ky carlos kr dena hai or password bhi koi new add kr dena hai
+- BurpSuite me `POST /forgot-password` request dubara Repeater me send karo.
 
-Isky baad request ko send kr dena hai respone main 302 code show hoo jaye ga
+#### Ab request me yeh changes karo:
+- `temp-forgot-password-token` ko **remove** kar do (URL aur body dono se).
+- `username=wiener` ko change karo to: `username=carlos`
+- `new-password` koi bhi strong password set karo.
 
-Phir website pr jaana hai or account carlos ka login kr lena hai or password bhi wo add krna hai jo abhi add kiya tha
+- Request send karo.
+- Agar **302 Found** aata hai = **Carlos ka password successfully reset ho gaya**.
 
-LAB SOLVED
+### 4. Final Step: Carlos ka Login
+- Website pe login page pe jao.
+- Username: `carlos`
+- Password: jo tumne abhi set kiya tha.
 
+🎉 **Login successful = Lab Solved!**
 
+## ✅ Summary
+
+- Website password reset ke waqt token ko validate nahi kar rahi.
+- Is logic flaw ki wajah se attacker kisi bhi user ka password change kar sakta hai.
+
+## ✍️ Written by: Habib 🇵🇰  
+Learning from: PortSwigger
