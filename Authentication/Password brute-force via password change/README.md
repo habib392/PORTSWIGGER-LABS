@@ -44,3 +44,44 @@ Password: (jo brute force se mila)
 
 Login successful → LAB SOLVED ✅
 
+# PART 2
+🔍 Lab ka Asal Objective Kya Tha?
+Password change functionality ko exploit karna jahan:
+
+Attacker already authenticated hai (jaise wiener).
+
+Lekin usne target user (Carlos) ka password brute force karna hai by misusing the change password endpoint.
+
+✅ Flow Breakdown
+Tu wiener user sy login hua — yani tu ek valid user bana.
+
+Phir tu change password page pr gaya — jahan current password + new password daalne ka form tha.
+
+Tu ne form ka behaviour test kiya (negative testing) — ye bohot acha habit hai ek pentester ka.
+
+BurpSuite me change-password request pakra.
+
+Intruder use kiya — aur Carlos ka password brute force kiya using the error message as grepping filter:
+
+"New passwords do not match" ka matlab tha current password sahi hai (jo tu brute force kar raha tha).
+
+Jab tu ne correct current password identify kar liya — tu ne Carlos ka valid login kar liya using brute forced password.
+
+## 🔐 Is Lab ka Real-World Use
+Jab password change form validation server-side proper na ho, toh attacker valid error responses ko as an oracle use karke kisi bhi user ka current password brute force kar sakta hai — even without account lockout.
+
+### 🔧 Yeh attack kehlata hai:
+**"Username enumeration + password brute force via password change functionality"**
+
+## 🧠 Lesson:
+Jab bhi form ho jahan current password daalna hota hai, uska response generic hona chahiye (na ke exact error de).
+
+Always check POST request body — aur test karo kya kisi aur user pe bhi woh form kaam karta hai (parameter tampering).
+
+Burp Intruder + Grep Match powerful combo hai brute force / logic flaw detect karne ke liye.
+
+### 🔥 Tips for Future Labs:
+Jab bhi koi functionality dekhay jo login ke baad bhi user-input par depend ho (jaise password reset, email change, etc.) — usme parameter tampering try karna.
+
+Grep match use karo to identify response-based clues.
+
