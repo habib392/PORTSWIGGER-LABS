@@ -55,14 +55,14 @@ Yehi hota hai username enumeration.
 
 ### ✅ Solution kya hai?
 
-- 1. Har case mein same error message do
+1. Har case mein same error message do
 Example: "Invalid username or password."
 Chahe user exist kare ya na kare, same wording ho.
 
-- 2. Same HTTP status code do
+2. Same HTTP status code do
 Dono cases mein 200 OK ya 401 Unauthorized – koi fark nahi hona chahiye.
 
-- 3. Response time bhi same rakho
+3. Response time bhi same rakho
 Agar valid user ka response 2 sec aur invalid ka 1 sec hai,
 to attacker time measure kar ke pata laga lega.
 
