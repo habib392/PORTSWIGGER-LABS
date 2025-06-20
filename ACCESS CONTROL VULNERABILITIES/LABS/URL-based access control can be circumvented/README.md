@@ -16,6 +16,8 @@ admin panel bhi nhi chale ga ACCESS DENIED
 ### 🧪 Step 2: Request ko Repeater mein bhejo
 Burp Repeater open karo aur GET request bhejo:
 
+Iss request main **GET /admin HTTP/1.1** **(admin)** ko remove karna hai
+
 **GET / HTTP/1.1**
 
 **Host: your-lab-id.web-security-academy.net**
