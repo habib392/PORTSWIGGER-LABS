@@ -66,3 +66,29 @@ Reflected XSS mein attacker ko link send karna padta hai — yaani victim ko kis
 Lekin Stored XSS mein attacker ka code website ke andar hi permanently hota hai — victim ko kuch click karne ki bhi zarurat nahi hoti.
 
 📌 Is liye Reflected XSS ka impact thoda kam hota hai Stored XSS ke mukable mein.
+
+# 🎯 Reflected XSS — Different Contexts Mein
+
+Reflected XSS ki kai alag alag types hoti hain — aur yeh depend karta hai ke:
+
+1. Website ka response mein attacker ka input kahaan reflect ho raha hai
+
+2. Aur kis form mein reflect ho raha hai
+
+### 📍 Kya matlab hai "kahaan reflect ho raha hai"?
+
+Yani:
+
+- Agar input HTML tag ke andar hai, tou alag payload chahiye
+
+- Agar input JavaScript block ke andar hai, tou payload different hoga
+
+- Agar input attribute (jaise src ya href) mein hai, tou payload or alag banega
+
+Yeh location decide karti hai ke kaunsa payload kaam karega — aur vulnerability ka impact bhi is pe depend karta hai.
+
+### 🛡️ Data par processing ka asar
+
+Agar website tumhare input pe koi validation ya filtering lagati hai (jaise < ya script remove kar deti hai), tou tumhe smart payload banana padta hai — jo us filter ko bypass kare.
+
+Is liye reflected XSS ka success context + filtering dono cheezon par depend karta hai.
