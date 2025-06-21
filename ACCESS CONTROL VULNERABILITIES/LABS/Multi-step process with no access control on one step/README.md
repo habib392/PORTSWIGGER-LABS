@@ -32,7 +32,7 @@ phir logout karo iss ky baad dobara log in karo
 
 ### 🍪 Step 5: Cookie uthao
 
-Burp ya browser se wiener ki session cookie copy karo
+**GET /my-account?id=wiener** iss path sy wiener ki session cookie copy karo
 
 ### ✏️ Step 6: Repeater mein wiener ki cookie daalo
 
