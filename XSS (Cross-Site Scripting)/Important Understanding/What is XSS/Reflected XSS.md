@@ -1,38 +1,35 @@
-# 💥 Reflected XSS — Tumhari Zuban Main
+# 💡 Reflected XSS 
 
-Reflected XSS sabse asaan aur basic type hoti hai XSS ki.
-Ye tab hoti hai jab website koi input (jaise URL se koi value) le kar usi waqt usko response mein show kar deti hai — bina verify ya sanitize kiye.
+Reflected XSS tab hota hai jab website kisi user ka diya hua data URL se leti hai, aur usi waqt bina check kiye usko page par wapas dikhati hai.
 
 ### 🧪 Example samjho:
 
-Tum kisi website ka URL open karte ho:
+Tumhari ek website ka search function hai. Tum search karte ho “gift”, tou URL ban jata hai:
 
-**https://insecure-website.com/status?message=All+is+well.**
+**https://insecure-website.com/search?term=gift**
 
-Yani website message=All is well ko directly page pe likh deti hai:
+Aur page pe aise dikhta hai:
 
-**<p>Status: All is well.</p>**
+**<p>You searched for: gift</p>**
 
-Lekin ab attacker issi ka faida uthata hai aur malicious code daal deta hai:
+Ab attacker isi cheez ka faida uthata hai. Wo “gift” ki jagah JavaScript daal deta hai:
 
-**https://insecure-website.com/status?message=<script>alert('XSS')</script>**
+**https://insecure-website.com/search?term=<script>alert('XSS')</script>**
 
-Ab jab koi innocent user ye link open karega, uske browser mein attacker ka JavaScript code chalega — aur victim ko pata bhi nahi chalega.
+Ab page ka response hoga:
 
-### 🕵️‍♂️ Kya ho sakta hai phir?
+**<p>You searched for: <script>alert('XSS')</script></p>**
 
-- Attacker victim ke cookies chura sakta hai
+Yani ab jab koi bhi banda attacker ka diya hua link open karega, uska browser turant wo JavaScript chala dega — aur alert pop-up show hoga.
 
-- Victim ki jagah koi bhi action perform kar sakta hai
+### 😈 Iska nuksan kya hai?
 
-- Agar victim logged in hai, toh attacker uska session hijack kar sakta hai
+Agar victim user already logged in hai, tou attacker uski:
 
-### 🧠 Reflected XSS ki khas baat:
+- Session cookies chura sakta hai
 
-- Script URL se aati hai
+- Uske naam pe koi bhi action perform kar sakta hai
 
-- Server bas wohi data wapas bhejta hai
+- Sensitive info access kar sakta hai
 
-- Sab kuch immediately hota hai
-
-- Database ya permanent storage use nahi hoti
+Sab kuch user ke browser main hota hai, aur victim ko shayad kuch pata bhi na chale.
