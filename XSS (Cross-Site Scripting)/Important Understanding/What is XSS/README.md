@@ -34,3 +34,35 @@ Keylogger inject kar sakta hai taake user ke credentials mil jayein.
 ### 🧪 Real World Example:
 
 Agar tum kisi blog comment section main **<script>alert('Hacked')</script>** likh do aur woh site isko bina sanitize kiye dikha de — tou XSS ho gaya.
+
+# 🧪 XSS Proof of Concept
+
+Jab bhi tum check karna chaho ke kisi website main XSS vulnerability hai ya nahi, tou tum ek chhoti si JavaScript payload inject karte ho jo tumhare browser main chalti hai.
+
+Sabse common aur simple payload hai:
+
+'alert(1)'
+
+Ye **alert()** function sirf ek chhoti pop-up box dikhata hai — isse koi nuksan nahi hota, aur jab ye box screen pe aata hai, tou tumhe pakka pata chal jata hai ke XSS ho gaya hai.
+
+PortSwigger ke zyada labs bhi isi alert() se solve hote hain.
+
+
+---
+
+❗ Lekin Chrome ka ek masla
+
+Chrome browser version 92 (July 2021 ke baad) se cross-origin iframes ke andar alert() chalna band ho gaya hai.
+
+Aur kyunke kuch advanced labs iframe use karte hain, is liye alert() kaam nahi karta unme.
+
+
+---
+
+✅ Alternate: print()
+
+Ab jab alert() fail ho jaye, tou tum print() use kar sakte ho — ye bhi JavaScript ka function hai jo screen pe kuch output deta hai.
+
+PortSwigger ne unhi labs ko update kar diya hai jahan alert() kaam nahi karta, taake tum print() se bhi unhe solve kar sako.
+
+Agar kisi lab main print() use karna ho, tou woh instructions main likha hota hai.
