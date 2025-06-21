@@ -33,4 +33,4 @@ Keylogger inject kar sakta hai taake user ke credentials mil jayein.
 
 ### 🧪 Real World Example:
 
-Agar tum kisi blog comment section main <script>alert('Hacked')</script> likh do aur woh site isko bina sanitize kiye dikha de — tou XSS ho gaya.
+Agar tum kisi blog comment section main **<script>alert('Hacked')</script>** likh do aur woh site isko bina sanitize kiye dikha de — tou XSS ho gaya.
