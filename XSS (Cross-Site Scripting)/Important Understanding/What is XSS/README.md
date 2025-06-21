@@ -61,3 +61,37 @@ Ab jab **alert()** fail ho jaye, tou tum **print()** use kar sakte ho — ye bhi
 PortSwigger ne unhi labs ko update kar diya hai jahan **alert()** kaam nahi karta, taake tum **print()** se bhi unhe solve kar sako.
 
 Agar kisi lab main **print()** use karna ho, tou woh instructions main likha hota hai.
+
+
+# 🧠 XSS ke Mukhtalif Types
+
+XSS attacks ke 3 main types hotay hain:
+
+### 1️⃣ Reflected XSS
+
+Isme malicious script user ke HTTP request se aati hai — jaise URL ya search box ke zariye.
+Jab user woh specially crafted link open karta hai, tou script usi waqt reflect hoti hai aur browser main chalti hai.
+
+### 📌 Example:
+Tum kisi ko ek link bhejtay ho:
+**http://example.com/search?q=<script>alert(1)</script>**
+Agar woh banda link open kare, tou uska browser turant alert box dikha dega.
+
+### 2️⃣ Stored XSS
+
+Isme attacker apna JavaScript code website ke database main save kar deta hai — jaise comments, posts, ya profile fields main.
+
+Jab koi bhi user woh page kholta hai jahan ye data show hota hai, script uske browser main automatically chal jati hai.
+
+### 📌 Example:
+Tum blog post pe ek comment likhtay ho:
+**<script>alert('Hacked')</script>**
+Aur jab log woh post dekhte hain, sab ke browsers main alert aata hai.
+
+### 3️⃣ DOM-based XSS
+
+Ye thoda advanced hota hai. Isme issue client-side JavaScript code main hota hai, na ke server-side pe.
+Yani browser ka JavaScript khud hi input le kar manipulate karta hai aur vulnerable hota hai.
+
+### 📌 Example:
+Website ka JavaScript URL se data le kar directly page pe show kar raha ho — bina sanitize kiye. Attacker aise input de kar us code ko manipulate karta hai.
