@@ -95,3 +95,20 @@ Yani browser ka JavaScript khud hi input le kar manipulate karta hai aur vulnera
 
 ### 📌 Example:
 Website ka JavaScript URL se data le kar directly page pe show kar raha ho — bina sanitize kiye. Attacker aise input de kar us code ko manipulate karta hai.
+
+---
+
+Real world attacks main attacker alert() nahi dikhata.
+
+🚫 alert() sirf testing (PoC – proof of concept) ke liye hota hai.
+
+###🕵️‍♂️ Real attacks main attacker:
+
+Stealthy code chalaata hai
+
+Background main document.cookie ya credentials chura leta hai
+
+User ko kuch bhi nazar nahi aata
+
+
+📌 Is liye victim nahi samajh pata — jab tak browser ya antivirus warning na de.
