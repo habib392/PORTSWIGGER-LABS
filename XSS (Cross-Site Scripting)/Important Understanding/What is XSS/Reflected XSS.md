@@ -92,3 +92,80 @@ Yeh location decide karti hai ke kaunsa payload kaam karega — aur vulnerabilit
 Agar website tumhare input pe koi validation ya filtering lagati hai (jaise < ya script remove kar deti hai), tou tumhe smart payload banana padta hai — jo us filter ko bypass kare.
 
 Is liye reflected XSS ka success context + filtering dono cheezon par depend karta hai.
+
+# 🕵️‍♂️ Reflected XSS Dhoondhne Aur Test Karne Ka Tarika – Tumhari Zuban Main
+
+### ✅ 1. Burp Suite Scanner ka Use
+
+Agar tumhare paas Burp Suite Professional hai, tou uska scanner automatically reflected XSS vulnerabilities ko fast aur reliably dhoond leta hai.
+
+Lekin agar manual testing kar rahe ho (jo seekhne ke liye best hai), tou ye steps follow karo:
+
+### 🔍 2. Har Input Point Test Karo
+
+App ke har jagah jahan user input jaa sakta hai — jaise:
+
+- URL parameters (e.g. ?search=abc)
+
+- POST body
+
+- URL path (e.g. /profile/username)
+
+- HTTP headers (jaise User-Agent, Referer)
+
+Sab ko alag alag test karo, kyunke har jagah alag context hoti hai.
+
+### 🧪 3. Random Value Inject Karo
+
+Sab jagah random 8-character alphanumeric (jaise a7x9p3d2) value daalo — taake pata chale kaha reflect ho rahi hai.
+
+Burp Intruder se aise random values automatically generate kar sakte ho.
+Burp ka grep match feature use karo taake woh automatically bata de response mein value nazar aayi ya nahi.
+
+### 🌍 4. Context Samjho
+
+Jahan value reflect ho rahi hai, uska context dekhna zaroori hai:
+
+- HTML body main?
+
+- HTML tag ke andar?
+
+- JavaScript ke andar?
+
+- Attribute ke andar?
+
+Ye context decide karega ke kaunsa payload kaam karega.
+
+# 💥 5. Candidate Payload Test Karo
+
+Ab ek simple payload test karo jaise:
+
+**><script>alert(1)</script>**
+
+Burp Repeater mein request bhejo, response check karo — agar payload as-it-is reflect ho gaya, to alert chal sakta hai.
+
+### Tip: Random value ko payload ke sath rakhna — jese:
+
+**test123<script>alert(1)</script>**
+
+Phir Burp Repeater mein test123 ko search karo, taake tum jaldi se location trace kar sako.
+
+### 🔄 6. Agar Payload Block Ho Gaya To...
+
+Agar website payload ko modify ya block kar rahi hai, to alternate payloads try karo — jaise encoded, broken up payloads, etc.
+
+Jaise:
+
+**><img src=x onerror=alert(1)>**
+
+Yeh context aur filtering ke hisaab se change hota hai — PortSwigger ka “contexts” section helpful hai ismein.
+
+### 🌐 7. Browser Mein Final Test
+
+Agar Burp Repeater mein payload reflect ho raha hai, to browser mein real test karo — URL ko paste karo aur dekho alert chalta hai ya nahi.
+
+Test payload ke liye:
+
+**alert(document.domain)**
+
+Agar popup aaya, to attack successful hai ✅
