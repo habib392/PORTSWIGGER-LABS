@@ -48,7 +48,7 @@ document.getElementById("output").innerHTML = userInput;**
 
 Ab agar koi user yeh URL visit kare:
 
-*#https://example.com/page.html#<script>alert(1)</script>**
+**#https://example.com/page.html#<script>alert(1)</script>**
 
 To page us payload ko directly innerHTML mein daal dega → alert box dikhega → DOM XSS ho gaya.
 
