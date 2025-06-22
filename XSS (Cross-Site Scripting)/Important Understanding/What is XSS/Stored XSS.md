@@ -59,3 +59,45 @@ Website ne woh feedback store kar liya
 Jab admin panel ya user panel khulta hai, attacker ka code chal jaata hai
 
 Victim ko kuch samajhne ka waqt hi nahi milta — exploit auto fire ho jaata hai 💥
+
+# 🧠 Stored XSS in Different Contexts
+
+Dekho bhai, stored XSS sirf ek hi style mein nahi hoti. Yeh depend karta hai ke:
+
+📍1. Stored Data Website ke Response mein Kahan Appear ho rahi hai?
+
+Jaise:
+
+HTML ke andar <p>Yahan</p>
+
+Attribute ke andar <img src="Yahan">
+
+JavaScript ke andar var x = "Yahan";
+
+Toh payload bhi usi hisaab se banana padta hai. Har jagah same script nahi chalti.
+
+### 🧪 Example:
+
+Agar data HTML tag ke andar inject ho raha hai:
+
+**<p><script>alert(1)</script></p>**
+
+Agar data kisi attribute mein hai:
+
+**<img src="x" onerror="alert(1)">**
+
+Agar JavaScript block mein hai:
+
+**var msg = "<script>alert(1)</script>";**
+
+
+🔍 2. Website agar koi filtering ya validation karti hai...
+
+Toh fir attacker ko thoda smart hona padta hai. Payload aisa banana hota hai jo:
+
+Validation se bach jaye
+
+Modify hone ke baad bhi execute ho jaye
+
+
+Jaise: Agar **<script>** block ho jaye, toh attacker img onerror ya iframe srcdoc ya encoded payloads ka use karega.
