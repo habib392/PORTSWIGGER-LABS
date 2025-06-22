@@ -1,4 +1,4 @@
-#🤔 Common Questions about XSS
+# 🤔 Common Questions about XSS
 
 1. XSS vulnerabilities kitni common hain?
 Bhai XSS duniya ki sab se zyada milnay wali web vulnerabilities mein se aik hai. Har teesri website mein XSS mil sakti hai agar proper validation aur sanitization na ho.
