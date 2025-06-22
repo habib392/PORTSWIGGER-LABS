@@ -79,3 +79,29 @@ Chrome, Firefox, Safari: location.hash aur location.search ko encode karte hain
 IE11 aur purane Edge nahi karte
 
 To agar JavaScript decode na kare to XSS kaam nahi karega.
+
+### 🧪 DOM XSS Testing with DOM Invader
+
+Normally jab hum DOM-based XSS dhoondhtay hain, to humein JavaScript ka complex code manually check karna padta hai – jo boring aur time-consuming hota hai, especially jab code minified ho (chhupa hua aur compressed).
+
+Lekin agar tu Burp Suite ka built-in browser use karta hai (jo Chromium-based hai), to usme ek zabardast tool hota hai jiska naam hai DOM Invader. Yeh extension automatically:
+
+DOM XSS ke sources aur sinks ko detect karta hai
+
+Jo input tu daalta hai, uska flow trace karta hai ke wo kaunsa JavaScript function (sink) tak ja raha hai
+
+Agar koi dangerous jagah par reflection milti hai, to wo tujhe warning deta hai
+
+Matlab tu time waste kiye baghair seedha payload test kar sakta hai aur vulnerable jagah pehle hi highlight ho jati hai.
+
+### 💡 Real-World Example:
+
+Tu agar search bar mein kuch JavaScript daalta hai, DOM Invader tujhe show karega ke wo innerHTML mein gaya ya eval() mein. Agar vulnerable ho to tu turant alert(1) ya koi bhi payload try karke attack confirm kar sakta hai.
+
+### 🛠️ Lab karne ke waqt DOM Invader ka faida:
+
+Tujhe manually DOM trace nahi karna padta
+
+Jaldi pata chal jata hai ke reflection ho rahi hai ya nahi
+
+Tere payload ka effect kya ho raha hai, wo browser mein easily dikhta hai
