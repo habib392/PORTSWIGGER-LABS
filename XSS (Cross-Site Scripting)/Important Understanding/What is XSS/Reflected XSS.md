@@ -156,7 +156,9 @@ Agar website payload ko modify ya block kar rahi hai, to alternate payloads try 
 
 Jaise:
 
-**><img src=x onerror=alert(1)>**
+```><img src=x onerror=alert(1)```
+
+---
 
 Yeh context aur filtering ke hisaab se change hota hai — PortSwigger ka “contexts” section helpful hai ismein.
 
