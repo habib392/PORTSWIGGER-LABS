@@ -151,4 +151,35 @@ Agar sanitize nahi kiya gaya → payload chalayega → XSS 💣
 
 Har sink ka kaam yahi hai ke wo input ko kisi na kisi jagah "inject" karta hai — agar input pe filter na laga ho, to XSS ka chance hota hai.
 
+---
+
+**Q:** Jab hum kuch search karte hain (jaise Pakistan), toh JavaScript mein document.write(q) ya document.write(query) banta hai…
+To kya sirf yeh 2 hi variable naam hote hain ya aur bhi hote hain?
+
+✅ Jawab:
+
+Nahi bhai! Sirf q ya query hi nahi —
+developer ki marzi hoti hai ke wo input ka naam kya rakhe.
+
+Tumhara input kisi bhi naam wale variable mein ja sakta hai.
+
+### 🔥 Real-life mein common variable names:
+
+Variable	Kya matlab hota hai?
+
+- **q** query ka short form (bohot common)
+- **query**	full form — search query
+- **input**	jo user ne diya
+- **term**	search term
+- **searchTerm** aur detail se
+- **keyword** jab user ne kuch keyword search kiya ho
+**msg** message	agar input message ki tarah ho
+
+### 🔍 Developer kuch bhi naam rakh sakta hai:
+
+```let term = new URLSearchParams(location.search).get("search");
+document.write(term);```
+
+Yahan input variable ka naam term hai, na q na query.
+
 
