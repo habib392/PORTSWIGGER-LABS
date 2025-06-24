@@ -29,6 +29,6 @@ Toh JavaScript se tum isko control kar sakte ho:
 
 ➡️ Yahan:
 
-element = <p id="result">
+element = ```<p id="result">```
 
 innerHTML = us element ke andar ka content
