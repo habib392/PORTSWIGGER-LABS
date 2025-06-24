@@ -101,3 +101,13 @@ Aur wo variable location.search ya user input se aaya ho…
 
 JavaScript mein agar user ka input direct kisi sink (dangerous jagah) mein chala jaye bina check kiye, to attacker kuch bhi chala sakta hai — yehi hai DOM XSS
 
+---
+
+Search box = input element (Jahan kuch likhna hota hai)
+
+Tumhara likha = source (Jo JavaScript uthata hai)
+
+Wo kahan jaata hai (innerHTML, write, eval) = sink
+
+Agar sanitize nahi kiya gaya → payload chalayega → XSS 💣
+
