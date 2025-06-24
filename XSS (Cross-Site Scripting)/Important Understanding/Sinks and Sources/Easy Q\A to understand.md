@@ -121,13 +121,14 @@ setTimeout(input)	Code delay se chalata hai	✅
 
 Sink	Use	Notes
 
-<a href="input">	Link banane ke liye	Low risk unless JavaScript used
+```<a href="input">	```
+Link banane ke liye	Low risk unless JavaScript used
 
-<img src="input">	Image load karne ke liye	Onerror se XSS
+```<img src="input">``` Image load karne ke liye	Onerror se XSS
 
-<script src="input">	Script file load karne ke liye	High risk if attacker control
+```<script src="input">```	Script file load karne ke liye	High risk if attacker control
 
-<iframe src="input">	Page embed	Risky if sandbox na ho
+```<iframe src="input">``` 	Page embed	Risky if sandbox na ho
 
 ---
 
