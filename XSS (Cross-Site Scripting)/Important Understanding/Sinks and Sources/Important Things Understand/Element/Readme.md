@@ -21,7 +21,7 @@ Yeh sab HTML elements hote hain.
 
 ```<p id="result"></p>```
 
-Yahan <p> ek element hai
+Yahan ```<p>``` ek element hai
 Aur iska id="result" hai
 Toh JavaScript se tum isko control kar sakte ho:
 
