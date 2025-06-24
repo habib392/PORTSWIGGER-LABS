@@ -147,5 +147,8 @@ Wo kahan jaata hai (innerHTML, write, eval) = sink
 
 Agar sanitize nahi kiya gaya → payload chalayega → XSS 💣
 
+---
+
+Har sink ka kaam yahi hai ke wo input ko kisi na kisi jagah "inject" karta hai — agar input pe filter na laga ho, to XSS ka chance hota hai.
 
 
