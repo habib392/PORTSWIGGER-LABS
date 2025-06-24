@@ -5,7 +5,7 @@ Webpage ka koi bhi part (box, text, image, etc) jisko JavaScript se control kiya
 
 Jaise:
 
-- <div>
+- ```<div>```
 - <p>
 - <h1>
 - <span>
