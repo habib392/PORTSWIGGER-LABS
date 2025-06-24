@@ -21,7 +21,7 @@ document.write(input);
 
 🧪 Tum search karo:
 
-?search=<script>alert(1)</script>
+```?search=<script>alert(1)</script>```
 
 ⚠️ Agar sanitize nahi hua → alert pop → XSS ho gaya
 
@@ -31,11 +31,11 @@ document.write(input);
 
 ➡️ Ye bhi bohot websites use karti hain — kisi element ke andar content daalne ke liye
 
-document.getElementById("result").innerHTML = userInput;
+```document.getElementById("result").innerHTML = userInput;```
 
 🧪 Tum input bhejo:
 
-?search=<img src=x onerror=alert(1)>
+```?search=<img src=x onerror=alert(1)>```
 
 ⚠️ Agar input sanitize nahi hua → image load fail → alert chala → XSS
 
@@ -45,11 +45,11 @@ document.getElementById("result").innerHTML = userInput;
 
 ➡️ Ye ek method hai jo HTML content ko kisi element ke andar inject karta hai
 
-element.insertAdjacentHTML('beforeend', userInput);
+```element.insertAdjacentHTML('beforeend', userInput);```
 
 🧪 Same payload:
 
-?search=<svg onload=alert(1)>
+```?search=<svg onload=alert(1)>```
 
 ⚠️ HTML ke through JavaScript chala → XSS
 
@@ -63,7 +63,7 @@ eval(userInput);
 
 🧪 Tum input bhejo:
 
-?search=alert(1)
+```?search=alert(1)```
 
 ➡️ eval("alert(1)") chalega → XSS ho gaya
 
@@ -75,11 +75,11 @@ eval(userInput);
 
 ➡️ Isme agar string ke form mein input gaya to wo code ke tarah chal jata hai
 
-setTimeout(userInput, 1000);
+```setTimeout(userInput, 1000);```
 
 🧪 Input:
 
-?search=alert(1)
+```?search=alert(1)```
 
 ➡️ 1 second baad JavaScript chalayega → XSS
 
