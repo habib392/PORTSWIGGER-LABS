@@ -2,6 +2,28 @@ Jab main Pakistan search krta hoon to location.search se data nikalta hai aur do
 
 ---
 
+Har lab shuru karne se pehle quickly dekh:
+
+location.search, location.hash, document.referrer
+
+Kaunsa variable bana: query, term, q, input, etc.
+
+Kahan gaya: document.write, innerHTML, eval, etc.
+
+🔹 Step 2:
+
+Payload test kar:
+
+?q=<img src=x onerror=alert(1)>
+
+?search=<script>alert(1)</script>
+
+#<svg onload=alert(1)>
+
+Jahan pop-up aaye, wahan XSS done ✅
+
+---
+
 **Q1:** Agar "Pakistan" ke liye location.search use ho raha hai, to agar koi aur cheez jaisy "cat", "movie", ya "Islamabad" search karen to kya source badal jata hai?
 
 ✅ Short Answer:
