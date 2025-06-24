@@ -97,3 +97,13 @@ Tum yeh daal do:
 
 ```?search="><script>alert(1)</script>```
 Toh q ban gaya attacker ka payload ⇒ inject ho gaya page mein ⇒ ho gaya XSS
+
+---
+
+Search box = input element (Jahan kuch likhna hota hai)
+
+Tumhara likha = source (Jo JavaScript uthata hai)
+
+Wo kahan jaata hai (innerHTML, write, eval) = sink
+
+Agar sanitize nahi kiya gaya → payload chalayega → XSS 💣
