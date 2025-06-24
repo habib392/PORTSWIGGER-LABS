@@ -1,4 +1,3 @@
-
 # element.innerHTML kya hota hai?
 
 📌 Easy definition:
@@ -25,3 +24,17 @@ Tum likhte ho:
 ```Aur userInput = "<script>alert(1)</script>"```
 
 ➡️ Toh script chalayega page pe = XSS 💣
+
+---
+
+Search box sirf input element hai
+Tumhara likha hua word JavaScript uthata hai
+Phir developer ki choice hoti hai ke wo use:
+
+document.write() mein daale
+
+element.innerHTML mein daale
+
+insertAdjacentHTML() mein daale
+
+ya sanitize karke dikhaye
