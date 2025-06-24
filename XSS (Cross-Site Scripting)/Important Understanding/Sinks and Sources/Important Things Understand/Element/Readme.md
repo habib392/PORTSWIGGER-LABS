@@ -6,12 +6,12 @@ Webpage ka koi bhi part (box, text, image, etc) jisko JavaScript se control kiya
 Jaise:
 
 - ```<div>```
-- <p>
-- <h1>
-- <span>
-- <img>
-- <input>
-- <button>
+- ```<p>```
+- ```<h1>```
+- ```<span>```
+- ```<img>```
+- ```<input>```
+- ```<button>```
 
 Yeh sab HTML elements hote hain.
 
