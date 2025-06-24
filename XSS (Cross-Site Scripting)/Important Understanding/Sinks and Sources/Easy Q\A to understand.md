@@ -136,6 +136,16 @@ Link banane ke liye	Low risk unless JavaScript used
 
 Tumhara search box ka input, agar JavaScript se uthaya jaa raha ho — to woh kisi bhi dangerous sink mein chala ja sakta hai, aur agar sanitize na ho to XSS possible hai.
 
+---
+
+
+Search box = input element (Jahan kuch likhna hota hai)
+
+Tumhara likha = source (Jo JavaScript uthata hai)
+
+Wo kahan jaata hai (innerHTML, write, eval) = sink
+
+Agar sanitize nahi kiya gaya → payload chalayega → XSS 💣
 
 
 
