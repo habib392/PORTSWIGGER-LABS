@@ -173,13 +173,29 @@ Variable	Kya matlab hota hai?
 - **term**	search term
 - **searchTerm** aur detail se
 - **keyword** jab user ne kuch keyword search kiya ho
-**msg** message	agar input message ki tarah ho
+- **msg** message	agar input message ki tarah ho
 
 ### 🔍 Developer kuch bhi naam rakh sakta hai:
 
-```let term = new URLSearchParams(location.search).get("search");
-document.write(term);```
+```let term = new``` ```URLSearchParams(location.search).get("search");```
+```document.write(term);```
 
 Yahan input variable ka naam term hai, na q na query.
 
+### 🔍 Tum DevTools mein console mein test karo:
 
+console.log(window);
+
+Ya page ki JS mein Ctrl+F karke search karo:
+
+get('search')
+
+Phir dekhna uske aage kya naam diya gaya hai:
+
+let abc = get('search')
+
+let result = get('search')
+
+etc
+
+➡️ Wahi naam sink mein gaya hoga
