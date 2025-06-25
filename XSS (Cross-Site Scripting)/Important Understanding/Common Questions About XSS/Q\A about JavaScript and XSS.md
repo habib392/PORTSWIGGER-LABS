@@ -1,9 +1,9 @@
-✅ Q1: Agar attacker <img> ya <iframe> jese tag URL mein daalein to XSS possible hai?
+✅ Q1: Agar attacker ```<img>``` ya <iframe> jese tag URL mein daalein to XSS possible hai?
 
 🔍 Jawaab:
 
 Haan! 100% correct.
-Agar URL ke through attacker ka input jaa raha hai kisi HTML element ke andar (like <a>, <img>, <iframe>, etc.)
+Agar URL ke through attacker ka input jaa raha hai kisi HTML element ke andar (like ```<a>, <img>, <iframe>,``` etc.)
 Aur wo input sanitize nahi ho raha, to attacker:
 
 attribute break kar ke
