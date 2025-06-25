@@ -132,7 +132,7 @@ Kya wo anchor ```(<a>),``` image ```(<img>),``` iframe ```(<iframe>),``` etc. me
 
 Jab bhi koi input tum HTML attribute ke andar dikh jaye:
 
-<a href="tumhara_input_yahan">
+```<a href="tumhara_input_yahan">```
 
 Toh samjho game shuru ho sakta hai 💣
 
