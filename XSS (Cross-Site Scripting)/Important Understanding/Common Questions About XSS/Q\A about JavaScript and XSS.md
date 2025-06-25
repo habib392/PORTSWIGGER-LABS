@@ -1,3 +1,5 @@
+# Questions Answers About XSS and JavaScript 
+
 ✅ Q1: Agar attacker ```<img>``` ya <iframe> jese tag URL mein daalein to XSS possible hai?
 
 🔍 Jawaab:
