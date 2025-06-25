@@ -9,7 +9,7 @@ Matlab ek page ke andar doosra page show karwa sakte ho.
 
 🧪 Example:
 
-```<iframe src="https://example.com"></iframe>```
+```<iframe``` ```src="https://example.com"></iframe>```
 
 Yeh kya karega?
 
@@ -19,13 +19,13 @@ Tumhari website ke andar example.com ka page open ho jaye ga — ek chhoti windo
 
 🎯 JavaScript se iframe kaise banate hain?
 
-```document.body.innerHTML = '<iframe src="https://example.com">';```
+```document.body.innerHTML = '<iframe``` ```src="https://example.com">';```
 
 Ya
 
-```let i = document.createElement("iframe");```
-```i.src = "https://example.com";
-document.body.appendChild(i);```
+```let i =``` ```document.createElement("iframe");```
+```i.src = "https://example.com";```
+```document.body.appendChild(i);```
 
 ---
 
