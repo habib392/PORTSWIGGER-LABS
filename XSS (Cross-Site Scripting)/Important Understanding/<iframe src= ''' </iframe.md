@@ -15,8 +15,6 @@ Yeh kya karega?
 
 Tumhari website ke andar example.com ka page open ho jaye ga — ek chhoti window mein.
 
-
-
 ---
 
 🎯 JavaScript se iframe kaise banate hain?
