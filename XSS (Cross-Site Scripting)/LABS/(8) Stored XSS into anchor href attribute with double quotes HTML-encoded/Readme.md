@@ -39,5 +39,28 @@ Iska matlab hai XSS successfully triggered ho gaya — yaani website vulnerable 
 Jab bhi user input href, src ya kisi attribute mein inject ho raha ho, toh usay properly encode karna zaroori hai — 
 warna attacker javascript: scheme se XSS inject kar sakta hai.
 
+**Q/A**
+### QUESTIONS
+Kaunsa source tha?
+Kaunsa sink tha?
+Kis tag ke andar inject ho raha tha?
+
+### ANSWERS
+✅ Source: User input from the "Website" field in the comment form.
+
+Yeh input server-side par store hota hai (Stored XSS) aur phir HTML response mein dubara inject hota hai.
+
+✅ Sink: Inside an ```<a href="...">``` — yaani attribute injection.
+
+Server ne user input ko directly href attribute ke andar daal diya without proper encoding.
+
+✅ Tag: <a> tag
+
+### NOTE: Source or Sink are mostly useful in DOM XSS
+
+---
+
+
+
 
 
