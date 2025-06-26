@@ -4,9 +4,13 @@
 
 Bhai XSS duniya ki sab se zyada milnay wali web vulnerabilities mein se aik hai. Har teesri website mein XSS mil sakti hai agar proper validation aur sanitization na ho.
 
+---
+
 2. XSS attacks real world mein kitne hotay hain?
 
 Actual mein XSS attacks itne zyada nahi hote jitne SQLi ya CSRF, lekin agar ho jaayein toh bara damage karte hain — especially phishing, session hijack, ya cookie theft.
+
+---
 
 3. XSS aur CSRF mein farq kya hai?
 
