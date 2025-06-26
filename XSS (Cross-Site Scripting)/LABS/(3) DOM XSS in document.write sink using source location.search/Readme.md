@@ -29,7 +29,9 @@ Jaise hi tum ye URL open karoge, alert(1) pop-up ho jayega.
 
 ## Lab Complete
 
-🔐 Penetration Testing Tip:
+---
+
+### 🔐 Penetration Testing Tip:
 
 DOM-based XSS detect karne ke liye:
 
