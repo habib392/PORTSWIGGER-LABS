@@ -44,3 +44,15 @@ DOM XSS = JavaScript ke through browser mein hi execute hota hai, server touch n
 
 ```"onmouseover=alert(1)``` → Attribute-based injection
 
+### "String" kya hoti hai?
+String ka matlab hota hai text ka tukra — matlab alfaaz ya characters jo quotes ke andar likhe jate hain.
+
+✅ Example:
+- 'Hello'
+- "Pakistan"
+- '123abc'
+- 'alert(1)'
+
+Yeh sab strings hain — kyunki inhe ' ' ya " " ke andar likha gaya hai.
+
+
