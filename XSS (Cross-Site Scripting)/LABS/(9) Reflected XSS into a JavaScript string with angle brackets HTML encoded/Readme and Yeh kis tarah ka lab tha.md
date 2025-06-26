@@ -65,3 +65,6 @@ Jab devs sirf ```< >``` encoding karte hain but ' ya " sanitize nahi karte.
 - Sink	✅ JavaScript string inside a <script> block (```var x = 'input';```)
 
 - Tag	✅ ```<script>``` tag ke andar injection ho raha tha (JS context)
+
+### Pen Test Tip:
+Jab JS mein input reflect ho raha ho, toh ', ", ; jaise special chars se XSS test karo
