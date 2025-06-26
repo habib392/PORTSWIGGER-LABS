@@ -1,9 +1,9 @@
 ### 🔸 HTML (Structure banata hai)
-```<tag>``` → HTML ka element hota hai (jaise ```<div>, <p>, <a>```).
+- ```<tag>``` → HTML ka element hota hai (jaise ```<div>, <p>, <a>```).
 
-attribute → Tag ke andar hoti hai extra info (jaise href, src, id).
+- attribute → Tag ke andar hoti hai extra info (jaise href, src, id).
 
-```<!-- comment -->``` → HTML comment hota hai, browser ignore karta hai.
+- ```<!-- comment -->``` → HTML comment hota hai, browser ignore karta hai.
 
 ### 🔸 CSS (Style deta hai)
 color: red; → Element ka color red kar deta hai.
