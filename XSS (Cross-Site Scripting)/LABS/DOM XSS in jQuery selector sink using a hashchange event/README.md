@@ -14,10 +14,10 @@ Agar attacker ne koi HTML/JS tag hash mein daal diya aur wo directly $() mein ch
 
 🧨 Vulnerable JavaScript code kuch aisa hota hai:
 
-```$(window).on('hashchange', function() {
-  var post = location.hash;
-$(post).addClass("highlight"); // ← Yeh sink hai
-});```
+```$(window).on('hashchange', function() {```
+  ```var post = location.hash;```
+```$(post).addClass("highlight"); //``` ← Yeh sink hai
+```});```
 
 Yahan location.hash directly jQuery ke $() mein gaya — yeh DOM XSS ka classic sink hai 💣
 
