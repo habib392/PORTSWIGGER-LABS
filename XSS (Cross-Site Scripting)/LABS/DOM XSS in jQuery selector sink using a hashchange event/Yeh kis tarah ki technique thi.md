@@ -88,13 +88,13 @@ too ab iss main meray page ka url kidhar hai yeh too main direct beingguru.com k
 
 ### Jawab:
 Tu apna payload jaisy ```https://beingguru.com/#<img src=x onerror=alert(1)>``` iframe ke zariye kisi dusri website (jaise beingguru.com) pe
-bhej sakta hai  iss tarah ```<iframe src="https://beingguru.com/#<img src=x onerror=alert(1)>"></iframe>``` — lekin us iframe ko apni website
+bhej sakta hai iss tarah ```<iframe src="https://beingguru.com/#<img src=x onerror=alert(1)>"></iframe>``` — lekin us iframe ko apni website
 ya html file mein daalna zaroori hai. Wo jo HTML file tu banaega — wahi tera "exploit server" ban jaata hai real world mein. 
 Uska link tu victim ko dega. Agar target site iframe allow karti hai aur hash ya search se XSS vulnerable hai, to payload execute ho jata hai.
 
 Main apni website pr gya wahan HTML main aik link bnahea iss tarah
 
-```<a href="https://beingguru.com/#<img src=x onerror=alert(1)>">Click here</a>``` ab yeh link webpage pr Click here ky naam sy show hoga jab victim Click here
+```<a href="https://beingguru.com/#<img src=x onerror=alert(1)>">Click here</a>``` ab yeh link webpage pr **Click here** ky naam sy show hoga jab victim **Click here**
 pr click karega too wo beingguru.com website pr chala jaye ga or agr wo website vulnerable hue jaisy  X-Frame-Options: DENY ya SAMEORIGIN headers nahi lagaye hue hoe
 too XSS chal jaye ga
 
