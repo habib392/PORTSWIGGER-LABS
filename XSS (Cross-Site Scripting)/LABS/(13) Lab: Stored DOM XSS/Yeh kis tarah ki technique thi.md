@@ -1,3 +1,4 @@
+# Questions/Answers 
 ## ✅ 1. Yeh kis tarah ki technique thi?
 
 Stored DOM-Based XSS — matlab input server pe store ho gaya tha, lekin JavaScript DOM ke zariye page reload hone par execute hua.
