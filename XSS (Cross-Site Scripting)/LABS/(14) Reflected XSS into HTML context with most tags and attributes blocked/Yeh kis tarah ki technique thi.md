@@ -104,3 +104,74 @@ Yeh lab ne yeh sikhaya ke agar XSS block ho raha ho toh cheat sheet se alternate
 Aur print() jaise harmless function se XSS trigger bhi prove ho jata hai.
 
 ---
+
+## Next Questions 
+
+✅ 1. Kya print() sirf XSS confirm karne ke liye use hota hai?
+
+Bilkul sahi socha! 💯
+
+Jab tu print() use karta hai aur browser ka print dialog box khul jata hai, iska matlab hai:
+
+🟢 JavaScript execute ho gayi → XSS successfully trigger ho gaya.
+
+📌 Extra info:
+
+print() harmless hai — alert() ki jagah diya gaya taake tu XSS trick se trigger kare, manually F12 se run na kare.
+
+---
+
+✅ 2. Iframe ka simple matlab samajh le:
+
+❓ Tera confusion: Iframe kyun lagate hain?
+
+Bhai, iframe ek chhota browser window hota hai jo ek aur page ko andar embed karta hai.
+
+Ab lab mein tu kya kar raha tha?
+
+🔥 Tera payload tha:
+
+```<body onresize=print()>```
+
+Yeh kab chalega? Jab body resize hogi.
+
+---
+
+🧠 Iframe trick ka kaam:
+
+```<iframe src="...payload..." onload="this.style.width='100px'">```
+
+**src="..."** 	Iframe ke andar vulnerable page load hota hai
+
+**onload="this.style.width='100px'"**
+	Jaise hi iframe load hota hai, iska size change hota hai
+
+🟢 **Result**
+Body ka size change → onresize=print() trigger ho jata hai → ✅ XSS trigger
+
+---
+
+💡 Simple example samajh:
+
+Imagine:
+
+Teri body ne kaha: “Agar koi mera size change kare to print() chala dena”
+
+Iframe ne aake kaha: “Theek hai mai tujhe chhota kar deta hoon”
+→ Toh turant body ne print() chala diya 😄
+
+---
+
+✅ 3. Exploit server ka alternate tu bilkul sahi soch raha hai
+
+Tu keh raha hai:
+
+Main apni website pr user laon ga, aur usay phir vulnerable site pr iframe ya redirect se le jaon ga
+
+Tu apna khud ka HTML page host karega (jaise GitHub pages, Glitch, etc.)
+
+Usme iframe ya auto redirect ya image tag inject karega
+
+Victim jaise hi visit karega, XSS trigger ho jaayega
+
+---
