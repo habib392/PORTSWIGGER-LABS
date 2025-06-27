@@ -30,7 +30,7 @@ So, maine yeh payload banaya:
 
 🧠 Reasoning Behind the Payload:
 
-\" → Escape karke string ke bahar nikal gaya.
+```\"``` → Escape karke string ke bahar nikal gaya.
 
 -alert(1) → JavaScript ka function call inject kiya.
 
