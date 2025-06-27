@@ -9,30 +9,26 @@ Print function print() ko automatically trigger karna via reflected XSS — bina
 
 🧠 Key Concepts:
 
-App ek WAF use kar raha hai jo <script>, <img>, onerror, etc. jaise common payloads ko block karta hai.
+App ek WAF use kar raha hai jo ```<script>```, ```<img>```, onerror, etc. jaise common payloads ko block karta hai.
 
 Tu Burp Suite + smart filtering bypass se check karega kaunsa tag aur attribute allowed hai.
 
-<body onresize=print()> allowed hai, so we'll use that.
+```<body onresize=print()>``` allowed hai, so we'll use that.
 
 
 
 ---
 
-✅ Tools Required:
+### ✅ Tools Required:
 
 Burp Suite (Community or Pro)
 
 Burp Browser (built-in browser)
 
 
-
 ---
 
-🚶‍♂️ Step-by-Step Solution:
-
-
----
+### 🚶‍♂️ Step-by-Step Solution:
 
 🔹 Step 1: Open Lab in Burp Browser
 
@@ -61,14 +57,13 @@ Intruder tab mein jao
 
 🔹 Step 4: Find Reflected Tag
 
-Search parameter mein <> daalo
+Search parameter mein ```<>``` daalo
 
-Cursor ko beech mein le jao <§§>
+Cursor ko beech mein le jao ```<§§>```
 
 Payload position add karo (click “Add §”)
 
 Ab tu different HTML tags test karega
-
 
 
 ---
@@ -88,8 +83,7 @@ Start Attack karo
 
 Most tags → 400 error
 
-<body> tag → 200 OK ✅
-
+```<body>``` tag → 200 OK ✅
 
 
 ---
@@ -98,13 +92,11 @@ Most tags → 400 error
 
 Now use this:
 
-<body%20=1>
+```<body%20=1>```
 
-Cursor le jao = se pehle → <body%20§§=1>
+Cursor le jao = se pehle → ```<body%20§§=1>```
 
 New payload position set karo
-
-
 
 ---
 
@@ -126,19 +118,17 @@ Most attributes → 400 error
 onresize → 200 OK ✅
 
 
-
 ---
 
 🔹 Step 8: Final Payload Banaao
 
 Lab ne search param reflect kiya hai, so tu payload manually encode karega:
 
-"> <body onresize=print()>
+```"> <body onresize=print()>```
 
 URL encode ho jaayega:
 
-%22%3E%3Cbody%20onresize%3Dprint()%3E
-
+```%22%3E%3Cbody%20onresize%3Dprint()%3E```
 
 ---
 
@@ -146,7 +136,8 @@ URL encode ho jaayega:
 
 Exploit server open karo → HTML mein yeh code paste karo:
 
-<iframe src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize%3Dprint()%3E" onload="this.style.width='100px'">
+```<iframe```
+ ```src="https://YOUR-LAB-ID.web-security-academy.net/?search=%22%3E%3Cbody%20onresize%3Dprint()%3E``` ```onload="this.style.width='100px'">```
 
 ✅ Lab ID wala part apne lab ke mutabiq replace karo
 
@@ -157,25 +148,28 @@ Click “Deliver to victim”
 
 Agar sab sahi hua to victim jab iframe load karega, body onresize execute ho jaayega → print() call → ✅ Lab Solved
 
-
 ---
 
 📌 Final Payload (Decoded):
 
-"><body onresize=print()>
+```"><body onresize=print()>```
 
 → Triggered automatically when body resizes via iframe load
 
 
 ---
 
-🧠 What We Learned:
+### 🧠 What We Learned:
 
 Point	Detail
 
-Type	Reflected XSS
-Context	HTML
-Challenge	WAF blocking tags and attributes
-Bypass	Use of <body onresize=print()>
+Type: Reflected XSS
+
+Context: HTML
+
+Challenge:	WAF blocking tags and attributes
+
+Bypass: Use of ```<body onresize=print()>```
+
 Trigger	Automatically via iframe resize
 No user interaction	✅ Required per lab instructions
