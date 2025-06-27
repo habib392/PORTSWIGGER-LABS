@@ -171,5 +171,6 @@ Challenge:	WAF blocking tags and attributes
 
 Bypass: Use of ```<body onresize=print()>```
 
-Trigger	Automatically via iframe resize
-No user interaction	✅ Required per lab instructions
+Trigger:	Automatically via iframe resize
+
+No user interaction: ✅ Required per lab instructions
