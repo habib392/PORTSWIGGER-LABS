@@ -109,3 +109,17 @@ Ye sirf chalta hai:
 
 - JavaScript se .focus() method se
 
+---
+
+### ❌ Kya spaceindex, ctrlindex hota hai?
+
+Nahi bhai! Browser sirf tabindex hi jaanta hai
+Koi aur index browser ko samaj nahi aata.
+
+Agar tu space ya ctrl key se koi function chalana chahta hai, to uske liye use kar:
+
+```onkeydown / onkeyup```
+
+**Example:**
+
+```<khan onkeydown="if(event.key===' ') alert('Space dabaya!')" tabindex="1">Green</khan>```
