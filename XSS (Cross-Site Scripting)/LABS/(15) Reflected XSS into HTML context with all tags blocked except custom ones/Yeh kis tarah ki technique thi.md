@@ -41,3 +41,41 @@ Yehi payload use hoga victim ko XSS dene ke liye ✅
 | `#x`            | URL ka hissa hai — yeh browser ko keh raha hota hai: "Jaa bhai jahan id='x' ho wahan focus kar!" |
 
 ---
+
+### Reflected vs Stored XSS — Farq kya hai?
+
+| Type              | Matlab                                                                                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Reflected XSS** | Jab tu URL mein payload daalta hai aur turant alert chal jaata hai                                                                             |
+| **Stored XSS**    | Jab tu payload kisi comment ya post mein daal ke permanently store kar deta hai — aur jab koi bhi banda wo page dekhta hai, XSS chal jaata hai |
+
+**💬 Example:**
+
+Agar tu comment mein daale:
+
+```<khan id="x"``` ```onfocus="alert(document.cookie)"``` ```tabindex="1">Green</khan>```
+
+Aur wo comment save ho jaaye — to ye stored XSS hai.
+
+---
+
+### ❓ tabindex kya karta hai?
+tabindex ka kaam hai HTML element ko keyboard se focusable banana.
+
+Asaan Lafzon Mein:
+Browser sirf kuch specific tags pe focus deta hai (``|<input>, <button>```, etc.).
+Agar tu kisi custom tag (jaise ```<khan>```) ko focus karwana chahta hai — to usmein tabindex="1" zaroor daalna hoga.
+
+### 🔍 tabindex="1" ka matlab kya hai?
+
+- Iska matlab hai ke jab user tab key dabaye, to sabse pehle yeh element pe focus ho.
+
+- Agar kisi tag pe tabindex na ho, to browser uspe focus karega hi nahi.
+
+- tabindex="1" → pehla focus
+
+- tabindex="2" → doosra
+
+- Aur aise hi aage
+
+---
