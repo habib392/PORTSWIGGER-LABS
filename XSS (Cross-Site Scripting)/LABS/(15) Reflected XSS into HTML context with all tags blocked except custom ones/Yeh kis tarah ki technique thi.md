@@ -123,3 +123,31 @@ Agar tu space ya ctrl key se koi function chalana chahta hai, to uske liye use k
 **Example:**
 
 ```<khan onkeydown="if(event.key===' ') alert('Space dabaya!')" tabindex="1">Green</khan>```
+
+---
+
+### Real Life Pentesting mein faida kaise?
+
+Jab tu koi site test kare aur dekhe ke ```<script>``` block ho raha hai, lekin custom tags allow hain — to ye XSS technique kaam aayegi
+
+Tu comment, search box, ya feedback forms mein ye try kar sakta hai
+
+Bug bounty mein ye trick kabhi kabhi filter bypass karne mein madad karti hai
+
+### 🛠️ Step by Step Strategy:
+Dekh koi input field ya search area hai jo input ko page pe dikhata ho
+
+Wahaan yeh inject karo:
+
+```<khan id="x" onfocus="alert(document.cookie)" tabindex="1">Test</khan>```
+
+Fir URL mein #x laga ke page open karo:
+
+https://site.com/page?search=...#x
+Page load hote hi browser focus karega id="x" wale tag pe → onfocus chalega → XSS success!
+
+---
+
+
+Yeh lab ne humein sikhaya ke agar normal HTML block ho rahi ho, to bhi XSS ka tareeqa hota hai — bas dimaag chalayen aur custom tag, tabindex, aur focus ka sahi use karein!
+
