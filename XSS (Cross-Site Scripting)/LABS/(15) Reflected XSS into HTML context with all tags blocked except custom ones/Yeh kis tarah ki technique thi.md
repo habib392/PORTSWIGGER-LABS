@@ -148,6 +148,27 @@ Page load hote hi browser focus karega id="x" wale tag pe → onfocus chalega �
 
 ---
 
-
 Yeh lab ne humein sikhaya ke agar normal HTML block ho rahi ho, to bhi XSS ka tareeqa hota hai — bas dimaag chalayen aur custom tag, tabindex, aur focus ka sahi use karein!
+
+---
+
+🧬 Source & Sink Analysis:
+
+🟢 Source (input kidhar se aa raha hai)?
+
+✅ location.search → Matlab URL ka ?search=... part
+
+
+Example:
+
+```site.com/?search=<xss+onfocus=alert(1)+tabindex=1>#x```
+
+---
+
+### 🟢 Sink (browser uss input ko kaise inject kar raha hai)?
+
+✅ innerHTML — kyunki input HTML ke form mein reflect ho raha hai
+
+InnerHTML allow karta hai ke tag + attributes page pe render hon → isi wajah se XSS chalta hai.
+
 
