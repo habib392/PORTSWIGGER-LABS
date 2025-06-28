@@ -63,7 +63,7 @@ Aur wo comment save ho jaaye — to ye stored XSS hai.
 tabindex ka kaam hai HTML element ko keyboard se focusable banana.
 
 Asaan Lafzon Mein:
-Browser sirf kuch specific tags pe focus deta hai (``|<input>, <button>```, etc.).
+Browser sirf kuch specific tags pe focus deta hai (``<input>, <button>```, etc.).
 Agar tu kisi custom tag (jaise ```<khan>```) ko focus karwana chahta hai — to usmein tabindex="1" zaroor daalna hoga.
 
 ### 🔍 tabindex="1" ka matlab kya hai?
