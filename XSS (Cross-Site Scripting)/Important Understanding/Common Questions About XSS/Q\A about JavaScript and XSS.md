@@ -23,3 +23,24 @@ Ya phir:
 ```<img src=x onerror=alert(1)>```
 
 Toh jab wo input href, src, innerHTML, document.write mein chala jaye bina filtering ke → XSS possible hai
+
+---
+
+### ✅ Real Websites pe kaise pata chalega kaunsa tag allow hai?
+
+1. Tum input ya URL parameter mein HTML inject karo:
+
+```<b>test</b>``` 
+```<script>alert(1)</script>```
+```<xyz onmouseover=alert(1)>abc</xyz>```
+
+
+2. Fir dekho output mein kaunsa tag clean ho gaya aur kaunsa raw print ho gaya.
+
+
+3. Agar ```<b>``` visible hai, to woh allowed hai. Agar ```<script>``` remove ho gaya ya encode ho gaya ```(&lt;script&gt;)``` to woh blocked hai.
+
+
+✔️ Tip:
+
+Burp Suite se response body dekho — wahaan pata chalega frontend ne filter kiya ya backend ne.
