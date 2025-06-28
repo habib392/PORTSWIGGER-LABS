@@ -79,3 +79,33 @@ Agar tu kisi custom tag (jaise ```<khan>```) ko focus karwana chahta hai — to 
 - Aur aise hi aage
 
 ---
+
+### 🧠 #x kya karta hai?
+Agar URL ke end mein tu likhta hai #x, to browser us element ko focus karta hai jiska id="x" hai.
+
+Jaise:
+
+```<khan id="x"```
+ ```onfocus="alert(document.cookie)"```
+ ```tabindex="1">The King</khan>```
+
+Aur tu URL mein likhe:
+
+```https://example.com/page?search=....#x```
+
+To browser page load hote hi direct us tag pe focus karega → onfocus chalega → alert boom 💥
+
+---
+
+### ⚠️ Mouse ka koi taalluq nahi
+Tu ne pucha tha ke kya mouse se kuch hoga?
+Nahi bhai — mouse le jaane se onfocus nahi chalta.
+
+Ye sirf chalta hai:
+
+- Tab key dabane se
+
+- URL mein #x dene se
+
+- JavaScript se .focus() method se
+
