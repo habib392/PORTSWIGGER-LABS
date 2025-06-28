@@ -31,3 +31,13 @@ Yehi payload use hoga victim ko XSS dene ke liye ✅
 ### 🔍 Payload Ki Tashreeh
 
 ```<khan id="x" onfocus="alert(document.cookie)" tabindex="1">The King</khan>```
+
+| Cheez           | Matlab                                                                                           |
+| --------------- | ------------------------------------------------------------------------------------------------ |
+| `<khan>`        | Custom HTML tag — browser ko is tag se koi problem nahi                                          |
+| `id="x"`        | Yeh tag ka naam hai, jisko hum URL se bulaayenge                                                 |
+| `onfocus="..."` | Jab is element pe focus hoga to yeh JavaScript chalegi                                           |
+| `tabindex="1"`  | Is tag ko tab key ya `#x` se focus milne layak banata hai                                        |
+| `#x`            | URL ka hissa hai — yeh browser ko keh raha hota hai: "Jaa bhai jahan id='x' ho wahan focus kar!" |
+
+---
