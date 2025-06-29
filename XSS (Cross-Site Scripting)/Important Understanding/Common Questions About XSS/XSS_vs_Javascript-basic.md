@@ -57,14 +57,17 @@ to samajh lo XSS ready hai.
 
 🎯 Example:
 
-```let input = location.search;
-document.getElementById('output').innerHTML = input;```
+```let input = location.search;```
+
+```document.getElementById('output').innerHTML = input;```
 
 Aur agar attacker URL mein yeh daal de:
 
 ```?input=<script>alert(1)</script>```
 
 Toh browser alert chala dega — XSS done!
+
+---
 
 ❗ Bohat Important Point
 
