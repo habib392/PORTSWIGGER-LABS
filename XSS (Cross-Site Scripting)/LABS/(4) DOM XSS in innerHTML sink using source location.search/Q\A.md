@@ -1,4 +1,6 @@
-## **Q:** acha mane search main pehly search kiya "khan" or phir view source py click kiya ius ky baad 
+# Questions/Answers
+
+Mane search main pehly search kiya "khan" or phir view source py click kiya ius ky baad 
 yeh javascript aaya 
 
 ```<script>```
@@ -18,6 +20,8 @@ isky baad "document.getElementById" source hai
 or "innerHTML" jo hai na wo sink hai
 
 ab yeh btao ky inn sub ny kis tarah kaam perform kiya jab mane search main "khan" search kiya or meray khayal sy yahan jo search box hai yeh element hai
+
+---
 
 ### ANS: Tera sochna 100% correct hai. ✅
 
