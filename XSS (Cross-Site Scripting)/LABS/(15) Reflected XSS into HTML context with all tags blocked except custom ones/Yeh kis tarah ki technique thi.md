@@ -171,4 +171,34 @@ Example:
 
 InnerHTML allow karta hai ke tag + attributes page pe render hon → isi wajah se XSS chalta hai.
 
+---
+
+### ❓Q: Kya alert tab key se chalega? Aur victim ki cookie chori hogi?
+
+✅ Short answer:
+
+Nahi! Hum victim se tab key press karwane ka intezar nahi karte.
+Hum #x se uss tag ko auto-focus karate hain! 😈
+
+---
+
+📖 Detailed samajh (Asaan Urdu mein):
+
+Tu agar ye likhta hai:
+
+```<khan id="x"``` ```onfocus="alert(document.cookie)"``` ```tabindex="1">Hello</khan>```
+
+Aur URL aise banata hai:
+
+```https://victim-site.com/?search=<payload>#x```
+
+To jab victim ye URL kholta hai:
+
+- ➡️ Browser #x dekhta hai
+- ➡️ Wo id="x" wale tag ko automatically focus karta hai
+- ➡️ Focus hone par onfocus="..." chalega
+- ➡️ JavaScript trigger ho jaata hai
+- ➡️ alert(document.cookie) → cookie ka popup show!
+
+🧠 Matlab: Humein victim se tab key press karwane ki zaroorat hi nahi — browser khud focus karta hai because of #x.
 
