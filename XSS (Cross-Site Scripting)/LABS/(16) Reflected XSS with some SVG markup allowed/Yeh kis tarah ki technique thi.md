@@ -79,3 +79,16 @@ Kyuki payload HTML ke form mein page pe reflect ho raha tha bina encoding ke.
 ```<div>Search results for``` ```<b>YOUR_INPUT_HERE</b></div>```
 
 Tumhara payload ```<svg><animatetransform onbegin=alert(1)>``` us div ke andar gaya.
+
+---
+
+### Final Thought's 
+
+| Cheez                | Lab mein thi | Real life mein chance                        |
+| -------------------- | ------------ | -------------------------------------------- |
+| SVG allowed          | ✅            | ⚠️ Kam chance, lekin ho sakta hai            |
+| onbegin allowed      | ✅            | ⚠️ Rare, lekin custom code mein ho sakta hai |
+| innerHTML sink       | ✅            | ✅ Abhi bhi hota hai insecure apps mein       |
+| Brute-force strategy | ✅            | ✅ Must use method!                           |
+
+---
