@@ -34,10 +34,12 @@ Input attribute se nikal gaya aur naya tag inject kar diya
 
 Yeh hai real DOM-based XSS ka essence
 
-🎯 Technique ka naam:
+### 🎯 Technique ka naam:
+
 ✅ DOM-based Cross-Site Scripting (DOM XSS)
-✅ Sink: document.write()
-✅ Source: window.location.search
+
+- ✅ Sink: document.write()
+- ✅ Source: window.location.search
 
 🧠 Isko Master Kaise Karo?
 
