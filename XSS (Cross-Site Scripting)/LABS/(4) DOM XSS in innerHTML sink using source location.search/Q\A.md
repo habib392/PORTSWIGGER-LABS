@@ -26,6 +26,7 @@ ab yeh btao ky inn sub ny kis tarah kaam perform kiya jab mane search main "khan
 ### ANS: Tera sochna 100% correct hai. ✅
 
 🔍 Jab tu ne "khan" search kiya, to peeche kya hua?
+
 ✅ 1. URL ban gaya:
 
 ```https://example.com/?search=khan```
