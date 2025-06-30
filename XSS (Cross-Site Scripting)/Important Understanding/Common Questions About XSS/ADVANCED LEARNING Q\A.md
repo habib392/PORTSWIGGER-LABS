@@ -160,6 +160,6 @@ DOM XSS lag raha?
 Alert nahi aaya to server-side encode kar raha?
 → Base64, URL encode, HTML entity detect kar
 
-💡 Final Hacker Line:
+### 💡 Final Hacker Line:
 "XSS koi ek payload ka game nahi — ye context, reflection aur browser behavior ka full formula hai.
 Jahan ye tino mil gaye — wahan XSS guaranteed hai."
