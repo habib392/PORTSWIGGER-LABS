@@ -1,4 +1,4 @@
-🚨 Anchor Tag Based XSS Injection — Simple Urdu Explanation
+# Q/A
 
 ## 💡 Scenario
 
@@ -27,7 +27,7 @@ Browser isse ya to encode kar deta hai, ya ignore karta hai.
 
 Isliye ye payload usually execute nahi hota:
 
-```<a href="https://example.com/<script>alert(1)</script>">Click</a>```
+```<a``` ```href="https://example.com/<script>alert(1)</script>">Click</a>```
 
 ---
 
