@@ -1,4 +1,4 @@
-Hacker Plan" (10 Steps)
+# Hacker Plan
 
 ### ✅ Step 1: XSS ka DNA — Reflection + Execution
 
@@ -82,12 +82,12 @@ SVG browser ke liye trusted hota hai (graphics tag hai)
 
 🔍 Jaise:
 
-```let q = location.hash;
-document.getElementById("result").innerHTML = q;```
+```let q = location.hash;```
+```document.getElementById("result").innerHTML = q;```
 
 ✅ Exploit:
 
-```http://example.com/#<img src=x onerror=alert(1)>```
+```http://example.com/#<img src=x``` ```onerror=alert(1)>```
 
 🧠 DOM XSS ka source hota hai: location, location.hash, document.referrer, etc.
 
