@@ -202,3 +202,17 @@ To jab victim ye URL kholta hai:
 
 🧠 Matlab: Humein victim se tab key press karwane ki zaroorat hi nahi — browser khud focus karta hai because of #x.
 
+---
+
+Website pe likha hota hai “Continue with Google”, jab hum uspe click karte hain to:
+
+- Ya to page reload hota hai
+- Ya koi new page khulta hai
+- Aur us naye URL mein #x aajata hai
+
+Fir browser us id="x" wale element ko focus karta hai
+
+Aur agar usmein onfocus="..." likha ho → JavaScript execute ho jaata hai
+
+✅ Bilkul! Yehi hota hai! Tu ne bilkul perfect example socha hai! 💥
+
