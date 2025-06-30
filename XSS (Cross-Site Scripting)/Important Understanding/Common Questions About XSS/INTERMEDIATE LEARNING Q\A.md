@@ -9,7 +9,7 @@ Yahan se tu seekhega:
 
 ---
 
-### ;✅ Step 1: XSS Contexts — Kahan kaunsa payload use hota hai?
+### ✅ Step 1: XSS Contexts — Kahan kaunsa payload use hota hai?
 
 | 🔍 Context         | Reflection jahan hoti hai       | Example Payload             |
 | ------------------ | ------------------------------- | --------------------------- |
@@ -43,3 +43,43 @@ Yahan se tu seekhega:
 | Using backticks (template literals) in JS | `` `alert(1)` ``                                                  |
 
 ---
+
+### Step 4: BurpSuite se XSS find karna (Manual way)
+
+- Intercept on karo
+- Target site pr search box ya input fill karo
+- Request intercept ho jaaye to Repeater mein bhejo
+
+Payload try karo (e.g., ```<script>alert(1)</script>```, then encoded version)
+
+Response tab mein dekho payload reflect ho raha ya encode ho gaya
+
+Agar reflect ho raha hai — payload tweak karo until alert aaye!
+
+---
+
+### ✅ Step 5: Real-World Website Example XSS Testing Strategy
+Website open karo (example: search bar page)
+
+Type: test123
+
+Inspect element karo:
+
+Dekho test123 kahan gaya? HTML, Attribute, ya JS?
+
+Wahan pe match karta payload try karo
+
+Response source (Ctrl+U) bhi check karo — burp bhi use karo
+
+---
+
+### 🧠 Real-World Tip:
+"Har website mein XSS tabhi milta hai jab input → output flow directly ho
+Aur developer usko properly sanitize/escape na kare."
+
+🔚 Tera Level 2 Done Jab Tu Ye Kar Le:
+✅ Tu context samajh jaaye
+✅ Tu decide kar sake ke kaunsa payload kahan chalayega
+✅ Tu BurpSuite mein XSS detect kar sake
+✅ Tu bypass try kar sake jab normal script block ho
+
