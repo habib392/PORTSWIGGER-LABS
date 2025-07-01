@@ -44,3 +44,32 @@ Toh jab wo input href, src, innerHTML, document.write mein chala jaye bina filte
 ✔️ Tip:
 
 Burp Suite se response body dekho — wahaan pata chalega frontend ne filter kiya ya backend ne.
+
+---
+
+### Q: Agar data quotes ke andar jaa raha hai, kya iska 100% matlab hai ke yeh JavaScript code hai?
+
+Nahi bhai, 100% nahi.
+
+Quotes ' ' ya " " ka hona sirf itna batata hai ke input string context main hai — lekin woh context:
+
+JavaScript ka ho sakta hai
+
+HTML attribute ka ho sakta hai (```<input value='your_input'>```)
+
+JSON ka ho sakta hai
+
+CSS ya kisi aur jagah ka bhi ho sakta hai
+
+
+Toh tumhein hamesha context identify karna hota hai:
+
+Agar ```<script>``` tag ke andar hai: JavaScript
+
+Agar ```<input>``` tag ya href attribute main hai: HTML
+
+Agar ```<style>``` main hai: CSS
+
+Agar AJAX ya JSON response hai: JSON
+
+🧠 Tip for Pentest: Always check View Source ya Burp se Raw Response — tabhi asli context samajh aata hai.
