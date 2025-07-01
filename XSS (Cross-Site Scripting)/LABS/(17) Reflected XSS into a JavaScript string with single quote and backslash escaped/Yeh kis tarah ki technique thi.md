@@ -114,3 +114,17 @@ Input reflect ho raha tha:
 </script>
 
 Aur humne woh break kar ke naya <script> inject kar diya.
+
+---
+
+# Final Summary:
+
+| 🔍 Cheez                 | 📄 Lab ka Answer                                                     |
+| ------------------------ | -------------------------------------------------------------------- |
+| Technique                | Reflected XSS via JavaScript string + tag injection                  |
+| Strategy use kab karein? | Jab input `'quotes'` ke andar JavaScript code mein reflect ho        |
+| Khaas baat               | `'` escape ho raha tha, isliye tag injection se browser ko fool kiya |
+| Aaj bhi milti hai?       | Rare, mostly old ya custom apps mein                                 |
+| Source                   | `location.search` (URL query string)                                 |
+| Sink                     | JavaScript variable (`document.write`, direct inline script)         |
+| Tag                      | `<script>` ke andar inject ho raha tha                               |
