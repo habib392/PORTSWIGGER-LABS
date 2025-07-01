@@ -57,3 +57,6 @@ Toh HTML banega:
 
 ---
 
+### Final One-Line Rule:
+
+"Agar tera input HTML attribute ke andar ja raha hai, toh XSS karne ke liye tu pehle " aur > de kar us attribute aur tag ko close karega — tabhi tera payload browser ko samajh aayega."
