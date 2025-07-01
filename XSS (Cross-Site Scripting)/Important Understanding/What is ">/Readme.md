@@ -39,12 +39,14 @@ Tu yeh dega:
 ```"><script>alert(1)</script>```
 Toh HTML banega:
 
-```<img src="x" alt="">
-<script>alert(1)</script>```
+```<img src="x" alt="">```
+```<script>alert(1)</script>```
 
 - ➡️ Ab attribute close ho gaya
 - ➡️ <img> tag band ho gaya
 - ➡️ Tera <script> browser ne run kar diya
+
+---
 
 ### Final Formula
 
