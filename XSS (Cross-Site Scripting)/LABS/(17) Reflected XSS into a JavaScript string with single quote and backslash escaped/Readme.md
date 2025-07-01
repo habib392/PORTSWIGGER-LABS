@@ -20,9 +20,9 @@ Repeater tab main search karo test123 ko kahaan reflect ho raha hai.
 
 Tum dekhogay kuch aisa:
 
-```<script>
-  var searchTerm = 'test123';
-</script>```
+```<script>```
+  ```var searchTerm = 'test123';```
+```</script>```
 
 Yahan pe tumhara input 'single quotes' ke andar hai → JavaScript string ke andar.
 
@@ -32,7 +32,7 @@ Yahan pe tumhara input 'single quotes' ke andar hai → JavaScript string ke and
 
 Ab agar tum yeh payload bhej do:
 
-test'alert(1)
+```test'alert(1)```
 
 To response main yeh dikhega:
 
@@ -56,9 +56,9 @@ Phir apna ```<script>alert(1)</script>``` lagao — yeh naya script tag execute 
 
 Yeh reflected hoga kuch aise:
 
-```<script>
-  var searchTerm = '</script><script>alert(1)</script>';
-</script>```
+```<script>```
+ ``` var searchTerm = '</script><script>alert(1)</script>';```
+```</script>```
 
 Browser isko parse karega aur alert(1) trigger karega.
 
