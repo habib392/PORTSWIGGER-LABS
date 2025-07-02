@@ -1,3 +1,72 @@
+### ✅ 1. Yeh kis tarah ki technique thi?
+
+Yeh technique hai:
+
+Stored XSS inside an attribute-based JavaScript event handler
+Jahan input store hota hai, phir page load hone par usi input ko JS ke onclick event ke andar run kar diya jaata hai.
+
+💡 Key cheez: Tu JavaScript string todh kar apna payload inject karta hai.
+
+---
+
+### ✅ 2. Jab main kisi website pe XSS confirm karna chahoon to yeh strategy kaise use kar sakta hoon?
+
+Agar kisi website ka:
+
+- User comment
+- Profile URL
+- Website input field
+
+... agar yeh input page pe show ho raha ho inside:
+
+```<a onclick="someFunction('USER_INPUT')">```
+
+To tu:
+
+1. Burp se intercept kar
+
+2. Input mein encoded single quotes daal (jaise &apos;)
+
+3. JavaScript string todhne ki koshish kar (e.g., &apos;-alert(1)-&apos;)
+
+4. Dekh, kya alert ya koi JS execute hoti hai
+
+Yeh strategy kaam karti hai jab input reflect ho JavaScript attribute ke andar.
+
+---
+
+### ✅ 3. Iss lab mein kya khaas baat thi?
+
+🔐 Encoding + Escaping combo:
+
+```<, > and " → HTML encoded (e.g., &lt;, &quot;)```
+
+```' and \ → escaped (e.g., \')```
+
+Developer ne socha safe hai... but tu smart tha — tu ne &apos; use karke ' bana diya browser ke through. Yeh bypass hota hai because browser decode karta hai render time pe.
+
+---
+
+### ✅ 4. Kya aaj kal yeh vulnerability milti hai? Kitne chances hain?
+
+✔️ Haan, milti hai:
+
+Aaj bhi kai CMS (e.g., WordPress themes/plugins), custom PHP forms, aur legacy sites mein hoti hai.
+
+Jab developer onclick/onhover mein user input embed kare bina proper escaping ke
+
+#### 🎯 Chances:
+
+- Low to Medium on modern apps
+- Medium to High on older, custom-built sites
+- Best areas to test:
+- Profile links
+- Email / website display
+- Admin panels with logs
+- Analytics or tracking functions
+
+---
+
 ## Questions/Answers
 
 ### 🔍 Breakdown of Payload:
