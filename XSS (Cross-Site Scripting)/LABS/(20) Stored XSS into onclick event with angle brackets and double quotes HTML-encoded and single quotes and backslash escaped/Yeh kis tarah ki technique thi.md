@@ -1,10 +1,10 @@
 ## Questions/Answers
 
-🔍 Breakdown of Payload:
+### 🔍 Breakdown of Payload:
 
 http://x.com?&apos;-alert(1)-&apos;
 
-🔹 1. http://x.com
+### 🔹 1. http://x.com
 
 Yeh just fake URL hai — tu kuch bhi likh sakta hai, e.g., http://abc
 
@@ -12,7 +12,7 @@ Sirf isliye diya gaya hai taake href aur tracker.track(...) ke andar input valid
 
 ---
 
-🔹 2. ?
+### 🔹 2. ?
 
 ➤ Ye kyun lagaya?
 
@@ -27,7 +27,7 @@ Yahan pe tu query string bana raha hai, lekin asal maqsad hai: JS string break k
 
 ---
 
-🔹 3. &apos;
+### 🔹 3. &apos;
 
 ➤ Yeh kya hai?
 
@@ -47,7 +47,7 @@ Lekin browser mein jab page open hota hai, wo &apos; ko ' bana deta hai
 
 ---
 
-🔹 4. -alert(1)-
+### 🔹 4. -alert(1)-
 
 ➤ Yeh tera actual XSS payload hai
 
@@ -59,7 +59,7 @@ Tu alert(1) likhta hai, taake confirm ho jaye ke XSS run ho gaya
 
 ---
 
-🔹 5. &apos;
+### 🔹 5. &apos;
 
 Yeh dobara closing ' banata hai
 
@@ -79,7 +79,7 @@ Phir ' dobara lagta hai taake syntax error na ho
 
 ---
 
-🔹 6. ;
+### 🔹 6. ;
 
 Yeh semicolon JavaScript ka statement terminator hai
 
