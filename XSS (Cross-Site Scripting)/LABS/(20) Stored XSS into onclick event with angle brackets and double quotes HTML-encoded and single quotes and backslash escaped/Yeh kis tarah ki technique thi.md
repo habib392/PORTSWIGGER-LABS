@@ -84,3 +84,76 @@ Phir ' dobara lagta hai taake syntax error na ho
 Yeh semicolon JavaScript ka statement terminator hai
 
 Aksar use karte hain taake JS ko bataa sake: "yeh statement yahaan khatam ho gaya"
+
+---
+
+### 🛡 Penetration Testing Tip:
+
+Yeh type ki technique advanced XSS filtering ko bypass karne ke liye hoti hai:
+
+Jab quotes block hon, tu HTML entities (&apos;, &#x27;, etc.) use kar sakta hai
+
+Jab input encoding ho rahi ho, to tu encoding ko browser side pe decode hone ka faida uthata hai
+
+---
+
+### ✅ Sawal 1:
+
+Jab browser simple symbols ko HTML encode kar raha ho, aur agar hum uska encoded version likh dein to kya wo wapas original symbol ban jata hai?
+
+### ✔️ Jawab:
+
+Haan, mostly 100% cases mein browser HTML entity ko decode kar ke asli symbol bana deta hai.
+
+🔍 Example:
+
+Tu likhta hai: &lt; → browser isko render karta hai as <
+
+Tu likhta hai: &apos; → render hota hai as '
+
+Tu likhta hai: &quot; → render hota hai as "
+
+### 📌 PenTest Point:
+
+Yeh trick use hoti hai jab filter <, ', " block karein. Tu encoded likh ke unko bypass karta hai — browser unko decode karke asli bana deta hai 😈
+
+---
+
+### ✅ Sawal 2:
+ ```tracker.track('http://x.com?'-alert(1)-'');```
+
+Ismein 2 quotes use kiye: ek pehle string close karne ke liye, aur doosra end mein syntax theek rakhne ke liye. Kya yeh har baar aise hi hota hai?
+
+### ✔️ Jawab:
+
+Haan, agar tu JavaScript string tod raha hai to usually 2 quotes zaroori hote hain:
+
+1. Pehla quote: taake string band ho jaye
+
+2. Middle mein tera JS payload chale (e.g. alert(1))
+
+3. Doosra quote: taake baaki JS code break na ho (syntax error na aaye)
+
+### 🔍 Simple JS Example:
+
+onclick="myfunc('123456');"
+
+Agar tu yeh inject kare:
+
+```' - alert(1) - '```
+
+To final banega:
+
+```myfunc('123456' - alert(1) - '');```
+
+➡ Ismein bhi pehla ' string tod raha hai, aur doosra ' end mein lag raha hai taake syntax error na aaye.
+
+---
+
+🔐 Real-World Tip:
+
+Always balance quotes jab JS inject kar raha ho.
+
+Agar string 'abc' ke andar hai to tu ' se todh ke ' se close karega.
+
+Agar string " ke andar hai to tu " use karega.
