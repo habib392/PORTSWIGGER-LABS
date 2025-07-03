@@ -9,7 +9,7 @@ Website tumhara input JavaScript template string (let data = ${input}``) ke anda
 
 But:
 
-```< >, ' ", \, ```` sab escape kiye ja rahe hain
+< >, ' ", \, ` sab escape kiye ja rahe hain
 
 Only ```${}``` allowed kyunki wo template literal ka native part hai
 
