@@ -75,11 +75,11 @@ Ab test123 ki jagah payload daalo:
 
 Toh full line kuch aisi banegi:
 
-let data = ````${${alert(1)}}`;```
+```let data = `${${alert(1)}}`;```
 
 But browser isko render karega:
 
-let data = ````${alert(1)}`;```
+```let data = `${alert(1)}`;```
 
 Jo valid JS execution hai 🔥
 
