@@ -1,7 +1,7 @@
 # All Important About This Lab
 ---
 
-### 🧾 **GitHub Note: Lab - Reflected XSS with AngularJS Sandbox Escape Without Strings**
+### Lab - Reflected XSS with AngularJS Sandbox Escape Without Strings**
 
 ---
 
