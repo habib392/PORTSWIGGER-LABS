@@ -104,5 +104,3 @@ Isliye `xlink:href="data:text/html,<script>alert(1)</script>"` use kiya — taak
 ## ✅ Final Baat:
 
 > Jab HTML filters strict hoon, lekin `<svg>` aur `xlink:href` allow ho — toh ye technique ek powerful reflected XSS ban sakti hai. Bina events aur href ke bhi, attacker victim ko trap kar sakta hai ek simple "Click" ke zariye.
-
-Agar is note ka naam rakhna chahein toh suggestion: **"XSS SVG Click Hijack Technique"**
