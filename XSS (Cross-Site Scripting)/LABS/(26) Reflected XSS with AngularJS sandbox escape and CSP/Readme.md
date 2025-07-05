@@ -148,6 +148,6 @@ Toh aisi site XSS + CSP bypass ka strong candidate hoti hai!
 
 ---
 
-🧾 Final Summary (Add to GitHub Note)
+🧾 Final Summary
 
 > Jab hum kisi website ka input field dekhte hain jo AngularJS use karta ho aur us pe CSP (Content Security Policy) lagi ho, toh hum direct window object ya alert(1) nahi chala sakte, kyunki CSP in cheezon ko block kar deta hai. Lekin agar woh input field kisi event jese focus ko handle karta ho, toh hum us event ka use karke $event.path access kar sakte hain — jo ek array hota hai jisme input se le kar last mein window object tak saari chain hoti hai. Fir hum AngularJS ka orderBy: filter use karte hain jisse ek sorting operation simulate hoti hai. Is filter ke andar hum .constructor.from([1], alert) ka use karte hain — jo secretly ek alert(1) chala deta hai bina directly window.alert() likhe. Is tareeqe se hum AngularJS sandbox aur CSP dono ko confuse karke XSS achieve kar lete hain.
