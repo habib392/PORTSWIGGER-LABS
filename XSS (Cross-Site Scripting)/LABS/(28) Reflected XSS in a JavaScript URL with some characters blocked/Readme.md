@@ -1,4 +1,4 @@
-Reflected XSS in a JavaScript URL with some characters blocked
+## Reflected XSS in a JavaScript URL with some characters blocked
 
 🔥 Goal:
 
