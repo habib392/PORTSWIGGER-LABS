@@ -4,7 +4,7 @@
 
 Page ke andar aisa XSS payload inject karna hai jo:
 
-alert(1337)
+**alert(1337)**
 
 show kare — lekin kuch characters block kiye gaye hain jaise spaces ( ), brackets (( )), etc.
 
