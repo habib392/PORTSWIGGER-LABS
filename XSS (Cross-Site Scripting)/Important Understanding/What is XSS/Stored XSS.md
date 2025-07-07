@@ -31,7 +31,7 @@ Ye sab agar filter na hon, to attacker inke zariye JavaScript inject kar sakta h
 
 # 💥 Stored XSS ka Asar
 
-###🧠 Sabse pehle:
+### 🧠 Sabse pehle:
 
 Agar attacker ka JavaScript kisi victim ke browser mein chal jaaye, to wo user pooray tareeqe se hack ho sakta hai.
 
@@ -50,7 +50,7 @@ Basically: jaisa user kar sakta hai, attacker bhi kar sakta hai
 Attacker ko kuch bhi send nahi karna padta, sirf application mein payload daal deta hai —
 jab koi bhi user uss page pe jata hai (aur login hota hai), JavaScript auto chal jaata hai
 
-###💬 Real life example:
+### 💬 Real life example:
 
 Attacker ne feedback form mein **<script>...</script>** daal diya
 
@@ -173,8 +173,13 @@ Full brute-force na karo. Systematic approach follow karo:
 Step	Action
 
 1️⃣	Entry point find karo
+
 2️⃣	Unique value inject karo
+
 3️⃣	Exit point locate karo
+
 4️⃣	Context analyze karo
+
 5️⃣	Payload inject karo
+
 6️⃣	Browser mein test karo
