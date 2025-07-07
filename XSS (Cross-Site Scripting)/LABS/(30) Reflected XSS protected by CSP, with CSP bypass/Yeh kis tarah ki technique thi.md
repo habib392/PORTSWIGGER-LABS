@@ -1,4 +1,4 @@
-# 🚨 Lab: Reflected XSS protected by CSP, with CSP bypass (Urdu Style Full Note)
+## 🚨 Lab: Reflected XSS protected by CSP, with CSP bypass (Urdu Style Full Note)
 
 > ✅ **Goal:** XSS vulnerability ko exploit karna hai jahan **CSP lagi hui hai**, aur humein `alert(1)` chalana hai.
 > ⚠️ **Special Condition:** Yeh attack sirf **Chrome browser** mein kaam karta hai.
