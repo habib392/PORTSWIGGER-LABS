@@ -12,7 +12,7 @@ Soch ke dekho ke har banda apna ID card kisi bhi doosre ke naam pe use kar sakta
 
 ---
 
-## 🛠️ Step-by-Step Lab Solve (Simple Version by Habib)
+## 🛠️ Step-by-Step Lab Solve
 
 ### ✅ Step 1: Login as `wiener:peter`
 
