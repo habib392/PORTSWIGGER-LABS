@@ -64,6 +64,10 @@ Soch ke dekho ke har banda apna ID card kisi bhi doosre ke naam pe use kar sakta
 * Click **Deliver to Victim**
 * ✅ **Lab Solved!**
 
+```
+Lab Solved krny ky liye jo zaroori cheez hai woh yeh hai ky csrf token use nhi hone chahie 
+agr woh aik baar use hoo jaye phir woh dobara use nhi hota isi liye request ko drop kiya jaata hai takay woh use na hoo.
+```
 ---
 
 ## 🔍 Kya Seekha?
