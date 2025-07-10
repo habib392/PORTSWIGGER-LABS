@@ -1,46 +1,46 @@
-# 🔐 CSRF Lab: Token Validation Depends on Token Being Present
+# 🔐 CSRF Lab: Jab Token Ho Tabhi Server Check Karta Hai
 
-## 🧠 Lab Concept Overview
+## 🧠 Lab Ka Basic Scene
 
-This lab demonstrates a flawed CSRF protection mechanism where the **server checks the CSRF token only if it is present in the request**. If the token is **missing**, the server skips validation and still processes the request. This results in a **CSRF vulnerability**.
-
----
-
-## 📌 Real World Analogy:
-
-Imagine a security guard who checks your ID only if you hand one over. But if you walk past without showing anything, he just assumes you're allowed to enter. This is exactly what this server is doing.
+Yeh lab ek aise CSRF bug ko dikhata hai jahan **server sirf us waqt CSRF token verify karta hai jab wo request mein present ho**. Agar token **missing** ho, to server bina kuch check kiye request accept kar leta hai. Yahi ban jata hai ek **CSRF vulnerability**.
 
 ---
 
-## 🔎 Why This Is a Problem
+## 📌 Aam Zindagi Ka Example:
 
-* CSRF token ka purpose hota hai **unauthorized request** ko rokna.
+Soch le ek guard hai jo sirf tabhi ID check karta hai jab tu usay ID dikhata hai. Lekin agar tu bina ID dikhaye nikal jaye to wo kuch nahi kehta. Bas yahi kaam yeh server bhi kar raha hai.
+
+---
+
+## 🔎 Masla Kya Hai?
+
+* CSRF token ka kaam hota hai **unauthorized request** ko rokna.
 * Agar token **galat ho** to request reject hoti hai.
-* Lekin agar token **missing ho**, aur server usse **ignore karke request accept kar le**, to **attack possible ho jata hai**.
+* Lekin agar token **missing ho**, aur server **check hi na kare**, to attacker **request bhej ke kaam karwa sakta hai**.
 
 ---
 
-## ⚔️ CSRF Attack Strategy (as shown in lab)
+## ⚔️ CSRF Attack Ka Tareeqa (jo lab mein kiya gaya)
 
-### ✅ 1. Observe normal behavior:
+### ✅ Step 1: Normal Behavior Check Karo
 
-Submit a POST request to change the email address. You’ll see:
+POST request bhejo email change karne ke liye:
 
 ```txt
 email=new@domain.com&csrf=VALID_TOKEN
 ```
 
-If token is invalid ⇒ request is rejected.
+Galat token do ⇒ request reject hogi.
 
-### ✅ 2. Try sending request **without csrf token**:
+### ✅ Step 2: Token Ko Hatado
 
 ```txt
 email=new@domain.com
 ```
 
-➡️ Request is accepted — THIS IS THE VULNERABILITY
+➡️ Request accept ho gayi — **Yeh vulnerability hai**
 
-### ✅ 3. Exploit Using HTML Form:
+### ✅ Step 3: Exploit HTML Banao
 
 ```html
 <form method="POST" action="https://YOUR-LAB-ID.web-security-academy.net/my-account/change-email">
@@ -51,62 +51,53 @@ email=new@domain.com
 </script>
 ```
 
-### ✅ 4. Host it on exploit server, then deliver it to the victim.
+### ✅ Step 4: Exploit Server Pe Host Karo Aur Victim Ko Do
 
 ---
 
-## 💥 Real World Scenario — Kya aaj kal aisa hota hai?
+## 💥 Real Dunia Mein Aisa Hota Hai?
 
-Yes — CSRF still exists in real-world apps **especially in legacy systems**, or in:
+Bilkul — aise CSRF bugs ab bhi milte hain:
 
-* Apps with custom CSRF implementations
-* Sites using partial frameworks
-* Sites missing token enforcement logic in **all request types (GET, POST, etc.)**
+* Purane (legacy) systems mein
+* Jahan CSRF token manually lagaya gaya ho
+* Jahan har request method (GET/POST) pe protection na ho
 
-**Recent Bug Bounty programs** have reported such logic flaws, proving this is not just theoretical.
+**Bug bounty reports** mein aise flaws kaafi bar milte hain.
 
 ---
 
-## 🔍 As a Penetration Tester — Tumhein kya karna hoga?
+## 🔍 Penetration Tester Kaam Kaise Kare?
 
-### ✅ Step-by-Step Testing Strategy:
+### ✅ Practical Testing Steps:
 
-1. **Find CSRF protected forms** (change email, password, settings)
-2. Intercept request in Burp Suite
-3. Check if CSRF token is present in body/headers/cookies
-4. Remove or tamper with token:
+1. Aisi form dhoondo jahan sensitive data change hota ho (email, password)
+2. Request ko Burp Suite se intercept karo
+3. Dekho CSRF token body/header/cookie mein hai ya nahi
+4. Token:
 
-   * Send invalid token → should be rejected
-   * Remove token completely → **does it still get accepted?**
-5. Try sending GET request instead of POST
-6. If accepted → vulnerable
+   * Galat do → reject hota hai?
+   * Hata do → request accept hoti hai?
+5. POST ko GET mein convert karke bhi test karo
+6. Agar request accept ho jaye ⇒ vulnerable
 
-### 🧰 Tools to Use:
+### 🧰 Tools:
 
-* Burp Suite (Proxy, Repeater, Intruder)
-* Firefox DevTools / Chrome DevTools
+* Burp Suite (Proxy, Repeater)
+* Browser DevTools
 * Custom HTML exploit builder
 
 ---
 
-## 🚫 Developer Lesson:
+## 🚫 Developer Ko Kya Karna Chahiye:
 
-* Token hona chahiye + verify bhi hona chahiye
-* Don't just check `if (csrf)`, use full validation
-* CSRF middleware in frameworks like Django, Laravel, etc., should be enabled
-
----
-
-## 🧠 Teri Zuban Mein Summary:
-
-> “Yeh lab batata hai ke agar server sirf token ke hone pe validation kare — lekin uski value verify na kare — to attacker request se token hata ke email change karwa sakta hai. Aise bugs aaj bhi milte hain aur penetration testing mein aise logic flaws pe dhyan dena zaroori hai.”
+* Token hona bhi chahiye, aur verify bhi hona chahiye
+* Sirf `if (csrf)` check na karo — proper validation karo
+* Framework ka CSRF middleware (Django, Laravel, etc.) use karo
 
 ---
 
-## ✅ Suggested GitHub Note Title:
+## 🧠 Summary:
 
-**"CSRF Vulnerability: Token Present Ho Tabhi Validate Hota Hai — Logic Flaw Explained"**
+> “Yeh lab yeh batata hai ke agar server sirf token ke hone par validation kare — lekin value verify na kare — to hum token hata ke exploit kar sakte hain. Aise bugs aaj bhi hote hain aur pentesting mein inko pakarna zaroori hai.”
 
-Ya
-
-**"CSRF Token Bypass by Absence – Modern Logic Flaw for Pentesters"**
