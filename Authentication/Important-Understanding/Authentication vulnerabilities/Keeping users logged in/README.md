@@ -35,7 +35,7 @@ Login attempt limit ko bypass kar leta hai cookie-based attack se.
 
 Yani remember me feature agar theek se implement na ho, to attacker asani se login process ko hi skip kar sakta hai.
 
-#### Kabhi kabhi websites cookie mein user ka password ka hash daal deti hain (jaise MD5 hash), lekin agar wo password koi common password ho (jaise 123456, password, qwerty), to uska hash already internet pe available hota hai.
+**Kabhi kabhi websites cookie mein user ka password ka hash daal deti hain (jaise MD5 hash), lekin agar wo password koi common password ho (jaise 123456, password, qwerty), to uska hash already internet pe available hota hai.**
 
 To attacker ko sirf wo hash chahiye hota hai. Wo us hash ko crackstation.net jese tools mein ya Google mein paste karta hai, aur agar match mil gaya — to attacker ko original password mil jata hai, bina kuch complex cracking ke.
 
