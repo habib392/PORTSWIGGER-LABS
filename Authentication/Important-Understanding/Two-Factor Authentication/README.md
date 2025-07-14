@@ -2,14 +2,14 @@
 Yeh wo codes hote hain jo login ke waqt verify karne ke liye use kiye jaate hain — usually yeh code user ke paas kisi device se aata hai.
 
 **2 tareeqay hotay hain code dene ke:**
-- 1. Secure Devices ya Apps:
+- Secure Devices ya Apps:
 Kuch websites tumhein ek special device deti hain (jaise RSA token ya keypad) — jo code khud generate karta hai.
 
 Ya phir tum Google Authenticator jaisi app use karte ho, jo har 30 second mein naya code banati hai.
 
 Yeh tareeqa secure hota hai, kyunke code sirf tumhare device par banta hai, kisi aur jagah se send nahi hota.
 
-- 2. SMS ke zariye code bhejna:
+- SMS ke zariye code bhejna:
 Kai websites tumhare mobile pe text message (SMS) ke through verification code bhejti hain.
 
 Yeh tareeqa kam secure hota hai.
