@@ -23,7 +23,7 @@ Isse bots ruk jaate hain, aur attacker ko manual mehnat karni padti hai.
 Yeh protection brute-force ko 100% stop nahi karti,
 lekin attacker ko itna tang kar deti hai ke wo asaani wali doosri site dhoondhne lagta hai.
 
-##🔍 Pentesting Tip:
+## 🔍 Pentesting Tip:
 
 Jab brute-force test karo, to dekho:
 
