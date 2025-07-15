@@ -41,7 +41,7 @@ Kya CAPTCHA ya delay add hota hai?
 ## 🧠 Verification Logic ko Teen Baar Check Karo
 
 Authentication system mein agar choti si logic ki ghalti reh jaye,
-toh attacker pura system hack kar sakta hai — jaise tum PortSwigger ke labs mein dekh chuke ho.
+toh attacker pura system hack kar sakta hai
 
 **❗Problem kya hoti hai?**
 
