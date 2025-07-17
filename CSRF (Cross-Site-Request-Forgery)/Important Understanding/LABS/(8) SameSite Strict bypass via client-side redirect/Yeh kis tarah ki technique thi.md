@@ -1,5 +1,4 @@
 ### FIRST OF ALL LEARN THIS
-**Zaroor bhai, isko teri zuban mein aur asaan tareeqay se samjhaata hoon:**
 
 ---
 
