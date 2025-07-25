@@ -1,7 +1,7 @@
 ### Step-by-Step Solution
 
 1. **Login Karo**  
-   - Lab mein diya gaya hai ke tum apne account mein login kar sakte ho. Credentials hain:  
+- Lab mein diya gaya hai ke tum apne account mein login kar sakte ho. Credentials hain:  
      **Username:** wiener  
      **Password:** peter  
    - Lab ke website pe jao, login page pe ye details daal kar login kar lo.  
