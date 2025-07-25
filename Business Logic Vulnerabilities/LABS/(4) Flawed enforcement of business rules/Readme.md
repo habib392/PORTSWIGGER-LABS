@@ -60,5 +60,4 @@
 ### Important Tips
 - **Dhyan Rakho:** Har baar coupon apply karne ke baad, order total check karo ke kitna kam hua.  
 - **Real-World Example:** Yeh flaw real life mein aisa hota hai ke koi online store apne coupon system mein galti karta hai, aur users bar bar discounts stack kar ke sasta khareed lete hain.  
-- **Motivation:** Yeh lab thodi patience maangta hai, lekin tu yeh kar sakta hai! Ek hacker ki tarah socho, system ke loopholes dhoondho aur unka fayda uthao.  
 - **Mistakes to Avoid:** Ek hi code do baar lagataar mat daalo, warna error ayega. Hamesha alternate karo.
