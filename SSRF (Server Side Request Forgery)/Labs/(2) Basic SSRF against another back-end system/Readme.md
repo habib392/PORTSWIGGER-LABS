@@ -73,7 +73,7 @@ Example: `192.168.0.35:8080/admin` → yeh hi admin interface hai.
 * URL path ko change karo:
 
 ```
-stockApi=http://192.168.0.54:8080/admin/delete?username=carlos
+stockApi=http://192.168.0.35:8080/admin/delete?username=carlos
 ```
 
 ---
