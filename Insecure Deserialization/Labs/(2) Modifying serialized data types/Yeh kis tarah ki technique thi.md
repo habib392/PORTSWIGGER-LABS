@@ -104,6 +104,19 @@ Tumhe exploit karte waqt ye sochna hota hai:
 
 Yani backend ka code kuch aisa hi hoga, warna exploit possible hi na hota.
 
+Access token asal me session validate karne ka tariqa tha.
+
+Lekin jab humne uska datatype change kar diya, to server ka authentication check bypass ho gaya.
+
+Yani access token ne indirectly hume admin banne ka rasta diya, kyunki backend uski value ko galat tarike se compare kar raha tha.
+
+
+
+Access token ek session ka entry pass hota hai jo verify karta hai ke banda valid hai.
+Developer ne ise string bana diya aur == use kiya, humne ise integer bana diya.
+PHP ne "0" == 0 ko true maana aur hum admin ban gaye.
+
+
 ---
 
 Hum ny datatype badla matlab s sy string ko hata kr i integer kr diya or ius ny accept kr liya iska matlab ius ky backend (Server) main == use hoo rha tha jo ky website ky developer ki ghalti thi ius ny jab website ki settings server pr upload ki too == daal diya jabky iusay === daalna chahie tha iss wajah sy hum ny string ka username bhi change kiya jaisy wiener ka role ko replace kr ky administrator ka role likh diya string main jis sy admin ka access mil gya
