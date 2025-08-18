@@ -116,6 +116,104 @@ Access token ek session ka entry pass hota hai jo verify karta hai ke banda vali
 Developer ne ise string bana diya aur == use kiya, humne ise integer bana diya.
 PHP ne "0" == 0 ko true maana aur hum admin ban gaye.
 
+---
+
+### 🧩 Puri command:
+
+```
+O:4:"User":2:{s:8:"username";s:13:"administrator";s:12:"access_token";i:0;}
+```
+
+Yeh **PHP Serialized Object** hai. Matlab data ko ek string form me store kiya gaya hai jise PHP dubara “object” banake samajhta hai.
+
+---
+
+### 🔍 Breakdown:
+
+1. **`O:4:"User":2:`**
+
+   * `O` = Object
+   * `4` = class name ki length (yahan `User`)
+   * `"User"` = class ka naam
+   * `2` = is object ke andar 2 cheezen (properties) hain.
+
+   👉 Matlab ek `User` object hai jismein **2 properties** hain:
+
+   * username
+   * access\_token
+
+---
+
+2. **`s:8:"username";`**
+
+   * `s` = string
+   * `8` = string ki length (yahan "username" ka length 8 hai)
+   * `"username"` = property ka naam
+
+   👉 Matlab yeh pehla property ka naam hai: `username`
+
+---
+
+3. **`s:13:"administrator";`**
+
+   * `s` = string
+   * `13` = string ki length (administrator ka length 13 hai)
+   * `"administrator"` = property ki value
+
+   👉 Matlab username ki value = `administrator`
+
+---
+
+4. **`s:12:"access_token";`**
+
+   * `s` = string
+   * `12` = string ki length (access\_token ka length 12 hai)
+   * `"access_token"` = doosra property ka naam
+
+   👉 Matlab doosra property ka naam = `access_token`
+
+---
+
+5. **`i:0;`**
+
+   * `i` = integer
+   * `0` = value 0 hai
+
+   👉 Matlab access\_token ki value = **integer 0**
+
+---
+
+### ⚡ Sab mila kar:
+
+Yeh serialized object bol raha hai:
+
+> Ek `User` object hai jismein 2 cheezen hain:
+>
+> * username = `"administrator"`
+> * access\_token = `0` (integer)
+
+---
+
+### 🔑 Ab sawal: Access token ka matlab?
+
+* Normally access\_token ek **random secret string** hoti hai (jaise session ka pass).
+* Lekin lab me isse `0` rakha gaya hai.
+* Aur kyunki backend me loose comparison (`==`) use hua tha:
+
+  * `access_token (integer 0)` server ki database wali `access_token (string "0")` ke barabar maana gaya.
+
+👉 Aur is tarah authentication bypass ho gaya.
+
+---
+
+### 📝 Summary in your words:
+
+* `O` = object, `s` = string, `i` = integer.
+* Yeh object ek user ki info store kar raha hai (username + access\_token).
+* Username humne change kiya `administrator`.
+* Access\_token ko string se integer banaya.
+* PHP ne `"0" == 0` ko true maana aur hume admin bana diya.
+
 
 ---
 
