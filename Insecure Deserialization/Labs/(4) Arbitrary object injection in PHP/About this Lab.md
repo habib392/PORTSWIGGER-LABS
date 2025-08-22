@@ -1,4 +1,4 @@
-### 1. `/libs/CustomTemplate.php` ye request kya hai?
+,### 1. `/libs/CustomTemplate.php` ye request kya hai?
 
 * Ye **website ka ek file path** hai jo server pe pada hai.
 * Har website ki backend directory hoti hai jahan libraries, helpers, templates hote hain.
