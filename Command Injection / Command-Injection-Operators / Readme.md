@@ -87,3 +87,48 @@ PenTesting use: Agar `whoami` block hai, to `echo $(whoami)` se filter bypass ho
 Output: `Hello Habib`
 
 PenTesting use: Hidden command output ko safe tarike se dikhana.
+
+---
+
+### **Substitution (Command Substitution)**
+
+Substitution ka matlab hota hai:
+👉 “ek cheez ko doosri cheez ke saath replace karna.”
+
+Command injection me **command substitution** ka matlab hai ke **ek command ke andar doosri command chalao**.
+
+Example:
+
+```bash
+echo $(whoami)
+```
+
+Yahan `$(whoami)` **substitute** hoke uska result `echo` ke andar aa jaata hai.
+Agar `whoami` ka result `www-data` hai, to asal command ban jaati hai:
+
+```bash
+echo www-data
+```
+
+---
+
+### **Intentionally**
+
+Intentionally ka matlab hota hai **jaan boojh kar / koshish karke**.
+
+Penetration testing me iska use hota hai jab tum **jaan boojh kar galti likhte ho** taake doosri command chal jaaye.
+
+Example with `||`:
+
+```bash
+ping -c 1 999.999.999.999 || whoami
+```
+
+Yahan `ping` jaan boojh kar fail karwaya (kyunki IP galat hai), aur is wajah se `whoami` execute ho gaya.
+
+---
+
+⚡ Matlab dono words ka scene yeh hai:
+
+* **Substitution** = replace karna ek cheez ko doosri ke result se.
+* **Intentionally** = jaan boojh kar koi kaam karna (jaise error create karna).
