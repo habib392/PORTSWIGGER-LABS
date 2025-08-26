@@ -15,7 +15,42 @@ PenTesting use: Agar ek command chal rahi hai to uske baad apni extra command in
 
 ---
 
-## 2. AND Operator `&&`
+## 🔹 2. `#` (Hash / Comment)
+
+* Kaam: **Command ke baad jo bhi likha ho use ignore kar do** (comment bana deta hai).
+* Example:
+
+  ```
+  id # whoami
+  ```
+
+  👉 Yahan `whoami` execute nahi hoga, kyunki `#` ke baad sab comment ban gaya.
+
+⚡ **Use in injection:** Agar backend koi extra command append kar raha ho jo tumhe nahi chahiye, tum `#` dal ke usko ignore kar sakte ho.
+Example:
+
+```
+?id=1;whoami #abc
+```
+
+Yahan `#abc` backend ki extra cheez ko disable kar dega.
+
+---
+
+## 🔹 3. `&` (Single AND)
+
+* Kaam: Dono commands chalao, chahe pehli fail ho ya success.
+* Example:
+
+  ```
+  whoami & id
+  ```
+
+  👉 Dono commands parallel chalengi.
+
+---
+
+## 4. Double AND `&&`
 
 * Kaam: Doosri command **tabhi chalegi** jab pehli successful ho.
 * Example:
@@ -30,7 +65,7 @@ PenTesting use: Server ko bewakoof banao by adding safe command pehle.
 
 ---
 
-## 3. OR Operator `||`
+## 5. OR Operator `||`
 
 * Kaam: Doosri command **tabhi chalegi** jab pehli fail ho jaaye.
 * Example:
@@ -45,7 +80,7 @@ PenTesting use: Intentional galti likho aur apni command forcefully chala lo.
 
 ---
 
-## 4. Pipe Operator `|`
+## 6. Pipe Operator `|`
 
 * Kaam: Ek command ka output doosri command ka input ban jaata hai.
 * Example:
@@ -60,7 +95,7 @@ PenTesting use: Output chhota aur filtered banake detection kam karo.
 
 ---
 
-## 5. Command Substitution `$( )` ya Backticks \`\` ` ` \`
+## 7. Command Substitution `$( )` ya Backticks \`\` ` ` \`
 
 * Kaam: Ek command ke andar doosri command chalana.
 * Example:
@@ -75,7 +110,7 @@ PenTesting use: Agar `whoami` block hai, to `echo $(whoami)` se filter bypass ho
 
 ---
 
-## 6. `echo`
+## 8. `echo`
 
 * Kaam: Jo value ya text do, wo print kar deta hai.
 * Example:
@@ -87,6 +122,43 @@ PenTesting use: Agar `whoami` block hai, to `echo $(whoami)` se filter bypass ho
 Output: `Hello Habib`
 
 PenTesting use: Hidden command output ko safe tarike se dikhana.
+
+---
+
+## 🔹 9. `>` (Output Redirection)
+
+* Kaam: Output ko screen pe dikhane ke bajaye file me likh do.
+* Example:
+
+  ```
+  whoami > /tmp/habib.txt
+  ```
+
+  👉 `whoami` ka result `/tmp/habib.txt` file me store ho jayega.
+
+---
+
+## 🔹 10. `>>` (Append Redirection)
+
+* Kaam: Output file me add kar do (overwrite na karo).
+* Example:
+
+  ```
+  id >> /tmp/habib.txt
+  ```
+
+---
+
+## 🔹 11. `<` (Input Redirection)
+
+* Kaam: File ka content ek command ko input ke taur pe do.
+* Example:
+
+  ```
+  wc -l < /etc/passwd
+  ```
+
+  👉 File me kitni lines hain uska count nikal lega.
 
 ---
 
@@ -132,3 +204,6 @@ Yahan `ping` jaan boojh kar fail karwaya (kyunki IP galat hai), aur is wajah se 
 
 * **Substitution** = replace karna ek cheez ko doosri ke result se.
 * **Intentionally** = jaan boojh kar koi kaam karna (jaise error create karna).
+
+---
+
