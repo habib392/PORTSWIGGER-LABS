@@ -1,4 +1,4 @@
-Dekho bhai, Linux shell main `||` ka meaning hai:
+Linux shell main `||` ka meaning hai:
 
 ➡ **"Agar pehli command fail ho jaye, toh doosri command run karo."**
 
