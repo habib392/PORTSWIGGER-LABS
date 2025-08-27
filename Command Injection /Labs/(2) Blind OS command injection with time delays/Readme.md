@@ -16,7 +16,8 @@
    test@test.com||ping+-c+10+127.0.0.1||
    ```
 
-   Yahaan `||` ka matlab hai "pehle wali command execute karo, phir meri command bhi chalao".
+   Yahaan `||` ka matlab hai "pehle wali command execute karo, phir meri command bhi chalao". Agar pehly wali command fail  hoo jaye too dosray wali chala doo
+
    `ping -c 10 127.0.0.1` 10 packets bhejta hai → approx. 10 sec delay.
 
 4. **Response check karo**
