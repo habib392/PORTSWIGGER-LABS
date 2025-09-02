@@ -1,6 +1,6 @@
-## Question: Xml parser ki jo default settings hoti hain woh unsafe hoti hain developer ko khud iusay safe bnana parhta hai
+### Question: Xml parser ki jo default settings hoti hain woh unsafe hoti hain developer ko khud iusay safe bnana parhta hai
 
-## Answer: 👉 **XML parsers ki default settings unsafe hoti hain** — Matlab by default woh **External Entities** ko resolve kar dete hain (file system, network ya DTD access karke).
+#### Answer: 👉 **XML parsers ki default settings unsafe hoti hain** — Matlab by default woh **External Entities** ko resolve kar dete hain (file system, network ya DTD access karke).
 
 👉 Agar developer kuch na kare to parser automatically entity load karega, aur yeh hi XXE ka root cause hai.
 
@@ -21,7 +21,7 @@ Burp callaboraotor ka use kr ky hum ny kidhar request mari kya hamary server ny 
 
 ---
 
-### Answer 🔹 Entities in XML
+#### Answer 🔹 Entities in XML
 
 XML **Entities** basically ek short-cut / placeholder hote hain jo parser expand karke asli value bana deta hai.
 
@@ -121,9 +121,9 @@ Tum restaurant main order dete ho:
 
 ---
 
-## Question Matlab jo tum ny external entity ki example di iss main yeh hua ky website ky server sy passwd wala data nikla or jo mane url diya ius pr woh chala gya automatically ya phir request ki connection bnany ki or isky baad kya hua
+### Question Matlab jo tum ny external entity ki example di iss main yeh hua ky website ky server sy passwd wala data nikla or jo mane url diya ius pr woh chala gya automatically ya phir request ki connection bnany ki or isky baad kya hua
 
-## Answer 🔹 Jab tumne External Entity dala:
+#### Answer 🔹 Jab tumne External Entity dala:
 
 ```xml
 <!DOCTYPE note [
@@ -166,7 +166,7 @@ Tum restaurant main order dete ho:
 
 ---
 
-## 🔥 Simple words
+### 🔥 Simple words
 
 * `file:///etc/passwd` → **server ka data read kiya**.
 * `http://evil.com/malicious` → **server ne dusri website ko request bheji**.
@@ -181,7 +181,7 @@ Tum restaurant main order dete ho:
 
 ---
 
-## Question Ab dekho yeh xml hai
+### Question Ab dekho yeh xml hai
 
 <!DOCTYPE note [
   <!ENTITY file SYSTEM "file:///etc/passwd">
@@ -194,7 +194,7 @@ Tum restaurant main order dete ho:
 
 Iss main sirf jis line main Entity likha hai wohi entity hai. Or agar aisa hai too baki lines ko Kya Kehty hain
 
-## Answer: XML Breakdown
+#### Answer: XML Breakdown
 
 ```xml
 <!DOCTYPE note [
@@ -272,13 +272,13 @@ Har XML document ka ek hi root element hota hai. Yahaan `note` hai.
 
 ---
 
-## Question: Acha ab too aik or baat samny agyi chatgpt ka + point ky xml main sirf  aik hi root element use hoo skta hai xml main phir chahe structure kitna bhi bara kiun na hoo ab tum mujy woh sub elements btao jo root elements hain 
+### Question: Acha ab too aik or baat samny agyi chatgpt ka + point ky xml main sirf  aik hi root element use hoo skta hai xml main phir chahe structure kitna bhi bara kiun na hoo ab tum mujy woh sub elements btao jo root elements hain 
 
 <to> or <from> kya yeh tags lagana zaroori thy ya phir iski jagah random name bhi rakh skty thy or tags lagana bht zyada zaroori hai 
 
 ---
 
-## Answer: 🔹 1. Root Element Rule
+#### Answer: 🔹 1. Root Element Rule
 
 XML ka **golden rule** hai:
 👉 **Sirf ek hi root element hota hai**.
