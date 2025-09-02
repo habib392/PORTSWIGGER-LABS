@@ -1,6 +1,6 @@
-Question: Xml parser ki jo default settings hoti hain woh unsafe hoti hain developer ko khud iusay safe bnana parhta hai
+## Question: Xml parser ki jo default settings hoti hain woh unsafe hoti hain developer ko khud iusay safe bnana parhta hai
 
-Answer: 👉 **XML parsers ki default settings unsafe hoti hain** — Matlab by default woh **External Entities** ko resolve kar dete hain (file system, network ya DTD access karke).
+## Answer: 👉 **XML parsers ki default settings unsafe hoti hain** — Matlab by default woh **External Entities** ko resolve kar dete hain (file system, network ya DTD access karke).
 
 👉 Agar developer kuch na kare to parser automatically entity load karega, aur yeh hi XXE ka root cause hai.
 
