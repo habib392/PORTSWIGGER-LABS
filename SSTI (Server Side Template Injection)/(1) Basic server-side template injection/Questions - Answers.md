@@ -253,6 +253,82 @@ Template mein jab `<%= product.name %>` likhte ho → `product.name` bhi ek vari
 
 ---
 
-⚡ Matlab: **Variable = ek naam wali jagah jahan data store hota hai.**
+## Question 5
+
+Variable main product_name jo hota hai woh khud change nhi hota or wahan data render nhi hota balky woh bhi sath show hota hai or ius ki value bhi = main show hoti hai jaisy 
+product_name = "Red Shoes"
+
+lekin placeholder main product_name hi replace hoo jata hai or ius ki jagah baad main render hoo kr red shoes show hoo jata hai??
 
 ---
+
+## Ans
+
+100% Sahi 
+
+Bilkul isi tarah hai:
+
+---
+
+### 🔹 Variable
+
+* Code ke andar **apna naam (identifier)** banaye rakhta hai.
+* Uski **value alag hoti hai**.
+* Jab code run hota hai toh dono exist karte hain: naam bhi aur value bhi.
+
+Example:
+
+```ruby
+product_name = "Red Shoes"
+```
+
+Yahan:
+
+* `product_name` = variable ka naam (hamesha rahega)
+* `"Red Shoes"` = uski value
+
+Run karte waqt agar print karo:
+
+```
+puts product_name
+```
+
+Output:
+
+```
+Red Shoes
+```
+
+Variable ka naam khud HTML page pe show nahi hota, sirf value ko print karte ho toh dikhta hai.
+
+---
+
+### 🔹 Placeholder
+
+* Template ke andar variable ka naam likha hota hai as a **placeholder**.
+* Jab render hota hai toh **sirf value dikhata hai, naam gayab ho jata hai.**
+
+Example ERB template:
+
+```erb
+<h1><%= product_name %></h1>
+```
+
+Render hoke browser pe banega:
+
+```html
+<h1>Red Shoes</h1>
+```
+
+Notice: `product_name` ka naam kahin nahi dikh raha, sirf value `"Red Shoes"` aa gayi ✅
+
+---
+
+⚡ Matlab:
+
+* **Variable** → programming code ke andar “dabba” jo value rakhta hai.
+* **Placeholder** → template ki “khidki” jahan se us dabbe ka data dikhaya jata hai.
+
+
+
+
