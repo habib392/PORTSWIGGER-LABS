@@ -196,4 +196,63 @@ For completing the course: Cyber Security Basics
 
 ⚡ Matlab: **Placeholder = ek jagah jahan asli data baad mein inject hoga.**
 
+---
 
+## Question 4
+Variable kya hai??
+
+---
+
+## Ans
+
+### 🔹 Variable kya hai?
+
+Simple lafzon mein:
+**Variable ek dabba (box) hai jisme tum data rakhte ho aur usko naam dete ho.**
+Baad mein us naam se data ko call kar sakte ho, change kar sakte ho, ya use kar sakte ho.
+
+---
+
+### 🔹 Real-life Example
+
+Socho tumhari school ki **water bottle** hai:
+
+* Bottle = dabba (variable)
+* Naam likha hua hai “Habib” (variable ka naam)
+* Andar pani hai (value / data)
+
+Kal pani khatam ho jaye toh tum bottle mein juice daal sakte ho. Matlab **value change ho gayi, variable same hai**.
+
+---
+
+### 🔹 Programming Example (Ruby / Python style)
+
+```ruby
+name = "Habib"
+age = 19
+```
+
+* `name` = variable
+* `"Habib"` = value
+* `age` = variable
+* `19` = value
+
+Agar baad mein:
+
+```ruby
+age = 20
+```
+
+Toh variable `age` wahi hai, bas value change ho gayi.
+
+---
+
+### 🔹 Web Template Example
+
+Template mein jab `<%= product.name %>` likhte ho → `product.name` bhi ek variable hai jo product ka actual naam store kar raha hai.
+
+---
+
+⚡ Matlab: **Variable = ek naam wali jagah jahan data store hota hai.**
+
+---
