@@ -1,6 +1,6 @@
 # Questions Answers 
 
-## Mujy pata hai sandbox firewall ki tarah kaam krta hai yeh cheezon ko protect krt hai ab yahan pr yeh shahid template engine ko protect kr rha hai lekin sandbox jahan bhi hoon iun ko test krna chahie kiun ky yeh bypass hoo skty hain
+Mujy pata hai sandbox firewall ki tarah kaam krta hai yeh cheezon ko protect krt hai ab yahan pr yeh shahid template engine ko protect kr rha hai lekin sandbox jahan bhi hoon iun ko test krna chahie kiun ky yeh bypass hoo skty hain
 
 Acha jaisy iss lab main product edit ka option tha or ius main hum ny malicious payload daal diya SSTI wala too real world main too websites main yeh option nhi hota too wahan phir kaisy yeh detect karein gyein vulnerability
 
