@@ -58,8 +58,52 @@ ${product.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()
 
 ---
 
+## Converting Methods
+
+### Online converters
+
+Search karo “ASCII codes to text” aur numbers paste karo — instantly text mil jayega.
+
+Fast, beginner-friendly.
+
+---
+
+### Bash / Linux terminal
+
+Ek-liner:
+
+echo "122 99 107 120 49 103 101 52 48 116 102 54 111 97 106 120 121 112 108 55" | awk '{for(i=1;i<=NF;i++)printf "%c", $i; print ""}'
+
+Output: zckx1ge40tf6oajxypl7
+
+---
+
+Burp khol aur Decoder tab pe jao.
+
+2. Jo decimal bytes mile they (e.g. 122 99 107 120 ...) unko copy karo aur Decoder ke left pane mein paste karo.
+
+
+3. Text ko select karo (Ctrl+A).
+
+4. Decoder mein “Numbers” / “Decode as” ya similar option dhoondo — Burp mein usually Decode as > Number ya Numbers ka menu hota hai.
+
+Wahan input format ko Decimal set karo (agar option ho: From: Decimal).
+
+Output ko Text / ASCII / Characters set karo (ya To: Text).
+
+5. “Decode” ya apply karo — neeche/right pane mein decoded string nazar aa jayegi: zckx1ge40tf6oajxypl7.
+
+Agar Burp ke version mein exact label thora alag ho to:
+
+Use Decode as → Number → Decimal → To Text (or Char).
+
+Ya agar koi direct option na mile to: Replace spaces with \x trick nahi chahiye — Burp numeric decode built-in easy hai.
+
+---
+
 ### ⚡ Key Points Yaad Rakhne Wale
 
 * Sandbox ka matlab: restriction environment, lekin agar methods expose hoon to bypass possible hota hai.
 * Har Java object → `getClass()` root ban jata hai exploit ka.
 * Developer ki ghalti yeh hai ke unhon ne template engine ko untrusted input ke saath allow kar diya.
+
