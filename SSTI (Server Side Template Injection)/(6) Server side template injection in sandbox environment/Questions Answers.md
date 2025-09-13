@@ -257,8 +257,7 @@ Payload:
 
 ---
 
-## Short overall checklist (copy-paste for notes)
-
+## Short overall checklist 
 1. Find input points: comments, profile, reviews, admin editors, upload, email templates, API params.
 2. Probe safely with `${7*7}` or `${"X".toUpperCase()}`.
 3. Use DevTools / Burp to see where input is reflected (response body / network).
