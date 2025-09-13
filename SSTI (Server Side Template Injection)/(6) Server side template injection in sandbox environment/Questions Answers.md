@@ -1,0 +1,134 @@
+# Questions Answers 
+
+## Mujy pata hai sandbox firewall ki tarah kaam krta hai yeh cheezon ko protect krt hai ab yahan pr yeh shahid template engine ko protect kr rha hai lekin sandbox jahan bhi hoon iun ko test krna chahie kiun ky yeh bypass hoo skty hain
+
+Acha jaisy iss lab main product edit ka option tha or ius main hum ny malicious payload daal diya SSTI wala too real world main too websites main yeh option nhi hota too wahan phir kaisy yeh detect karein gyein vulnerability
+
+tum ny yeh btahea
+${product.getClass()}
+Ky agar yeh kaam kare too sandbox weak hai too iss ky kaam krny ki kya nishaani mily gi hamy, kaisa output aye ga
+
+Baki labs main too hum yeh vulnerability iss technique {{ 7*7 }} sy test krty thy lekin iss main commands different kiun hain
+
+Yeh jo payload hai
+${product.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().resolve("/home/carlos/my_password.txt").toURL().openStream().readAllBytes()?join(" ")}
+Yeh itna bara or complex kiun hai mera matlab baki labs main too bara simple hota tha payload
+
+---
+
+## Answer
+
+# 1) Sandbox ka role — seedha aur seedha example
+
+* **Sandbox** ek restriction layer hai jo template engine ko system APIs (file I/O, runtime exec, reflection) se **alag** rakhta hai — bilkul firewall ki tarah, lekin application-level.
+* Maksad: template mein user input se server ki sensitive cheezen (files, OS commands) expose na hon.
+* **Agar sandbox weak ho → attacker template expressions ko Java object graph tak pohoncha sakta hai.**
+
+---
+
+# 2) Real-world: jab “product edit” jaisa input point available na ho — kahan se test karein?
+
+Real websites par editable templates kam milte hain. Dusre common vectors:
+
+1. **User-controlled fields** (comments, profile bio, product reviews) — agar server unko template engine se render karta hai => potential.
+2. **Admin panels / CMS** — admins ya content managers se editable HTML/markdown aata hai.
+3. **File uploads that get rendered** (e.g. markdown files, templates).
+4. **Email templates / notification templates** — agar user input wahan insert hota hai.
+5. **API endpoints that return templated data** — JSON ya HTML jo template engine se banta ho.
+6. **Stored vs reflected SSTI** — reflected: request mein aate hi render; stored: DB mein store ho kar baad mein render.
+
+**Testing approach:** publicly visible inputs pe small safe probes bhejo (arithmetic, string join). Agar response mein probe evaluated nazar aaye toh deeper testing karna. Hamesha authorized scope mein karo.
+
+---
+
+# 3) Simple probes (safe) vs deeper probes — kyun pehle simple use karen
+
+* **Simple probe:** `${7*7}` ya `{{7*7}}` — agar engine evaluate karta hai to SSTI confirm hoti hai.
+* Yeh *safe* aur *noisy-low* test hai: sirf expression evaluate karta hai.
+* **Agar yeh kaam kare →** template expressions are evaluated. Next step: type probing (getClass) to see exposure level.
+
+---
+
+# 4) `${product.getClass()}` se kya milega — expected output aur nishaaniyan
+
+* Agar tum template mein `${product.getClass()}` likho aur output render ho jaye, expected output kuch is tarah hoga:
+  `class com.example.Product`
+  ya
+  `class org.someframework.Model$Proxy...`
+* **Nishaaniyan (what it tells you):**
+
+  * Template engine reflection access de raha hai.
+  * Tum object ka concrete Java class name dekh sakte ho → classloader aur package info mil sakta hai.
+  * Agar output “class java.lang.String” ya kisi standard class ka naam aaye to reflection accessible hai.
+* **Agar chain methods evaluate ho rahi hain** (e.g. `product.getClass().getName()`), matlab zyada freedom hai.
+
+---
+
+# 5) Kyun kuch labs simple `{{7*7}}` use karte hain aur kuch mein complex payload chahiye?
+
+* **Different template engines** (Freemarker, Jinja2, Twig, Velocity) **different features** expose karte hain. Kuch engines seedha math/string eval allow karte hain (isliye `7*7` kaam karta hai).
+* **Sandbox level alag hota hai:**
+
+  * Agar engine **only expression language** allow karta hai (no reflection), simple probes hi possible hain.
+  * Agar engine **reflection** (getClass, methods) allow kare to tum Java object graph chain kar sakte ho — phir complex payloads lagte hain.
+* **Freemarker** especially Java ke upar run hota hai — file read karne ke liye Java APIs ko chain karna padta hai (URI resolve, toURL, openStream, readAllBytes) — isliye payload lamba hai.
+
+---
+
+# 6) Kyun payload itna lamba aur complex hai? (step-by-step reason)
+
+Payload:
+`${product.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().resolve("/home/carlos/my_password.txt").toURL().openStream().readAllBytes()?join(" ")}`
+
+* Reason breakdown:
+
+  1. `product.getClass()` → root Java object mil gaya.
+  2. `.getProtectionDomain().getCodeSource().getLocation()` → jahan se class load hui, ek `URL` milta hai.
+  3. `.toURI().resolve("/home/carlos/my_password.txt")` → relative/absolute path ko file URI mein convert.
+  4. `.toURL().openStream()` → file ka input stream kholta hai.
+  5. `.readAllBytes()` → sare bytes le leta hai (array of ints).
+  6. `?join(" ")` → Freemarker syntax to join array into space-separated decimals (website returned bytes as decimals).
+
+* **Kyun lamba?** Kyunki tum directly `Files.readAllBytes(Paths.get(...))` jaise convenient static helper access nahi kar paate unless `forName` ya reflection se class access ho. Is chain mein hum existing accessible methods use karke **filesystem tak indirect rasta** bana rahe hain.
+
+---
+
+# 7) Indicators that sandbox is weak (real signs to look for)
+
+* Template expressions are evaluated at all (`${7*7}` returns `49`).
+* You can call methods on objects (`${product.getClass()}` shows class).
+* Error messages / stack traces reveal Java class names or method names.
+* Template output contains unexpected object dumps like `java.io.FileInputStream@...` or byte arrays.
+* Presence of debug pages or verbose logs that leak template details.
+
+---
+
+# 8) Practical detection checklist (penetration testing friendly, safe)
+
+1. **Start safe:** `${7*7}`, `${"a".toUpperCase()}` — observe.
+2. **Type probe:** `${product.getClass()}` → get class name.
+3. **Method probe:** `${product.getClass().getMethods()?size}` or `${product.getClass().getDeclaredMethods()?size}` (engine permitting).
+4. **Resource probe (read-only):** try safe non-sensitive files like `/etc/hostname` or application config if in scope — but always follow lab/authorization rules.
+5. **Blind OOB checks:** only with permission — use DNS or HTTP callbacks to detect outbound connections. (Do inside authorized scope.)
+6. **Log everything** and **report responsibly** — don't exfiltrate sensitive customer data during testing.
+
+---
+
+# 9) Why labs differ in payload style (summary)
+
+* Engine differences (syntax & features).
+* Sandbox configuration (some block reflection, others allow).
+* Lab author chooses easiest reliable vector for that engine.
+* Real world: you must **probe gradually** — simple → introspect → escalate.
+
+---
+
+# 10) Quick example outputs to expect (so tum samajh jao)
+
+* `${7*7}` → `49`
+* `${product.getClass()}` → `class com.example.Product`
+* If sandbox blocked, `${product.getClass()}` might render as literal `${product.getClass()}` or give an error like `Expression evaluation disabled` or `Method not found`.
+* If reflection allowed but file read blocked, you might get `java.lang.SecurityException` or `AccessDeniedException`.
+
+---
+
