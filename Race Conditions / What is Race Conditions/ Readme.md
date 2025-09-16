@@ -29,3 +29,85 @@
 
 ### Yeh Seekhna Kyun Zaroori Hai?
 - Race conditions dangerous hote hain kyun ke yeh attackers ko rules todne dete hain. Agar tum developer ya tester ho, toh yeh samajhna zaroori hai ke apki website is tarah ke attacks se safe rahe.
+
+---
+
+### Burp Suite 2023.9 Mein Naye Features Repeater Ke Liye
+Burp Repeater ab bohot powerful ho gaya hai race conditions test karne ke liye. Pehle, requests bhejne mein network jitter (jaise internet ki delay ya timing issues) problem ban jata tha, lekin ab yeh easily handle hota hai parallel requests bhej ke.
+
+- **Kaise Kaam Karta Hai?** Burp automatically server ke HTTP version ke hisaab se technique adjust karta hai:
+  - **HTTP/1 Ke Liye**: Classic "last-byte synchronization" use karta hai. Matlab, multiple requests ek saath bhejta hai, lekin har request ka aakhri byte hold karta hai, phir sab ko ek hi time pe release kar deta hai. Yeh jitter ko kam karta hai.
+  - **HTTP/2 Ke Liye**: "Single-packet attack" technique, jo PortSwigger Research ne Black Hat USA 2023 mein pehli baar dikhaya. Ek hi TCP packet mein 20-30 requests complete kar deta hai! Yeh network jitter ko almost zero kar deta hai, kyun ke sab kuch ek packet mein hota hai.
+
+Real-world example: Soch, tu ek banking app test kar raha hai jahan balance check aur transfer ek saath hota hai. Pehle jitter ki wajah se requests alag alag time pe pahunchti thi, ab single-packet se tu 20 transfers ek hi packet mein bhej sakta hai, aur dekh sakta hai ke kya limit overrun hota hai (jaise zyada paisay nikal jaayein).
+
+Yeh feature discovery phase mein bohot helpful hai – bohot saari requests bhej ke dekh, kya kuch galat hota hai. Zyada details ke liye, Burp ke "Sending requests in parallel" section check kar. Aur whitepaper padh: "Smashing the state machine: The true potential of web race conditions" – yeh free hai PortSwigger pe.
+
+### Turbo Intruder Se Limit Overrun Test Karna
+Turbo Intruder ek extension hai Burp ka, jo Python-based hai aur complex attacks ke liye best. Ab yeh bhi single-packet attack support karta hai (BApp Store se latest version download kar).
+
+- **Kab Use Karo?** Jab simple Repeater se zyada control chahiye, jaise multiple retries, staggered timing, ya hazaron requests.
+- **Steps (HTTP/2 Zaruri Hai, HTTP/1 Nahi Chalega)**:
+  1. Target HTTP/2 support karta ho, check kar.
+  2. Code mein engine set kar: `engine=Engine.BURP2` aur `concurrentConnections=1`.
+  3. Requests ko groups mein daal: `engine.queue(target.req, gate='1')` – jaise 20 requests gate '1' mein.
+  4. Sab ko parallel bhej: `engine.openGate('1')`.
+
+Example code (Python snippet):
+```
+def queueRequests(target, wordlists):
+    engine = RequestEngine(endpoint=target.endpoint,
+                           concurrentConnections=1,
+                           engine=Engine.BURP2)
+    
+    # 20 requests gate '1' mein daalo
+    for i in range(20):
+        engine.queue(target.req, gate='1')
+    
+    # Sab parallel bhej do
+    engine.openGate('1')
+```
+Yeh template Turbo Intruder ke examples mein mil jaayega: race-single-packet-attack.py. Practice kar, dost – shuru mein Python thoda mushkil lagega, lekin ek baar seekh liya toh pro ban jaayega!
+
+### Hidden Multi-Step Sequences (Chhupe Multi-Step Processes)
+Ab advanced part: Kabhi kabhi ek single request peeche se multiple steps chalati hai, jaise login mein MFA (multi-factor auth) check. Yeh hidden "sub-states" banati hai – temporary states jahan app ek cheez allow kar deti hai phir badal deti hai.
+
+- **Kya Problem?** In sub-states ko abuse kar ke tu logic flaws exploit kar sakta hai, limit overrun se aage. Example: MFA bypass – login karo credentials se, sub-state mein session valid ho jata hai lekin MFA enforce nahi, ab sensitive page pe direct jaao. (Agar naya hai, PortSwigger ke 2FA bypass lab try kar.)
+
+Pseudo-code example (vulnerable login):
+```
+session['userid'] = user.userid
+if user.mfa_enabled:
+    session['enforce_mfa'] = True  # Abhi yeh nahi set hua
+    # MFA code bhej aur form pe redirect
+```
+Yahan sub-state mein tu logged-in ho lekin MFA bypass kar sakta hai – ek login request aur ek sensitive endpoint request ek saath bhej.
+
+Yeh application-specific hote hain, isliye labs mein practice kar. Wild mein (real apps pe) dhoondhne ke liye methodology follow kar.
+
+### Methodology: Hidden Sequences Ko Detect Karne Ka Tarika
+PortSwigger ke whitepaper se summarized – step by step apply kar, efficient rahega. Har step mein Burp use kar.
+
+1. **Potential Collisions Predict Karo**:
+   - Poora site map kar (Burp Target se).
+   - Questions pooch: Yeh endpoint security critical hai? (Jaise password reset ya payment.) Collision possible hai? (Same data pe do requests, jaise ek hi user ke liye do password resets.)
+
+   - Example: Password reset mein agar do users ke requests same record edit karein, toh collision. Alag records pe nahi.
+
+2. **Clues Ke Liye Probe Karo**:
+   - Pehle normal benchmark: Repeater mein requests group kar, "Send group in sequence (separate connections)" se bhej. Normal behavior note kar.
+
+   - Phir parallel bhej: "Send group in parallel" se single-packet (ya last-byte) use kar jitter zero karne ke liye. Ya Turbo Intruder.
+
+   - Clues dhoondh: Response change? Email different? App behavior badla? Kuch bhi deviation clue hai. (Pro tip: Burp Professional mein "Trigger race conditions" custom action use kar – one-click parallel requests!)
+
+3. **Concept Prove Karo**:
+   - Samajh kya ho raha: Extra requests hatao, phir bhi effect replicate ho?
+   - Advanced races unusual effects dete hain, jaise structural weakness. Maximum impact dhoondh – whitepaper padh for details.
+
+### Multi-Endpoint Race Conditions
+Yeh simple lagte hain: Multiple endpoints pe ek saath requests bhej ke race window align karo.
+
+- Example: Online store mein item cart mein add karo, pay karo, phir extra items add kar ke force-browse se confirmation page pe jaao. Payment validate hone aur confirmation ke beech window mein extra items slip ho sakte hain.
+
+- Challenge: Windows align karna mushkil, even single-packet se. Solution: Connection "warm" karo – pehle harmless requests bhej (jaise homepage GET), phir Repeater mein "Send group in sequence (single connection)" use kar timing smooth karne ke liye.
