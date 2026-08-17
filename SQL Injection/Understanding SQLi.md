@@ -1,0 +1,13 @@
+1. Sub sy pehly Manual Testing krni hai iusky baad sql map try krna hai magar woh bhi aik khaas condition main joky website ko damage na kare hamari ip block na hoo ius method sy testing krni hai.
+
+2. Sub entry points ki detail collect ki ky kis kis jagah Sql injection hoo skti hai or parameters kya hoty hain yeh sub samjha.
+
+3. Sub sy pehla kaam vulnerability check krna hai ky website ky sub parameters or entry points main sy kisi point pr vulnerability moujood hai ya nhi isky liye zyada sy zyada 20 payloads try krny hai brute force ky liye agar iss sy zyada try kiye too WAF hamy block kr skta hai iss liye 20 tk payloads ki list bnai jaa skti hai or aik list nhi bnani sub conditions jo hain jaisy Error based, Boolean based or time delay waghaira sub ky 15 sy payloads leny hain or unhy file main save kr dena hai iss tarah 4 sy 5 files baan jaye gi or haar file main 15 sy 20 payloads hongy. Ab yahan iss kaam sy bhi pehly hum specif parameter jaisy url parameter main manually check krein gy kuch special characters daal kr jaisy (') (") (/) (*) waghaira inn main koi sa bhi try kr skty hain. Ab yahan asal master hacker ki baat aati hai woh yeh normal hacker too sirf kuch selected payloads jaisy cheet sheet waly try kary ga magar jo professional hoga woh tarah sy tarah sy try kare ga access leny ki.
+
+4. Agar website main 20 parameters or entry point hain or kisi aik main bhi Sql injection nhi milti phir aagy nhi barhna balky next vulnerability jaisy XSS, CSRF waghaira try krni hain.
+
+5. Agar 20 main sy kisi aik jagah bhi thora sa bhi response change hota hai jaisy status code ya length waghaira ya page ka behavior too ius parameter ko mukammal test krna hai shahid wahan sy sql mil hi jaye.
+
+6. Sql injection aj ky time pr rare vulnerability hai main janta hoon or haar new website jo banti hai woh sql sy almost protected hi hoti hai lekin shahid ius ka koi aik page ya entry point kisi na kisi wajah sy sql sy vulnerable hoo or agar naa bhi hoo too iusko seekhny sy mujy or bht si cheezein jaisy website ky parameters, headers, intruder, brute forcing or bht si cheezein seekhny ko milti hai joky agar iss vulnerability main kaam naa bhi ayein too kisi or vulnerability main kaam ajyein gi.
+
+7. Abhi tk humny tables or columns ka pata lagny tk hi seekha hai joky abhi ky liye meray hissab sy sahi hai, abhi pely main DVWA, Portswigger or shahid Bugcrowd ki kisi website pr bhi try kr ky test karon ga jab mukammal toor pr yeh cheezein samj ajyein gy iusky baad vulnerability ko exploit krna seekhon ga.
