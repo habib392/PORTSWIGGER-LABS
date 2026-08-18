@@ -52,7 +52,7 @@ Table or column name ka pata hona bht zyada zaroori hai isky baghair data retriv
 
 Aik or baat yeh ky agar yeh command work na kare too phir column no change kiya jaa skta hai jaisy
 
-` ' UNION SELECT NULL,table_name FROM information_schema.tables,NULL--`
+` ' UNION SELECT NULL,table_name,NULL FROM information_schema.tables--`
 
 ---
 
