@@ -14,7 +14,12 @@
    
    ```
 
-`#` ko haar haal main encode krky bhejna hai jaisy %23 warna server error ajaye ga 500 
+`#` ko haar haal main encode krky bhejna hai jaisy %23 warna server error ajaye ga 500 yani iss tarah
+
+  ```
+   '+UNION+SELECT+'abc','def'%23
+   
+   ```
 
  * Is se verify ho jata hai ke total 2 columns hain aur dono text format support karte hain.
 **Step 3: Database version extract karna (Final Step)**
