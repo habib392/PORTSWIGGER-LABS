@@ -48,21 +48,19 @@ Python script wala tariqa zayada fast aur easy hai. Script try karo aur dekho po
 ## QUESTION 
 
 
-``Yaar yeh brute force wala attack bht hairan kun hai. Meray kuch sawalat jaisy
+`` Yaar yeh brute force wala attack bht hairan kun hai. Meray kuch sawalat jaisy
 
 Yeh brute force attack sy too hum easily password nikal lety hain, jis tarah hum ny iss main sy yeh combination try kr ky password nikala lekin mujy lgta hai isky liye website ya phir jis system pr brute force kiya jata hai iusky vulnerability hona lazmi hai agar vulnerability nhi hue too phir apko result nhi mil paye ga lekin phir brute force attack krny ky liye konsi vulnerability honi chahie kya SQL Injection honi chahie ya phir or bhi specific Vulnerabilities hoti hain jahan yeh result nikal ky dy skta hai.
 
 
 Dosri baat ky agar brute force sy sub passwords nikaly jaa skty hain too phir baki jo method hain jaisy hash cracking ya phir john the ripper woh kis liye hain.
 
-
 Teesri baat ky main yeh janta hoon ky aj kal haar jagah kaha jata hai password strong rakhein jaisy pehla letter captial rakhein or baad waly choty or phir numbers or phir symbols, or phir password bhi lamba rakhein jaisy mane 20 characters ko crack kiya lekin ab sochny ki baat hai jis tarah mane manually sub letters or numbers add kiye isi tarah symbols bhi too add kr skta hon na or phir ius sy brute force kr ky bhi too password nikala jaa skta hi na beshak timing zyada hoo jaye magar burpsuite ka paid version or baki techniques sy password nikala jaa skta hai na phir yeh techniques jaisy first letter capital, symbols, numbers waghaira rakhny ka kya faida
 
 
 Kya koi aisi jagah bhi hain jahan brute force bilkul kaam nhi kr skti 
 
-
-Or aik zaroori baat ky main jo brute forcing abhi kr rha hoon burpsuite free version sy iss main bht time laag rha hai mujy alternative free methods btao jis sy fast brute forcing hoo saky``
+Or aik zaroori baat ky main jo brute forcing abhi kr rha hoon burpsuite free version sy iss main bht time laag rha hai mujy alternative free methods btao jis sy fast brute forcing hoo saky ``
 
 ---
 
