@@ -51,3 +51,21 @@ Jab tum database ko kehte ho ke 'password123' (string) ko **int (number)** mein 
    > 
 Is tarah database process fail karne ki wajah se woh text/string value (jo hum extract karna chahte the) error message ke andar hi expose kar deta hai.
 
+---
+
+Yeh Data Types (**int**, **varchar**, **text**, waghaira) **SQL (Database Query Language)** ki apni types hain.
+Lekin yeh concept taqreeban har programming language mein hota hai. Aayein dekhte hain ke yeh alag alag jagahon par kaise use hota hai:
+### Data Types Ka Faraq & Usage
+ * **SQL (Database Language):**
+   * Jab hum database mein tables banate hain (jaise MySQL, PostgreSQL, Oracle), toh hum SQL mein specify karte hain ke kis column mein kya data aayega (e.g., age INT, username VARCHAR).
+   * Hum ne jo CAST(... AS int) use kiya tha, woh **SQL language** ka command tha.
+ * **Backend Languages (Python, PHP, Node.js, Java):**
+   * Backend code mein bhi data types hoti hain (jaise Python mein int, str, float).
+   * Backend language SQL query ko execute karne ke liye database ko bhejti hai.
+ * **Frontend Language (JavaScript):**
+   * JavaScript mein bhi numbers aur strings ki types hoti hain (e.g., Number, String).
+
+### Summary
+Data Types har language ka bunyadi hissedar (building block) hoti hain. SQL injection ke dauran jo error hum paida karte hain, woh **SQL Database System** ka apna error hota hai kyunki hum SQL command ke andar CAST() function se Database ko force kar rahe hotay hain.
+
+
