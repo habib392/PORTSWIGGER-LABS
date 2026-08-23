@@ -27,3 +27,27 @@ Aap jis data (maslan password ya username) ko read karne ki koshish kar rahe hai
 > 
 **Faida:**
 Error message ke andar hi "Example data" ki jagah aapka chahie hua **Password ya Data print ho kar samne aa jayega**! Aapko ek ek character karke brute force karne ki zaroorat hi nahi paregi. Yeh tareeqa wahan bhi bohot kaam aata hai jahan character limit ki wajah se lambi conditional queries na chal sakti hon.
+
+---
+
+Database conversion fail hone par error dega aur usi error message ke andar hi target data (jaise password) print ho kar bahar aa jayega.
+
+Databases mein **Data Types** ka matlab hota hai ke computer ko batana ke kisi column ya value mein kis kism ka data save ho raha hai.
+
+### Data Types Ka Faraq
+ * **Integer (int):**
+   * int ka matlab hota hai **Whole Numbers** (poore adad/ginti wale numbers) bina kisi point/decimal ke.
+   * **Examples:** 1, 45, 100, 9999, -50
+   * Complex math aur ginti ke liye int use hota hai. Isme alphabetical characters (a-z) ya symbols allowed nahi hotay.
+ * **String (varchar / text):**
+   * Jo data single ya double quotes ke andar hota hai. Isme letters, numbers, aur symbols sab aa sakte hain.
+   * **Examples:** 'admin', 'password123', 'hsjambjanbwx'
+### Error Kyun Trigger Hota Hai?
+Jab tum database ko kehte ho ke 'password123' (string) ko **int (number)** mein convert kare:
+ 1. Database dekhta hai ke 'password123' ke andar p, a, s, s jaise letters maujood hain.
+ 2. Math logic ke hisaab se letters ko number (int) nahi banaya ja sakta.
+ 3. Database crash hokar error generate karta hai:
+   > ERROR: invalid input syntax for integer: "password123"
+   > 
+Is tarah database process fail karne ki wajah se woh text/string value (jo hum extract karna chahte the) error message ke andar hi expose kar deta hai.
+
