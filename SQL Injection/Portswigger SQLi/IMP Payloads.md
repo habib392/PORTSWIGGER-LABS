@@ -129,3 +129,17 @@ Ab hum database se True/False wale sawal poochenge. Pehle poochna hai ke Current
 `1' AND LENGTH(database())=4#`
 
 ab agar waqai main 4 length hue too page pr kuch changing aye gi ya kuch show hoo jaye ga
+
+### First Letter Extraction (SUBSTRING)
+
+​Database ka pehla letter pakadne ke liye hum SUBSTRING() function use karte hain:
+
+`1' AND SUBSTRING(database(), 1, 1)='a'#`
+
+Agar database ka pehla letter 'a' hua, toh page bolega User ID exists in the database.
+
+Agar database ka pehla letter 'd' ya kuch or hua, toh page bolega User ID is MISSING from the database.
+
+`1' AND SUBSTRING(database(), 1, 1)='d'#`
+
+---
