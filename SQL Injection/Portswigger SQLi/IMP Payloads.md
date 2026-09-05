@@ -142,4 +142,7 @@ Agar database ka pehla letter 'd' ya kuch or hua, toh page bolega User ID is MIS
 
 `1' AND SUBSTRING(database(), 1, 1)='d'#`
 
+
+**Isi tarah hum SUBSTRING(database(), 2, 1)='v' kar ke doosra letter verify karte hain**
+
 ---
