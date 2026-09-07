@@ -109,14 +109,14 @@ If Oracle: (Oracle mein FROM dual likhna zaroori hota hai)
 Blind SQLi main error direct show nhi hota hamy database sy questions krny hoty hain ky agar yeh cheez exist krti hai too ' AND 1=1-- main data show krdy agar cheez exist krti hai too data show hoo jata hai or ' AND 1=2-- pr kuch show nhi hota normal page load hota hai.
 
 
-### Basic Payload
+### (4) Basic Payloads
 
 **(1) `' AND 1=1--`**
 **(2)`' AND 1=2--`**
 
 
-**(1) `1' AND 1=1#`**
-**(2) `1' AND 1=2#`**
+**(3) `1' AND 1=1#`**
+**(4) `1' AND 1=2#`**
 
 ### Database ki length pata lagwana
 
