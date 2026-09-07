@@ -111,7 +111,8 @@ Blind SQLi main error direct show nhi hota hamy database sy questions krny hoty 
 
 ### Basic Payload
 
-**`' AND 1=1--` `' AND 1=2--`**
+**(1). `' AND 1=1--`**
+**(2).`' AND 1=2--`**
 
 
 **`1' AND 1=1#` `1' AND 1=2#`**
