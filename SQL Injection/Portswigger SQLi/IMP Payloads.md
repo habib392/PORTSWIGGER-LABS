@@ -111,11 +111,12 @@ Blind SQLi main error direct show nhi hota hamy database sy questions krny hoty 
 
 ### Basic Payload
 
-**(1). `' AND 1=1--`**
-**(2).`' AND 1=2--`**
+**(1) `' AND 1=1--`**
+**(2)`' AND 1=2--`**
 
 
-**`1' AND 1=1#` `1' AND 1=2#`**
+**(1) `1' AND 1=1#`**
+**(2) `1' AND 1=2#`**
 
 ### Database ki length pata lagwana
 
