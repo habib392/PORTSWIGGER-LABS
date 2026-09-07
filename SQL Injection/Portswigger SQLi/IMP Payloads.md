@@ -167,3 +167,46 @@ Agar database ka pehla letter 'd' ya kuch or hua, toh page bolega User ID is MIS
 Agar page pr koi change aye too matlab utni hi length hai.
 
 ---
+
+## QUESTION / ANSWERS
+
+### 1. SUBSTRING() Function Kya Hota Hai Aur Kya Karta Hai?
+SUBSTRING() ka matlab hota hai **kisi poore text (string) mein se ek khas hissa ya single character alag karna**.
+Is function ka format yeh hota hai: SUBSTRING(text, start_position, length)
+#### Aap ke Payload Ki Misaal (1' AND SUBSTRING(database(), 1, 1)='d'#):
+ * **database()**: Text jahan se character alag karna hai (maslan dvwa).
+ * **Pehla 1 (2nd number par)**: start_position — yani counting kahan se shuru karni hai (1st letter se).
+ * **Doosra 1 (3rd number par)**: length — yani start position se **kitne characters uthane hain**.
+**3rd Number Waley 1 Ka Matlab:**
+Is 3rd number wale 1 ka matlab hai ke hum **sirf 1 single character** check karna chahte hain. Agar yahan 2 likhein ge, toh yeh 2 characters uthaye ga (maslan dv). Blind SQL Injection mein hum character-by-character check karte hain, is liye yahan hamesha length 1 rakhi jati hai.
+
+
+### 2. LIMIT Function Kya Hota Hai Aur Yeh Kya Karta Hai?
+LIMIT clause ka kaam hota hai **Database Response ke Results Ko Control Ya Restrict Karna**.
+Jab aap SQL mein query chalate hain, toh ho sakta hai database 100 rows wapas bheje. LIMIT batata hai ke kitni rows dikhani hain aur kahan se shuru karni hain.
+#### Example: LIMIT 0, 1
+ * **0 (Start Index)**: Row number 0 se shuru karo (pehli row).
+ * **1 (Count)**: Sirf **1 row** display karo.
+Agar aap LIMIT 1, 1 likhein ge, toh yeh **doosri row** ka 1 record uthaye ga. Is se hum ek ek karke alag alag tables ya usernames ka data nikalte hain.
+
+### 3. Kya Blind SQLi Se Normal SQLi Wali Details (Tables, Version, Columns) Nahi Nikal Sakty?
+**Bilkul nikal sakte hain!** Blind SQLi se bhi wahi poora data (Database Version, Table Names, Column Names, Rows, Passwords) nikalta hai jo Normal SQLi se nikalta hai.
+ * **Normal SQLi:** Data direct screen par aik hi martaba UNION SELECT se print ho jata hai.
+ * **Blind SQLi:** Direct data screen par nazar nahi aata, is liye hum **True/False (Yes/No)** conditions se poochna padta hai ke "Kya pehla letter 'a' hai?", "Kya pehla letter 'd' hai?". Data wahi nikalta hai, bas tareeqa-e-kar alag hota hai.
+
+### 4. Jab Hum 1' AND 1=1# Bhejty Hain Toh Backend Par Kya Query Banti Hai?
+Backend par developer ne PHP mein yeh code likha hota hai:
+```
+$query = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+
+```
+Jab aap input box mein 1' AND 1=1# daalte hain, toh $id ki jagah aap ka payload fit ho jata hai aur backend SQL query yeh banti hai:
+```
+SELECT first_name, last_name FROM users WHERE user_id = '1' AND 1=1#';
+
+```
+#### Query Execution Breakdown:
+ 1. **user_id = '1'**: Database dekhta hai ke User ID 1 exist karti hai (True).
+ 2. **AND 1=1**: Database check karta hai ke kya 1 barabar hai 1 ke? (True).
+ 3. **#**: Is ne aakhir wale single quote '; ko comment (ignore) kar diya.
+Kyunki dono conditions True hain, backend app response deti hai: **User ID exists in the database**.
