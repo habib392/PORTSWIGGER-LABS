@@ -147,7 +147,6 @@ Agar database ka pehla letter 'd' ya kuch or hua, toh page bolega User ID is MIS
 
 `1' AND SUBSTRING(database(), 1, 1)='d'#`
 
-
 **Isi tarah hum SUBSTRING(database(), 2, 1)='v' kar ke doosra letter verify karte hain**
 
 ---
@@ -201,11 +200,19 @@ LIMIT 0,1: Pehle table ke liye use hota hai.
 If True: Admin hash ka pehla character 5 hai.
 ​If False: Hum agla character (e.g., 2, a, b, 8) test karte hain.
 
+(SELECT password FROM users WHERE user='admin'): Yeh backend database se admin user ka stored password (hash) nikalta hai.
+
+​SUBSTRING(..., 1, 1): Yeh us password hash ka 1st character alag karta hai.
+
+​= '5': Yeh database se puchta hai: "Kya admin ke password hash ka pehla character '5' hai?"
+
 **Admin ke Password Hash ka Doosra Character Check:**
 
 `1' AND SUBSTRING((SELECT password FROM users WHERE user='admin'), 2, 1) = 'f'#`
 
 Isi tarah Loop chala kar poore 32-character MD5 Hash (e.g., 5f4dcc3b5aa765d61d8327deb882cf99) ki exact string nikal aati hai.
+
+Hash se real password nikalne ke liye SQL Injection use nahi hota, balki Password Cracking Tools use hotay hain.
 
 ---
 
