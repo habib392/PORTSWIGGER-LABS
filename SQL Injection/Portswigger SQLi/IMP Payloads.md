@@ -269,6 +269,6 @@ Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko h
 
 ### For Finding Database Length
 
-'id=1 AND LENGTH(database())=4#'
+`id=1 AND LENGTH(database())=4#`
 
 
