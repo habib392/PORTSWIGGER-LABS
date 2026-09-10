@@ -258,3 +258,17 @@ SELECT first_name, last_name FROM users WHERE user_id = '1' AND 1=1#';
  2. **AND 1=1**: Database check karta hai ke kya 1 barabar hai 1 ke? (True).
  3. **#**: Is ne aakhir wale single quote '; ko comment (ignore) kar diya.
 Kyunki dono conditions True hain, backend app response deti hai: **User ID exists in the database**.
+
+---
+
+### Medium Level Blind SQLi
+
+Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko highlight karke Ctrl + U dabayein (auto URL-encode karne ke liye).
+
+**​True Response: User ID exists in the database**
+
+### For Finding Database Length
+
+'id=1 AND LENGTH(database())=4#'
+
+
