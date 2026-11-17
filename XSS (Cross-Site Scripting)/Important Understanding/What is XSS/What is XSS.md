@@ -112,3 +112,20 @@ User ko kuch bhi nazar nahi aata
 
 
 📌 Is liye victim nahi samajh pata — jab tak browser ya antivirus warning na de.
+
+---
+
+### 1. Khud ki website par XSS ka hona (Attacker ki apni website)
+Agar koi attacker khud apni aik website banata hai aur usme malicious JavaScript code dal kar kisi ko link bhejta hai, toh **uske liye XSS ki koi zaroorat hi nahi hai**.
+ * Kyunki woh website pehle hi attacker ki apni hai, woh wahan jo marzi JavaScript code directly likh sakta hai aur run kar sakta hai.
+ * XSS ka asal concept tab aata hai jab koi **doosri reputable, legitimate ya target website** (jisme victim ka account pehle se logged-in ho, jese koi bank, social media, ya e-commerce site) vulnerable ho. Attacker ko us doosri website par vulnerability chahiye hoti hai, apni website par nahi.
+### 2. Kya XSS se doosri websites (dusre domains) par access mil jati hai?
+Yeh sab se bara misconception hai. XSS ki wajah se attacker kisi victim ke browser ke andar **doosri independent websites** (jaise agar koi user Facebook ya Gmail chal raha ho, toh attacker ka script unko direct access nahi kar sakta) ko control nahi kar sakta.
+Iske peeche web browsers ki sab se bari security layer hoti hai jise **Same-Origin Policy (SOP)** kehte hain:
+ * **Same-Origin Policy:** Yeh rule kehta hai ke ek website ka script sirf usi website ke data, cookies, aur DOM ko access kar sakta hai jahan se woh load hua hai. Woh kisi doosri website ke data ko read nahi kar sakta.
+ * Maslan, agar vulnerable-site.com par XSS attack hua hai, toh attacker ka script sirf vulnerable-site.com ki had tak hi kaam karega. Woh wahan ke cookies chura sakta hai ya us site par user ki taraf se kuch actions perform kar sakta hai, lekin woh wahan se uth kar user ke browser ki doosri tabs ya dusri websites (jese bank ya email) ko access nahi kar sakta.
+### 3. Phir XSS itna khatarnak kyun mana jata hai?
+Halanki attacker poora browser ya doosri independent websites hack nahi kar sakta, lekin jis vulnerable website par XSS execute hota hai, wahan par attacker ko us user ke barabar poore **privileges** mil jate hain. Iske nuksanat yeh ho sakte hain:
+ * **Session Hijacking:** Agar user ka session cookie HTTPOnly flag ke bagair save hai, toh attacker JavaScript ke zariye cookies chura kar victim ka account poori tarah takeover kar sakta hai.
+ * **Keylogging:** Vulnerable page par user jo bhi type karega (password, credit card info), attacker ka script usko capture kar ke apne server par bhej sakta hai.
+ * **Unauthorized Actions:** Attacker victim ki marzi ke khilaf us website par koi bhi action karwa sakta hai (jese password change karna, posts dalna, ya financial transactions karna).
