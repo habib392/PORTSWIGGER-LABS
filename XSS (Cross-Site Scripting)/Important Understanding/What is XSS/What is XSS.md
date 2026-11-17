@@ -129,3 +129,27 @@ Halanki attacker poora browser ya doosri independent websites hack nahi kar sakt
  * **Session Hijacking:** Agar user ka session cookie HTTPOnly flag ke bagair save hai, toh attacker JavaScript ke zariye cookies chura kar victim ka account poori tarah takeover kar sakta hai.
  * **Keylogging:** Vulnerable page par user jo bhi type karega (password, credit card info), attacker ka script usko capture kar ke apne server par bhej sakta hai.
  * **Unauthorized Actions:** Attacker victim ki marzi ke khilaf us website par koi bhi action karwa sakta hai (jese password change karna, posts dalna, ya financial transactions karna).
+
+---
+
+## Question 
+
+Yani tum keh rhy hoo ky jis website pr XSS ki vulnerability hai sub kuch iusi pr attacker kr skta hai isky ilawa or kisi cheez pr kuch nhi kr skta.
+
+Or jo tumny khatarnak cheezein btahi iun main sub sy zyada mujy Keylogging wala option dangerous laga kiunky agar aik attcker hai jo vulnerable.com pr victim ky liye stored XSS ky zariye ius ko access krta hai or phir sath hi neechy koi link dy deta hai ky iss pr click karein or ius link main woh JavaScript ka code inject kr deta hai or phir jab woh user ius link ky zariye kisi dosri website ya phir iusi website ky kisi section main username or password enter karega too attacker ko iuska password pata chal skta hai?
+
+## Answer
+
+Haan, tum bilkul theek samjhe ho! Same-Origin Policy (SOP) ki wajah se attacker ki poori game sirf aur sirf usi ek vulnerable website (domain) tak limited hoti hai. Woh wahan se bahar nikal kar kisi doosri independent website ko direct access ya control nahi kar sakta.
+Aur jahan tak tumne **Keylogging aur Stored XSS** ke connection ki baat ki hai, tumne bilkul point ki baat pakdi hai. Yeh ek real-world aur bht khatarnak scenario hai. Aao isko detail se dekhte hain ke Stored XSS ke zariye yeh kaise kaam karta hai:
+
+### 1. Stored XSS mein Link ki Zaroorat Kyun Nahi Parti?
+Tumne kaha ke attacker sath mein koi link de deta hai — **Stored XSS ka asal maza (attacker ke liye) yeh hota hai ke usko victim ko koi naya link bhejne ki zaroorat hi nahi parti!**
+ * Kyunki yeh **Stored** XSS hai, iska matlab hai ke malicious code us website ke database mein permanent save ho chuka hai (maslan kisi forum ke comment section mein, ya profile bio mein).
+ * Jab bhi koi bhi innocent user us page par visit karega, woh code automatically uske browser mein background mein run ho jayega.
+### 2. Keylogging aur Fake Input Capture Kaise Hota hai?
+Jab Stored XSS execute hota hai, toh attacker ka JavaScript code us page ke **DOM (Document Object Model)** ko poori tarah manipulate kar sakta hai. Isme keylogging is tarah kaam karti hai:
+ * **Fake Login Popup / Form Injection:** Attacker ka script ek aisi fake window ya login box screen par show kar sakta hai jo bilkul asli website jaisa lagta hai (misal ke taur par "Session Expired, please login again"). User samajhta hai ke website ki taraf se hai aur apna username/password enter kar deta hai.
+ * **Direct Keylogger (Event Listeners):** Agar user asli login page ya kisi aur section mein kuch bhi type kar raha ho, toh JavaScript ka addEventListener('keydown') ya input event poori typing ko record kar leta hai.
+ * **Data Exfiltration (Chori kiya hua data bhejna):** Jaise hi user password type karta hai, attacker ka script chupke se aik background request (fetch() ya XMLHttpRequest ke zariye) banata hai aur woh credentials attacker ke apne control server par bhej deta hai. Victim ko pata bhi nahi chalta ke uska data kahan gaya.
+Isi wajah se Stored XSS ko Reflected XSS se zyadah khatarnak mana jata hai, kyunki isme attack passive hota hai — user ko kuch click karne ki bhi zaroorat nahi parti, bas page kholne ki der hoti hai aur code chal jata hai.
