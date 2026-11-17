@@ -321,5 +321,16 @@ Rule: Burp Suite Repeater mein payload daalne ke baad space aur # wali line ko h
 
 ---
 
+Jab aap kisi company ya organization ke sath authorized pentester ke tor par kaam kar rahe hon ge, tab bhi **foundation (bunyad) yahi core logic aur steps rehte hain.**
+Farq sirf yeh hota hai ke real-world enterprise environments mein security controls bohat sakht hote hain. Is liye wahan advance cheezein aur payloads is tarah istemal hote hain:
+
+### 1. Advanced Scenarios aur WAF Bypasses
+ * **WAF aur IDS/IPS:** Corporate websites ke aage Web Application Firewall (jaise Cloudflare, Akamai, ya ModSecurity) laga hota hai jo basic payloads ko foran block kar deta hai. Tab aapko yeh notes change nahi karne parte, balkay unmein **Bypass techniques** add karni parti hain (jaise URL encoding, double URL encoding, comment pollution jaise /*comment*/, ya case-sensitive mixing jise UnIoN SeLeCt kehte hain).
+ * **Automated Tools (SQLMap):** Jab aap company mein professional assessment kar rahe hote hain aur waqt kam hota hai, toh har cheez manual type karne ke bajaye aap inhi concepts par bani hui automated tools (jaise sqlmap) ka istemal karte hain, jo background mein yehi sab logic khud run kar leti hain. Lekin sqlmap ko chalane ke liye bhi aapko pata hona chahiye ke backend par request kahan inject ho rahi hai—jo aapne apne notes se seekhi hai.
+### 2. Modern Databases aur Advanced SQLi Types
+ * **Out-of-Band (OOB) SQLi:** Agar website itni secure ho ke woh boolean response bhi na de (blind SQLi bhi fail ho jaye), tab advanced payloads use hote hain jo DNS requests ya HTTP requests ke zariye data attacker ke server tak leak karte hain (e.g., Burp Collaborator ka istemal).
+ * **Different Backends:** Har jagah MySQL nahi hota. Corporate networks mein Oracle, PostgreSQL, aur Microsoft SQL Server (MSSQL) zyadatar use hote hain, jinke andar system commands execute karne ke tareeqay (xp_cmdshell in MSSQL) alag hote hain.
+
+**Khulasa:** Aapki soch bilkul thek hai. Yeh notes aapke **Base Payloads** hain jo aapke zehen mein hone chahiye. Jab aap professional field mein utrenge, toh inhi notes ke upar mazeed advance layers aur conditions khud-ba-khud add hoti chali jayengi.
 
 
