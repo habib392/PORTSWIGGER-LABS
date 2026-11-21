@@ -224,3 +224,29 @@ Tumne ab poore process ko aapas mein connect kar liya hai, aur tumhari almost sa
 ### 4. Random 8-Character String (a7x9p3d2) vs Direct Payload
  * **Tumhara point:** Pehle direct payload kyun nahi bhejte? Kyunki context ka farq hota hai aur pehle nahi pata hota ke data kis tag/jagah reflect ho raha hai, is liye pehle random string bhej kar location/reflection dekhte hain, phir context ke mutabiq payload bhejte hain.
  * **Jawab:** **Bilkul theek!** Tumne khud apni baat ka bilkul sahi jawab nikaal liya. Direct har jagah heavy payload bhejney se WAF/filter blocks, noise, aur false impressions aa sakte hain. Pehle clean random string se reflection confirm karna sab se smart aur clean tareeqa hai.
+
+---
+
+## Glossary 
+
+Yeh rahi **sirf Reflected XSS** se mutalliq glossary (SOP, DOM, Session Hijacking, Keylogging aur doosre topics ke bagair), aur uske sath woh hissa jisme tumhari confusions, meri explanation, aur tumhari samajh darj hai:
+### 1. Reflected XSS Glossary
+ * **Reflected XSS:** Jab user ka input (aksar URL parameter se, jaise ?term=...) foran server ke response mein wapas reflect hota hai aur browser mein execute ho jata hai. Ismein aksar victim ko malicious link par click karwana parta hai.
+ * **Attack Delivery (Link Sharing):** Reflected XSS mein attacker link bana kar kisi forum, message, email ya social media ke zariye victim ko bhejta hai taake woh us link ko khole aur payload chal jaye.
+ * **Context:** Woh exact jagah jahan tumhara input response ke code mein reflect ho raha hai — jaise **HTML Body** (tags ke darmiyan normal text), **HTML Attribute** (kisi tag ke andar jaise value="..."), ya **JavaScript Context** (pehle se maujood <script> block ke andar).
+ * **Payload:** Woh test input ya code jo context ke mutabiq banaya jata hai taake pata chale ke JavaScript execute ho rahi hai ya nahi (maslan <script>alert(1)</script>, "><script>alert(1)</script>, <img src=x onerror=alert(1)>, ya ';alert(1);//).
+ * **Filtering:** Website ka woh check ya rule jo input mein se khatarnak characters ya words ko block, remove, ya modify karta hai taake XSS na ho sake.
+ * **HTML Encoding:** Special characters (jaise < aur >) ko safe entities (jaise &lt; aur &gt;) mein badalna taake browser unhe code/tag ke bajaye sirf plain text dikhaye.
+ * **Random Reflection String (a7x9p3d2):** Ek random alphanumeric string jo mukhtalif input points par bheji jati hai taake confirm ho sake ke input response mein reflect ho raha hai ya nahi.
+ * **Burp Repeater (Response Tab):** Request ko edit kar ke bhejne aur **Response** tab mein apna input (khan ya payload) dhoondhne ka tool, jis se reflection aur context ka pata chalta hai.
+ * **Burp Intruder & Grep - Match:** Multiple parameters/positions par test values bhejney aur **Grep - Match** ke zariye yeh dekhne ka tareeqa ke kin responses mein value wapas aayi hai.
+### 2. Meri Confusions, Jawab aur Samajh
+ * **Confusion 1: Context aur "HTML tag ke andar" hone ka kya matlab hai?**
+   * **Meri Explanation:** Maine bataya ke context ka matlab hai tumhara input response mein kahan ja raha hai. HTML body mein normal text ki tarah hota hai, jabke attribute mein aaye toh woh tag ke andar hota hai aur pehle quotes/tag close karne parte hain; JavaScript context mein pehle se <script> ke andar hota hai toh string close kar ke code chalate hain.
+   * **Meri Samajh:** Tumne samjha ke response tab mein dekhna parta hai ke data kahan ja raha hai — <p> ke darmiyan aaye toh aasan payload, attribute mein jaye toh modify karna parega, aur JS context mein string close kar ke payload chota/specific banana parta hai (bas yaad rakhna ke JS mein hamesha single quote hi nahi, code ke mutabiq single/double quote ya structure hota hai).
+ * **Confusion 2: HTML encoding se agar script run hi nahi ho rahi toh iska kya faida?**
+   * **Meri Explanation:** Maine clear kiya ke attacker ke liye iska koi faida nahi (kyunki wahan attack ruk jata hai), lekin tester ke liye iska faida yeh hota hai ke usko pata chal jata hai yeh jagah safe hai aur waqt zaya kiye bina agle input point par jaana chahiye ya check karna chahiye ke kya koi bypass mumkin hai.
+   * **Meri Samajh:** Tumne is baat ko yoon liya ke jab encoding ho rahi ho aur script na chale toh wahan faida nahi hota, aur ab yeh bhi clear ho gaya ke tester ke liye yeh ek signal hota hai ke defense kaam kar raha hai.
+ * **Confusion 3: 8-character random string Burp Intruder aur Grep Match se bhejne ki jagah direct payload kyun nahi bhejte?**
+   * **Meri Explanation:** Maine bataya ke pehle random string is liye bhejte hain taake page ke purane text se mix na ho aur confirm ho ke reflection kahan ho rahi hai; phir Intruder aur Grep - Match se jaldi pata chalta hai kis response mein value aayi.
+   * **Meri Samajh:** Tumne khud isko pakra ke pehle nahi pata hota data kis tag/jagah reflect ho raha hai, is liye pehle random string se reflection aur location maloom karte hain aur phir us context ke hisaab se payload bhejte hain.
