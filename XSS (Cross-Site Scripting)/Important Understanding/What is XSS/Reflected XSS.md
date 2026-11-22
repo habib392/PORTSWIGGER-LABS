@@ -250,3 +250,9 @@ Yeh rahi **sirf Reflected XSS** se mutalliq glossary (SOP, DOM, Session Hijackin
  * **Confusion 3: 8-character random string Burp Intruder aur Grep Match se bhejne ki jagah direct payload kyun nahi bhejte?**
    * **Meri Explanation:** Maine bataya ke pehle random string is liye bhejte hain taake page ke purane text se mix na ho aur confirm ho ke reflection kahan ho rahi hai; phir Intruder aur Grep - Match se jaldi pata chalta hai kis response mein value aayi.
    * **Meri Samajh:** Tumne khud isko pakra ke pehle nahi pata hota data kis tag/jagah reflect ho raha hai, is liye pehle random string se reflection aur location maloom karte hain aur phir us context ke hisaab se payload bhejte hain.
+
+---
+
+### Important lesson about Encoding
+
+Agar hamara input HTML entity ky toor pr use hoo rha hoo jaisy encoded too woh full encoded hona chahie yani ius main haar symbol ko encode hona chahie or jo lafz hai jaisy script inko encode krny ki zaroorat nhi hoti lekin symbols sub encode hony chahie warna agar sirf <> angle brackets ko encode kiya too hacker " double quotes ky zariye yeh onmouseover ya autofocus ka use krky attack kr skta hai.
