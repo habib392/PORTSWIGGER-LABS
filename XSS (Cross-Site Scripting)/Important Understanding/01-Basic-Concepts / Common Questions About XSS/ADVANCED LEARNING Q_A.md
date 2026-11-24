@@ -77,7 +77,9 @@ SVG browser ke liye trusted hota hai (graphics tag hai)
 
 ---
 
+
 ### Step 6: DOM-Based XSS Samajh
+
 📌 Jab JS code input uthakar page mein inject karta hai
 
 🔍 Jaise:
